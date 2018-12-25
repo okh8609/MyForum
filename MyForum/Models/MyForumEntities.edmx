@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyForumDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="A_Id" />
+          </Key>
+          <Property Name="A_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Watch" Type="int" Nullable="false" />
+          <Property Name="B_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="B_Id" />
+          </Key>
+          <Property Name="B_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Friendship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account_a" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Account_b" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="AuthCode" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="M_Id" />
+          </Key>
+          <Property Name="M_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_Id" Type="int" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Article_Board">
+          <End Role="Board" Type="Self.Board" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Board">
+              <PropertyRef Name="B_Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="B_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Board_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Board" Type="Self.Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Board">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friendship_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Friendship" Type="Self.Friendship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Friendship">
+              <PropertyRef Name="Account_a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friendship_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Friendship" Type="Self.Friendship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Friendship">
+              <PropertyRef Name="Account_b" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="A_Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="A_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyForumDBModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Friendship" EntityType="Self.Friendship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Article_Board" Association="Self.FK_Article_Board">
+            <End Role="Board" EntitySet="Board" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Member" Association="Self.FK_Article_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Board_Member" Association="Self.FK_Board_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Board" EntitySet="Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friendship_Member" Association="Self.FK_Friendship_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Friendship" EntitySet="Friendship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friendship_Member1" Association="Self.FK_Friendship_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Friendship" EntitySet="Friendship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Article" Association="Self.FK_Message_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Member" Association="Self.FK_Message_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyForumDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyForumDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Article" EntityType="MyForumDBModel.Article" />
+          <EntitySet Name="Board" EntityType="MyForumDBModel.Board" />
+          <EntitySet Name="Member" EntityType="MyForumDBModel.Member" />
+          <EntitySet Name="Message" EntityType="MyForumDBModel.Message" />
+          <AssociationSet Name="FK_Article_Board" Association="MyForumDBModel.FK_Article_Board">
+            <End Role="Board" EntitySet="Board" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Member" Association="MyForumDBModel.FK_Article_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Article" Association="MyForumDBModel.FK_Message_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Board_Member" Association="MyForumDBModel.FK_Board_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Board" EntitySet="Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Member" Association="MyForumDBModel.FK_Message_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <EntitySet Name="Friendship" EntityType="MyForumDBModel.Friendship" />
+          <AssociationSet Name="FK_Friendship_Member" Association="MyForumDBModel.FK_Friendship_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Friendship" EntitySet="Friendship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friendship_Member1" Association="MyForumDBModel.FK_Friendship_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Friendship" EntitySet="Friendship" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="A_Id" />
+          </Key>
+          <Property Name="A_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Watch" Type="Int32" Nullable="false" />
+          <Property Name="B_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Board" Relationship="MyForumDBModel.FK_Article_Board" FromRole="Article" ToRole="Board" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_Article_Member" FromRole="Article" ToRole="Member" />
+          <NavigationProperty Name="Message" Relationship="MyForumDBModel.FK_Message_Article" FromRole="Article" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="B_Id" />
+          </Key>
+          <Property Name="B_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Article" Relationship="MyForumDBModel.FK_Article_Board" FromRole="Board" ToRole="Article" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_Board_Member" FromRole="Board" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AuthCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="MyForumDBModel.FK_Article_Member" FromRole="Member" ToRole="Article" />
+          <NavigationProperty Name="Board" Relationship="MyForumDBModel.FK_Board_Member" FromRole="Member" ToRole="Board" />
+          <NavigationProperty Name="Message" Relationship="MyForumDBModel.FK_Message_Member" FromRole="Member" ToRole="Message" />
+          <NavigationProperty Name="Friendship" Relationship="MyForumDBModel.FK_Friendship_Member" FromRole="Member" ToRole="Friendship" />
+          <NavigationProperty Name="Friendship1" Relationship="MyForumDBModel.FK_Friendship_Member1" FromRole="Member" ToRole="Friendship" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="M_Id" />
+          </Key>
+          <Property Name="M_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_Id" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="MyForumDBModel.FK_Message_Article" FromRole="Message" ToRole="Article" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_Message_Member" FromRole="Message" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Article_Board">
+          <End Type="MyForumDBModel.Board" Role="Board" Multiplicity="1" />
+          <End Type="MyForumDBModel.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Board">
+              <PropertyRef Name="B_Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="B_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Article">
+          <End Type="MyForumDBModel.Article" Role="Article" Multiplicity="1" />
+          <End Type="MyForumDBModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="A_Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="A_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Board_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.Board" Role="Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Board">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Friendship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account_a" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Account_b" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_Friendship_Member" FromRole="Friendship" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="MyForumDBModel.FK_Friendship_Member1" FromRole="Friendship" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Friendship_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.Friendship" Role="Friendship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Friendship">
+              <PropertyRef Name="Account_a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friendship_Member1">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.Friendship" Role="Friendship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Friendship">
+              <PropertyRef Name="Account_b" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyForumDBModelStoreContainer" CdmEntityContainer="MyForumDBEntities">
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="MyForumDBModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="B_Id" ColumnName="B_Id" />
+                <ScalarProperty Name="Watch" ColumnName="Watch" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Board">
+            <EntityTypeMapping TypeName="MyForumDBModel.Board">
+              <MappingFragment StoreEntitySet="Board">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="B_name" ColumnName="B_name" />
+                <ScalarProperty Name="B_Id" ColumnName="B_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="MyForumDBModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="MyForumDBModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+                <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Friendship">
+            <EntityTypeMapping TypeName="MyForumDBModel.Friendship">
+              <MappingFragment StoreEntitySet="Friendship">
+                <ScalarProperty Name="Account_b" ColumnName="Account_b" />
+                <ScalarProperty Name="Account_a" ColumnName="Account_a" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

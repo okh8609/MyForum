@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b4a3d5886964663ac76c45c8f6f8e1d" Name="Diagram1">
+        <EntityTypeShape EntityType="MyForumDBModel.Article" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="MyForumDBModel.Board" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="MyForumDBModel.Member" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="MyForumDBModel.Message" Width="1.5" PointX="7.5" PointY="3.75" />
+        <AssociationConnector Association="MyForumDBModel.FK_Article_Board" />
+        <AssociationConnector Association="MyForumDBModel.FK_Article_Member" />
+        <AssociationConnector Association="MyForumDBModel.FK_Message_Article" />
+        <AssociationConnector Association="MyForumDBModel.FK_Board_Member" />
+        <AssociationConnector Association="MyForumDBModel.FK_Message_Member" />
+        <EntityTypeShape EntityType="MyForumDBModel.Friendship" Width="1.5" PointX="3" PointY="3.25" />
+        <AssociationConnector Association="MyForumDBModel.FK_Friendship_Member" />
+        <AssociationConnector Association="MyForumDBModel.FK_Friendship_Member1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

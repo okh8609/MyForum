@@ -1,0 +1,48 @@
+﻿@model MyForum.Models.Article
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">
+                新增文章
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
+                @*建立新增文章所須的表單*@
+                @using (Ajax.BeginForm("Add", "Home", new { B_Id = ViewData["B_Id"] },
+                        new AjaxOptions { HttpMethod = "POST", OnSuccess = "onArticleModalCreateSucess" }, new { }))
+                    {
+                @*建立修改留言所須的表單*@
+                @*@using (Html.BeginForm("Add", "Home", FormMethod.Post, new { B_Id = ViewData["B_Id"] }))
+                {*@
+                    @*產生新增文章資料表單內容*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Account, new { @class = "col-xs-4 form-label" })
+                        <div class="col-xs-8">
+                            @User.Identity.Name
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Title, new { @class = "col-xs-4 form-label" })
+                        <div class="col-xs-8">
+                            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Title, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Content, new { @class = "col-xs-4 form-label" })
+                        <div class="col-xs-8">
+                            @Html.TextAreaFor(model => model.Content, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Content, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-primary" id="createBtn" type="button" value="新增文章" />
+            <input class="btn btn-default" data-dismiss="modal" type="button" value="取消" />
+        </div>
+    </div>
+</div>

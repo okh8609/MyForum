@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity
+
+@*若確認使用者登入，則顯示使用者名稱，並列出兩個連結*@
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav pull-right">
+        <li><a>您好，@(User.Identity.Name)!</a></li>
+        <li>@Html.ActionLink("變更密碼", "ChangePassword", "Member")</li>
+        <li>@Html.ActionLink("登出", "Logout", "Member")</li>
+    </ul>
+}
+@*若無使用者登入，則列出兩個連結*@
+else
+{
+    <ul class="nav navbar-nav pull-right">
+        <li>@Html.ActionLink("註冊", "Register", "Member")</li>
+        <li>@Html.ActionLink("登入", "Login", "Member")</li>
+    </ul>
+}
