@@ -9,6 +9,7 @@ using MyForum.ViewModel;
 
 namespace MyForum.Controllers
 {
+    //測試
     //public class FriendshipController : Controller
     //{
     //    FriendshipService fsService = new FriendshipService();
