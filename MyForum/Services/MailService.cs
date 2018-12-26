@@ -9,7 +9,6 @@ namespace MyForum.Services
 {
     public class MailService
     {
-
         private string gmail_account = "turtalk1111@gmail.com"; //Gmail帳號
         private string gmail_password = "Zxcv*963"; //Gmail密碼
         private string gmail_mail = "turtalk1111@gmail.com"; //Gmail信箱
