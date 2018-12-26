@@ -104,6 +104,18 @@ namespace MyForum.Services
         }
         #endregion
 
+        #region 新增文章
+        //新增文章方法
+        public void Insert(Article newData)
+        {
+            //設定新增時間為現在
+            newData.CreateTime = DateTime.Now;
+            //將資料加入資料庫實體
+            db.Article.Add(newData);
+            Save();//儲存資料庫變更
+        }
+        #endregion
+
         #region 刪除資料
         //刪除文章方法
         public void Delete(int Id)
@@ -155,18 +167,6 @@ namespace MyForum.Services
             Save();
         }
         #endregion
-        #endregion
-
-        #region 新增文章
-        //新增文章方法
-        public void Insert(Article newData)
-        {
-            //設定新增時間為現在
-            newData.CreateTime = DateTime.Now;
-            //將資料加入資料庫實體
-            db.Article.Add(newData);
-            Save();//儲存資料庫變更
-        }
         #endregion
     }
 }

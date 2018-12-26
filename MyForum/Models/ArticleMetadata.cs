@@ -13,6 +13,10 @@ namespace MyForum.Models
     {
         private class ArticleMetadata
         {
+
+            [DisplayName("觀看人數")]
+            public int Watch { get; set; }
+
             [DisplayName("文章編號")]
             public int A_Id { get; set; }
 
@@ -31,8 +35,6 @@ namespace MyForum.Models
             [DisplayName("新增時間")]
             public DateTime CreateTime { get; set; }
 
-            [DisplayName("觀看人數")]
-            public int Watch { get; set; }
         }
     }
 }
