@@ -192,6 +192,7 @@
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
+    <Compile Include="ViewModel\CardView.cs" />
     <Compile Include="ViewModel\FriendshipView.cs" />
     <Compile Include="ViewModel\MemberChangePasswordView.cs" />
     <Compile Include="ViewModel\MemberLoginView.cs" />
@@ -277,6 +278,7 @@
     <Content Include="Views\Board\Create.cshtml" />
     <Content Include="Views\Friendship\Index.cshtml" />
     <Content Include="Views\Friendship\FriendList.cshtml" />
+    <Content Include="Views\Member\Card.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
