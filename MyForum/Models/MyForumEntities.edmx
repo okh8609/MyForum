@@ -51,7 +51,27 @@
           <Property Name="M_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="A_Id" Type="int" Nullable="false" />
           <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Content" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsArticle">
+          <Key>
+            <PropertyRef Name="NA_ID" />
+          </Key>
+          <Property Name="NA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Watch" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsMessage">
+          <Key>
+            <PropertyRef Name="NM_Id" />
+          </Key>
+          <Property Name="NM_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NA_ID" Type="int" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Article_Board">
@@ -138,12 +158,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NewsArticle_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsMessage_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="NewsMessage" Type="Self.NewsMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="NewsMessage">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsMessage_NewsArticle">
+          <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="1" />
+          <End Role="NewsMessage" Type="Self.NewsMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsArticle">
+              <PropertyRef Name="NA_ID" />
+            </Principal>
+            <Dependent Role="NewsMessage">
+              <PropertyRef Name="NA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MyForumDBModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Friendship" EntityType="Self.Friendship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsArticle" EntityType="Self.NewsArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsMessage" EntityType="Self.NewsMessage" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Article_Board" Association="Self.FK_Article_Board">
             <End Role="Board" EntitySet="Board" />
             <End Role="Article" EntitySet="Article" />
@@ -171,6 +229,18 @@
           <AssociationSet Name="FK_Message_Member" Association="Self.FK_Message_Member">
             <End Role="Member" EntitySet="Member" />
             <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsArticle_Member" Association="Self.FK_NewsArticle_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="NewsArticle" EntitySet="NewsArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsMessage_Member" Association="Self.FK_NewsMessage_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="NewsMessage" EntitySet="NewsMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsMessage_NewsArticle" Association="Self.FK_NewsMessage_NewsArticle">
+            <End Role="NewsArticle" EntitySet="NewsArticle" />
+            <End Role="NewsMessage" EntitySet="NewsMessage" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -210,6 +280,20 @@
           <AssociationSet Name="FK_Friendship_Member1" Association="MyForumDBModel.FK_Friendship_Member1">
             <End Role="Member" EntitySet="Member" />
             <End Role="Friendship" EntitySet="Friendship" />
+          </AssociationSet>
+          <EntitySet Name="NewsArticle" EntityType="MyForumDBModel.NewsArticle" />
+          <EntitySet Name="NewsMessage" EntityType="MyForumDBModel.NewsMessage" />
+          <AssociationSet Name="FK_NewsArticle_Member" Association="MyForumDBModel.FK_NewsArticle_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="NewsArticle" EntitySet="NewsArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsMessage_Member" Association="MyForumDBModel.FK_NewsMessage_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="NewsMessage" EntitySet="NewsMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsMessage_NewsArticle" Association="MyForumDBModel.FK_NewsMessage_NewsArticle">
+            <End Role="NewsArticle" EntitySet="NewsArticle" />
+            <End Role="NewsMessage" EntitySet="NewsMessage" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Article">
@@ -252,6 +336,8 @@
           <NavigationProperty Name="Message" Relationship="MyForumDBModel.FK_Message_Member" FromRole="Member" ToRole="Message" />
           <NavigationProperty Name="Friendship" Relationship="MyForumDBModel.FK_Friendship_Member" FromRole="Member" ToRole="Friendship" />
           <NavigationProperty Name="Friendship1" Relationship="MyForumDBModel.FK_Friendship_Member1" FromRole="Member" ToRole="Friendship" />
+          <NavigationProperty Name="NewsArticle" Relationship="MyForumDBModel.FK_NewsArticle_Member" FromRole="Member" ToRole="NewsArticle" />
+          <NavigationProperty Name="NewsMessage" Relationship="MyForumDBModel.FK_NewsMessage_Member" FromRole="Member" ToRole="NewsMessage" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -260,7 +346,7 @@
           <Property Name="M_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="A_Id" Type="Int32" Nullable="false" />
           <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Content" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Article" Relationship="MyForumDBModel.FK_Message_Article" FromRole="Message" ToRole="Article" />
           <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_Message_Member" FromRole="Message" ToRole="Member" />
@@ -359,6 +445,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NewsArticle">
+          <Key>
+            <PropertyRef Name="NA_ID" />
+          </Key>
+          <Property Name="NA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Watch" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_NewsArticle_Member" FromRole="NewsArticle" ToRole="Member" />
+          <NavigationProperty Name="NewsMessage" Relationship="MyForumDBModel.FK_NewsMessage_NewsArticle" FromRole="NewsArticle" ToRole="NewsMessage" />
+        </EntityType>
+        <EntityType Name="NewsMessage">
+          <Key>
+            <PropertyRef Name="NM_Id" />
+          </Key>
+          <Property Name="NM_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NA_ID" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_NewsMessage_Member" FromRole="NewsMessage" ToRole="Member" />
+          <NavigationProperty Name="NewsArticle" Relationship="MyForumDBModel.FK_NewsMessage_NewsArticle" FromRole="NewsMessage" ToRole="NewsArticle" />
+        </EntityType>
+        <Association Name="FK_NewsArticle_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.NewsArticle" Role="NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsMessage_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.NewsMessage" Role="NewsMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="NewsMessage">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsMessage_NewsArticle">
+          <End Type="MyForumDBModel.NewsArticle" Role="NewsArticle" Multiplicity="1" />
+          <End Type="MyForumDBModel.NewsMessage" Role="NewsMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsArticle">
+              <PropertyRef Name="NA_ID" />
+            </Principal>
+            <Dependent Role="NewsMessage">
+              <PropertyRef Name="NA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -416,6 +562,28 @@
                 <ScalarProperty Name="Account_b" ColumnName="Account_b" />
                 <ScalarProperty Name="Account_a" ColumnName="Account_a" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsArticle">
+            <EntityTypeMapping TypeName="MyForumDBModel.NewsArticle">
+              <MappingFragment StoreEntitySet="NewsArticle">
+                <ScalarProperty Name="Watch" ColumnName="Watch" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="NA_ID" ColumnName="NA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsMessage">
+            <EntityTypeMapping TypeName="MyForumDBModel.NewsMessage">
+              <MappingFragment StoreEntitySet="NewsMessage">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="NA_ID" ColumnName="NA_ID" />
+                <ScalarProperty Name="NM_Id" ColumnName="NM_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

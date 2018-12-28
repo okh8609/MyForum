@@ -22,6 +22,8 @@ namespace MyForum.Models
             this.Message = new HashSet<Message>();
             this.Friendship = new HashSet<Friendship>();
             this.Friendship1 = new HashSet<Friendship>();
+            this.NewsArticle = new HashSet<NewsArticle>();
+            this.NewsMessage = new HashSet<NewsMessage>();
         }
     
         public string Account { get; set; }
@@ -41,5 +43,9 @@ namespace MyForum.Models
         public virtual ICollection<Friendship> Friendship { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Friendship> Friendship1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NewsArticle> NewsArticle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NewsMessage> NewsMessage { get; set; }
     }
 }

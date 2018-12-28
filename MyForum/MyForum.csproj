@@ -182,6 +182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyForumEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewsArticle.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsMessage.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\BoardService.cs" />

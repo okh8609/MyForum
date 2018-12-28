@@ -30,5 +30,7 @@ namespace MyForum.Models
         public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Message> Message { get; set; }
         public virtual DbSet<Friendship> Friendship { get; set; }
+        public virtual DbSet<NewsArticle> NewsArticle { get; set; }
+        public virtual DbSet<NewsMessage> NewsMessage { get; set; }
     }
 }
