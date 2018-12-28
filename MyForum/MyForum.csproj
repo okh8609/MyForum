@@ -185,6 +185,7 @@
     <Compile Include="Models\NewsArticle.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewsArticleMetadata.cs" />
     <Compile Include="Models\NewsMessage.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
@@ -196,6 +197,7 @@
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MemberService.cs" />
     <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\NewsArticleService.cs" />
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
     <Compile Include="ViewModel\CardView.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="ViewModel\MemberLoginView.cs" />
     <Compile Include="ViewModel\MemberRegisterView.cs" />
     <Compile Include="ViewModel\MessageView.cs" />
+    <Compile Include="ViewModel\NewsArticleView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

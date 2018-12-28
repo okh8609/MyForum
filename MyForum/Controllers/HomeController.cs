@@ -111,8 +111,8 @@ namespace MyForum.Controllers
         public ActionResult Edit(int Id, FormCollection FormValues)
         {
             //修改資料的是否可修改判斷
-            if (articleService.CheckUpdate(Id))
-            {
+            //if (articleService.CheckUpdate(Id))
+            //{
                 //取得要修改的資料
                 Article Data = articleService.GetDataById(Id);
                 //使用Controller內建UpdateModel方法來修改資料
@@ -120,7 +120,7 @@ namespace MyForum.Controllers
                 UpdateModel(Data, new string[] { "Content" });
                 //儲存資料庫變更
                 articleService.Save();
-            }
+            //}
             //重新導向頁面至文章頁面
             return RedirectToAction("Article", new { Id = Id });
         }

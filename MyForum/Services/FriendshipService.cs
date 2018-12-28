@@ -16,10 +16,8 @@ namespace MyForum.Services
         //根據分頁以及搜尋來取得資料陣列的方法
         public List<Member> GetMyFriendList(string Account)
         {
-            //設定要接受全部搜尋資料的物件
             IQueryable<Member> SearchData;
             SearchData = GetMyFriend(Account);
-            //先排序再根據分頁來回傳所需的部分資料陣列
             return SearchData.OrderByDescending(p => p.Account).ToList();
         }
         //包含搜尋值的搜尋資料方法

@@ -60,7 +60,7 @@ namespace MyForum.Services
         {
             //根據搜尋值來搜尋資料
             IQueryable<Article> Data = db.Article
-             .Where(p => p.Member.Name.Contains(Search) || p.Content.Contains(Search));
+             .Where(p => p.Member.Name.Contains(Search) || p.Content.Contains(Search) || p.Title.Contains(Search));
             //計算所需的總頁面
             Paging.MaxPage = Convert.ToInt32(Math.Ceiling(
                  Convert.ToDouble(Data.Count()) / Paging.ItemNum));
