@@ -12,7 +12,7 @@ namespace MyForum.ViewModel
         //顯示資料陣列
         public List<Member> DataList { get; set; }
 
-        //UID
-        public int Account { get; set; }
+        ////UID
+        //public int Account { get; set; }
     }
 }
