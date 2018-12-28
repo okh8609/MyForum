@@ -32,15 +32,15 @@ namespace MyForum.Services
             //把它union起來
             foreach (Friendship f in FriendList)
             {
-                Data.Union(db.Member.Where(p => p.Account.Equals(f.Account_b)));
-                //Data.Concat(db.Member.Where(p => p.Account.Equals(f.Account_b)));
+                //Data.Union(db.Member.Where(p => p.Account.Equals(f.Account_b)));
+                Data.Concat(db.Member.Where(p => p.Account.Equals(f.Account_b)));
             }
             return Data;
         }
         #endregion
 
         #region 依照名稱搜尋好友資料(搜尋功能)
-        //根據分頁以及搜尋來取得資料陣列的方法
+        //依照名稱搜尋好友資料(搜尋功能)
         public List<Member> GetSearchFriendList(string Search)
         {
             //判斷搜尋是否為空或Null，以決定要呼叫設定搜尋資料

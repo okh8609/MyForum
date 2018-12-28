@@ -8,7 +8,7 @@ using MyForum.Services;
 
 namespace MyForum.ViewModel
 {
-    public class FriendshipSearchView
+    public class FriendshipView
     {
         //搜尋欄位
         [DisplayName("搜尋：")]
@@ -17,7 +17,5 @@ namespace MyForum.ViewModel
         //顯示資料陣列
         public List<Member> DataList { get; set; }
 
-        ////UID
-        //public int Account { get; set; }
     }
 }

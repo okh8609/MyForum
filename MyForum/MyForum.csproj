@@ -192,8 +192,7 @@
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
-    <Compile Include="ViewModel\FriendshipListView.cs" />
-    <Compile Include="ViewModel\FriendshipSearchView.cs" />
+    <Compile Include="ViewModel\FriendshipView.cs" />
     <Compile Include="ViewModel\MemberChangePasswordView.cs" />
     <Compile Include="ViewModel\MemberLoginView.cs" />
     <Compile Include="ViewModel\MemberRegisterView.cs" />
@@ -275,10 +274,11 @@
     <Content Include="Views\Board\Index.cshtml" />
     <Content Include="Views\Board\List.cshtml" />
     <Content Include="Views\Board\Create.cshtml" />
+    <Content Include="Views\Friendship\Index.cshtml" />
+    <Content Include="Views\Friendship\FriendList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Friendship\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

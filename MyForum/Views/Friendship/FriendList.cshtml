@@ -1,0 +1,49 @@
+﻿@model MyForum.ViewModel.FriendshipView
+
+@*文章列表表格*@
+<div class="table-responsive">
+    <table class="table table-hover">
+        @*若資料庫中有文章，將會列出文章*@
+        @if (Model.DataList.Count != 0)
+        {
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataList[0].Email)
+                    </th>
+                </tr>
+            </thead>
+            foreach (var item in Model.DataList)
+            {
+                <tr>
+                    <td>
+                        @item.Account
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+
+                    @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <td>
+                                @Html.ActionLink("刪除留言", "Delete", new { Id = @item.Account })
+                            </td>
+                        }*@
+                </tr>
+            }
+        }
+        else
+        {
+            @*若無文章，則印出"尚未有文章"*@
+            <tr>
+                <td colspan="4">
+                    無好友
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

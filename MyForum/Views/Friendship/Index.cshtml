@@ -1,0 +1,45 @@
+﻿@model MyForum.ViewModel.BoardView
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts
+{
+    @*匯入驗證與AJAX所須的JavaScript*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @*匯入本頁面的JavaScript*@
+    @Scripts.Render("~/jQuery/Board/ArticleList.js")
+}
+
+<div class="page-header">
+    <h1>好友功能</h1>
+</div>
+
+
+<h2>搜尋其他好友</h2>
+
+@*判斷是否有登入，登入後才可使用新增文章*@
+@if (User.Identity.IsAuthenticated)
+{
+    @*建立搜尋文章所須的表單*@
+    using (Ajax.BeginForm("FriendList", "Friendship",
+        new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.Search, new { @class = "col-xs-4 col-md-1 form-label" })
+            <div class="col-xs-8 col-md-3 input-group">
+                @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+                <div class="input-group-btn">
+                    <input class="btn btn-primary" type="submit" value="搜尋" />
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+<h2>列表</h2>
+<div id="ArticleListBlock">
+    @Html.Action("FriendList", "Friendship",new { Account = User.Identity.Name })
+</div>   

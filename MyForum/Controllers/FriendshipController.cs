@@ -15,20 +15,18 @@ namespace MyForum.Controllers
 
         #region 開始頁面
         [Authorize]
-        public ActionResult Index(string Account)
+        public ActionResult Index()
         {
-            ViewData["UID"] = Account;
-            return PartialView();
+            return View();
         }
         #endregion
 
         #region 搜尋好友
-        //將Page(頁數)預設為
         [Authorize]
         public ActionResult SearchList(string Search)
         {
             //宣告一個新頁面模型
-            FriendshipSearchView Data = new FriendshipSearchView();
+            FriendshipView Data = new FriendshipView();
             //將傳入值Search(搜尋)放入頁面模型中
             Data.Search = Search;
             //從Service中取得頁面所需陣列資料
@@ -38,16 +36,36 @@ namespace MyForum.Controllers
         #endregion
 
         #region 好友列表
-        //將Page(頁數)預設為
         [Authorize]
         public ActionResult MyFriendList(string Account)
         {
             //宣告一個新頁面模型
-            FriendshipSearchView Data = new FriendshipSearchView();
+            FriendshipView Data = new FriendshipView();
             //將傳入值Search(搜尋)放入頁面模型中
             Data.Search = Account;
             //從Service中取得頁面所需陣列資料
             Data.DataList = fsService.GetSearchFriendList(Data.Search);
+            return PartialView(Data); //將頁面資料傳入View中
+        }
+        #endregion
+
+        #region 真．好友列表
+        [Authorize]
+        public ActionResult FriendList(string Search, string Account)
+        {
+            //宣告一個新頁面模型
+            FriendshipView Data = new FriendshipView();
+            //將傳入值Search(搜尋)放入頁面模型中
+            Data.Search = Search;
+            //從Service中取得頁面所需陣列資料
+            if(String.IsNullOrEmpty(Data.Search))
+            {
+                Data.DataList = fsService.GetMyFriendList(Account);
+            }
+            else
+            {
+                Data.DataList = fsService.GetSearchFriendList(Data.Search);
+            }
             return PartialView(Data); //將頁面資料傳入View中
         }
         #endregion
