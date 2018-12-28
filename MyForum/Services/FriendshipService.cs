@@ -32,8 +32,7 @@ namespace MyForum.Services
             //把它union起來
             foreach (Friendship f in FriendList)
             {
-                //Data.Union(db.Member.Where(p => p.Account.Equals(f.Account_b)));
-                Data.Concat(db.Member.Where(p => p.Account.Equals(f.Account_b)));
+                Data = Data.Union(db.Member.Where(p => p.Account.Equals(f.Account_b)));               
             }
             return Data;
         }
