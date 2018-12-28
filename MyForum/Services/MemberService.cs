@@ -184,5 +184,17 @@ namespace MyForum.Services
         }
         #endregion
 
+        #region 隨機取得一個使用者資料(抽卡用)
+        public Member GetRandomPerson()
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+
+            List<Member> Data = db.Member.ToList();
+
+            Member Person = Data.ElementAt(random.Next(0, Data.Count()));
+
+            return Person;
+        }
+        #endregion
     }
 }

@@ -180,5 +180,18 @@ namespace MyForum.Controllers
             return RedirectToAction("Login");
         }
         #endregion
+        
+        #region 抽卡
+        [Authorize]
+        public ActionResult Card()
+        {
+            //宣告一個新頁面模型
+            CardView Data = new CardView();
+            //取得頁面所需的人氣資料陣列
+            Data.Person = memberService.GetRandomPerson();
+            //將資料傳入View中
+            return View(Data);
+        }
+        #endregion
     }
 }
