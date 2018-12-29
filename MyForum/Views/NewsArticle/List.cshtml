@@ -1,0 +1,97 @@
+﻿@model MyForum.ViewModel.NewsArticleView
+
+@*文章列表表格*@
+<div class="table-responsive">
+    <table class="table table-hover">
+        @*若資料庫中有文章，將會列出文章*@
+        @if (Model.DataList.Count != 0)
+        {
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataList[0].Content)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                </tr>
+            </thead>
+            foreach (var item in Model.DataList)
+            {
+            <tr>
+                <td>
+                    @Html.ActionLink("查看留言", "Article", "NewsArticle", new { NA_ID = item.NA_ID }, null)
+                </td>
+                <td>
+                    @*換行怪怪的*@
+                    @item.Content
+                </td>
+                <td>
+                    @item.Member.Name
+                </td>
+            </tr>
+            }
+        }
+        @*若無文章，則印出"尚未有文章"*@
+        else
+        {
+            <tr>
+                <td colspan="4">
+                    尚未有文章
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@*產生頁碼按鈕*@
+<div class="col-xs-12 text-center">
+    <ul class="pagination">
+        @*顯示上一頁與最前頁按鈕*@
+        <li class="first @((Model.Paging.NowPage > 1) ? "" : " disabled")">
+            @Ajax.ActionLink("<<", "List",
+                new { Page = 1 },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+        <li class="pervious @((Model.Paging.NowPage > 1) ? "" : " disabled")">
+            @Ajax.ActionLink("<", "List",
+                new { Page = Model.Paging.NowPage - 1 },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+        @*顯示各個頁次按鈕*@
+        @for (var page = (Model.Paging.NowPage - 6);
+                page < (Model.Paging.NowPage + 6); page++)
+        {
+            if ((page > 0) && (page <= Model.Paging.MaxPage))
+            {
+                if (page == Model.Paging.NowPage)
+                {
+                    <li class="active">
+                        <a href="#">@page</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Ajax.ActionLink(page.ToString(), "List",
+                            new { Page = page},
+                            new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+                    </li>
+                }
+            }
+        }
+        @*顯示下一頁與最後一頁的按鈕*@
+        <li class="next @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
+            @Ajax.ActionLink(">", "List",
+                new { Page = Model.Paging.NowPage + 1},
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+        <li class="last @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
+            @Ajax.ActionLink(">>", "List",
+                new { Page = Model.Paging.MaxPage },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+    </ul>
+</div>

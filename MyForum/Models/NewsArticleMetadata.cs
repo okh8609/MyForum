@@ -18,6 +18,8 @@ namespace MyForum.Models
             public int NA_ID { get; set; }
 
             [DisplayName("動態內容")]
+            [DataType(DataType.MultilineText)]
+            [Required]
             public string Content { get; set; }
 
             [DisplayName("發表者")]

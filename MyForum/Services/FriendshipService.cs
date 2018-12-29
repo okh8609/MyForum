@@ -49,7 +49,7 @@ namespace MyForum.Services
             {
                 //設定要接受全部搜尋資料的物件
                 IQueryable<Member> SearchData;
-                SearchData = db.Member.Where(p => p.Account.Contains(Search) || p.Email.Contains(Search));//找Account或Email包含字串的東西
+                SearchData = db.Member.Where(p => p.Account.Contains(Search) || p.Email.Contains(Search) || p.Name.Contains(Search));//找Account或Email包含字串的東西
                 return SearchData.OrderByDescending(p => p.Account).ToList();
             }
         }

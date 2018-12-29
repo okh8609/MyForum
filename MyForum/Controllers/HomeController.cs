@@ -90,7 +90,7 @@ namespace MyForum.Controllers
             //使用Service來新增一筆資料
             articleService.Insert(Data);
             //重新導向頁面至開始頁面
-            return RedirectToAction("Index");
+            return RedirectToAction("List", new { B_Id = B_Id });
         }
         #endregion
 
