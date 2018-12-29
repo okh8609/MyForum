@@ -245,6 +245,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="jQuery\Board\ArticleList.js" />
+    <Content Include="jQuery\FamList\ArticleList.js" />
     <Content Include="jQuery\Home\Article.js" />
     <Content Include="jQuery\Home\ArticleList.js" />
     <Content Include="jQuery\NewsArticle\ArticleList.js" />
@@ -325,6 +326,9 @@
     <Content Include="Views\NewsMessage\DataList.cshtml" />
     <Content Include="Views\NewsMessage\Create.cshtml" />
     <Content Include="Views\FamList\Menu.cshtml" />
+    <Content Include="Views\FamList\Index.cshtml" />
+    <Content Include="Views\FamList\List.cshtml" />
+    <Content Include="Views\FamList\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
