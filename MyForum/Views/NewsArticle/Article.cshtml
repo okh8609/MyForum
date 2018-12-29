@@ -32,3 +32,8 @@
     </div>
 </div>
 
+@*呼叫另一Action顯示文章留言列表*@
+<div id="MessageList">
+    @Html.Action("Index", "NewsMessage", new { NA_ID = Model.NA_ID })
+</div>
+

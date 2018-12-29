@@ -5,11 +5,22 @@
 
 <h2>歡迎使用TurTalk</h2>
 <hr />
-@*<h4>資料庫狀態</h4>*@
-@ViewData["DBstatus"]
 
-<br />
 請先登入或註冊
+<br /><br />
+
+
+@*<h4>資料庫狀態</h4>*@
+@if (ViewData["DBstatus"].ToString() == "1")
+{
+    <font color="#0000FF">資料庫目前連線正常!!</font>
+}
+else
+{
+    <font color="#FF0000">資料庫目前無法連線!!</font>
+}
+
+
 
 
 

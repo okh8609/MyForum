@@ -16,10 +16,14 @@ namespace MyForum.Controllers
         #region 歡迎畫面
         public ActionResult Welcome()
         {
-            if (boardService.TryConnectServerByPort("122.116.151.243",61433) == true)
-                ViewData["DBstatus"] = "資料庫目前連線正常!!";
+            if (boardService.TryConnectServerByPort("122.116.151.243", 61433) == true)
+                //ViewData["DBstatus"] = "資料庫目前連線正常!!";
+                ViewData["DBstatus"] = "1";
+
             else
-                ViewData["DBstatus"] = "資料庫目前無法連線!!";
+                //ViewData["DBstatus"] = "資料庫目前無法連線!!";
+                ViewData["DBstatus"] = "0";
+
             return View();
         }
         #endregion

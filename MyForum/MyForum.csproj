@@ -190,6 +190,7 @@
     <Compile Include="Models\NewsMessage.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\NewsMessageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\BoardService.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Services\MemberService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\NewsArticleService.cs" />
+    <Compile Include="Services\NewsMessageService.cs" />
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
     <Compile Include="ViewModel\CardView.cs" />
@@ -208,6 +210,7 @@
     <Compile Include="ViewModel\MemberRegisterView.cs" />
     <Compile Include="ViewModel\MessageView.cs" />
     <Compile Include="ViewModel\NewsArticleView.cs" />
+    <Compile Include="ViewModel\NewsMessageView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -295,6 +298,9 @@
     <Content Include="Views\NewsArticle\List.cshtml" />
     <Content Include="Views\NewsArticle\Create.cshtml" />
     <Content Include="Views\NewsArticle\Article.cshtml" />
+    <Content Include="Views\NewsMessage\Index.cshtml" />
+    <Content Include="Views\NewsMessage\DataList.cshtml" />
+    <Content Include="Views\NewsMessage\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
