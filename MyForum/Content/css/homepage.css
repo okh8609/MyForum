@@ -1,0 +1,42 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+}
+
+article {
+    margin-top: 220px;
+    text-align: left;
+}
+
+article h1 {
+    font-size: 80px;
+    color: #fff;
+}
+/*
+article p {
+    color: rgba(255, 255, 255);
+}
+*/
+article .btn.btn-default {
+    color: #000;
+    background: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 30px;
+    font-size: 20px;
+    margin-top: 24px;
+}
+
+div .db{
+    font-size:20px;
+    margin-top: 420px;
+    margin-bottom: 10px;
+}
