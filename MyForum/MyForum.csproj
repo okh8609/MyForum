@@ -292,6 +292,8 @@
     <Content Include="Views\Member\Card.cshtml" />
     <Content Include="Views\Board\Welcome.cshtml" />
     <Content Include="Views\NewsArticle\Index.cshtml" />
+    <Content Include="Views\NewsArticle\List.cshtml" />
+    <Content Include="Views\NewsArticle\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

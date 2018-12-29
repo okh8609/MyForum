@@ -38,7 +38,7 @@ namespace MyForum.Services
             //先找到自己的好友有誰
             IQueryable<Friendship> FriendList = db.Friendship.Where(p => p.Account_a.Equals(Account));
             //依據Accout去找到好友發的動態
-            IQueryable<NewsArticle> Data = db.NewsArticle.Where(p => p.Account.Equals("NULL_qPDdUDCKYh8WQHY2"));//回傳空的列表
+            IQueryable<NewsArticle> Data = db.NewsArticle.Where(p => p.Account.Equals(Account));//自己的也要
             //把它union起來
             foreach (Friendship f in FriendList)
             {
