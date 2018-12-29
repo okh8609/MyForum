@@ -1,34 +1,30 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Welcome";
 }
 
-<h2>歡迎使用TurTalk</h2>
-<hr />
+<html>
+<head>
+	<link href="@Url.Content("~/Content/css/homepage.css")" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color: rgba(34, 34, 34, 1)">
+	<div class="wrapper">
+		<article>
+			<h1>Welcome to TurTalk</h1>
+			
+			<a href="/Member/Register" class="btn btn-default">&#x25B6; Get Started</a>
+		</article>
 
-
-@*判斷是否有登入，登入後才可使用新增文章*@
-@if (!User.Identity.IsAuthenticated)
-{
-    <text>請先</text>
-    @Html.ActionLink("登入", "Login", "Member")
-    <text>或</text>
-    @Html.ActionLink("註冊", "Register", "Member")
-    <br /><br />
-}
-
-
-@*<h4>資料庫狀態</h4>*@
-@if (ViewData["DBstatus"].ToString() == "1")
-{
-    <font color="#0000FF">資料庫目前連線正常!!</font>
-}
-else
-{
-    <font color="#FF0000">資料庫目前無法連線!!</font>
-}
-
-
-
-
-
+		<div class="db">
+			@*<h4>資料庫狀態</h4>*@
+			@if (ViewData["DBstatus"].ToString() == "1")
+			{
+				<font color="#61DDBC">Database connect successfully</font>
+			}
+			else
+			{
+				<font color="#F76C82">Database connect failed!!</font>
+			}
+		</div>
+	</div>
+</body>
+</html>

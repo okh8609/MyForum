@@ -5,9 +5,8 @@
 {
 <ul class="nav navbar-nav">
     <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
-    <li>@Html.ActionLink("動態功能", "Index", "NewsArticle")</li>
+    <li>@Html.ActionLink("動態功能", "Index", "NewsArticle")</li>    
     <li>@Html.ActionLink("好友功能", "Index", "Friendship")</li>
-    <li>@Html.ActionLink("家族功能", "Menu", "FamList")</li>
     <li>@Html.ActionLink("抽卡功能", "Card", "Member")</li>
 </ul>
     <ul class="nav navbar-nav pull-right">
@@ -20,7 +19,7 @@
 else
 {
     <ul class="nav navbar-nav pull-right">
-        <li>@Html.ActionLink("註冊", "Register", "Member")</li>
+        <li style="color: #61DDBC">@Html.ActionLink("註冊", "Register", "Member")</li>
         <li>@Html.ActionLink("登入", "Login", "Member")</li>
     </ul>
 }
