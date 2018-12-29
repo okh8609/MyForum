@@ -9,6 +9,9 @@
             <thead>
                 <tr>
                     <th>
+                        @*放加入家族了欄位*@
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.DataList[0].FB_name)
                     </th>
                     <th>
@@ -19,6 +22,9 @@
             foreach (var item in Model.DataList)
             {
                 <tr>
+                    <td>
+                        @Html.ActionLink("加入這個家族", "Add", "FamMemb", new { FB_ID = @item.FB_ID }, null)
+                    </td>
                     <td>
                         @Html.ActionLink(item.FB_name, "List", "FamArti", new { FB_ID = item.FB_ID }, null)
                     </td>

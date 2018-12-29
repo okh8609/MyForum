@@ -143,6 +143,7 @@
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\FamArtiController.cs" />
     <Compile Include="Controllers\FamListController.cs" />
+    <Compile Include="Controllers\FamMembController.cs" />
     <Compile Include="Controllers\FamMsgController.cs" />
     <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Services\BoardService.cs" />
     <Compile Include="Services\FamArtiService.cs" />
     <Compile Include="Services\FamListService.cs" />
+    <Compile Include="Services\FamMembService.cs" />
     <Compile Include="Services\FamMsgService.cs" />
     <Compile Include="Services\ForPaging.cs" />
     <Compile Include="Services\FriendshipService.cs" />
@@ -226,6 +228,7 @@
     <Compile Include="ViewModel\CardView.cs" />
     <Compile Include="ViewModel\FamArtiView.cs" />
     <Compile Include="ViewModel\FamListView.cs" />
+    <Compile Include="ViewModel\FamMembView.cs" />
     <Compile Include="ViewModel\FamMsgView.cs" />
     <Compile Include="ViewModel\FriendshipView.cs" />
     <Compile Include="ViewModel\MemberChangePasswordView.cs" />
@@ -336,6 +339,7 @@
     <Content Include="Views\FamMsg\Index.cshtml" />
     <Content Include="Views\FamMsg\DataList.cshtml" />
     <Content Include="Views\FamMsg\Create.cshtml" />
+    <Content Include="Views\FamMemb\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
