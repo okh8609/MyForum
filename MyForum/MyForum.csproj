@@ -294,6 +294,7 @@
     <Content Include="Views\NewsArticle\Index.cshtml" />
     <Content Include="Views\NewsArticle\List.cshtml" />
     <Content Include="Views\NewsArticle\Create.cshtml" />
+    <Content Include="Views\NewsArticle\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
