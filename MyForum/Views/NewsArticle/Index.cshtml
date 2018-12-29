@@ -1,0 +1,32 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts
+{
+    @*匯入驗證與AJAX所須的JavaScript*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @*匯入本頁面的JavaScript*@
+    @Scripts.Render("~/jQuery/NewsArticle/ArticleList.js")
+}
+
+<div class="page-header">
+    <h1>動態列表</h1>
+</div>
+
+@*載入文章列表內容*@
+<div id="ArticleListBlock">
+    @Html.Action("List", "NewsArticle")
+</div>
+
+
+@*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+@Ajax.ActionLink("新增看板", "Create", "NewsArticle", null,
+    new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+    new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
+@*新增文章預留表單跳窗*@
+<div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+</div>

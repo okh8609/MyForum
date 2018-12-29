@@ -10,12 +10,12 @@
         <div class="modal-body">
             <div class="form-horizontal">
                 @*建立新增文章所須的表單*@
-                @using (Ajax.BeginForm("Add", "Home", new { B_Id = ViewData["B_Id"] },
+                @*@using (Ajax.BeginForm("Add", "Home", new { B_Id = ViewData["B_Id"] },
                         new AjaxOptions { HttpMethod = "POST", OnSuccess = "onArticleModalCreateSucess" }, new { }))
-                    {
+                    {*@
                 @*建立修改留言所須的表單*@
-                @*@using (Html.BeginForm("Add", "Home", FormMethod.Post, new { B_Id = ViewData["B_Id"] }))
-                {*@
+                @using (Html.BeginForm("Add", "Home", new { B_Id = ViewData["B_Id"] }, FormMethod.Post))
+                    {
                     @*產生新增文章資料表單內容*@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Account, new { @class = "col-xs-4 form-label" })
