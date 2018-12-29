@@ -141,6 +141,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\FamArtiController.cs" />
+    <Compile Include="Controllers\FamListController.cs" />
+    <Compile Include="Controllers\FamMsgController.cs" />
     <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -160,9 +163,11 @@
     <Compile Include="Models\FamArti.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FamArtiMetadata.cs" />
     <Compile Include="Models\FamList.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FamListMetadata.cs" />
     <Compile Include="Models\FamMemb.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
@@ -206,6 +211,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\BoardService.cs" />
+    <Compile Include="Services\FamArtiService.cs" />
+    <Compile Include="Services\FamListService.cs" />
+    <Compile Include="Services\FamMsgService.cs" />
     <Compile Include="Services\ForPaging.cs" />
     <Compile Include="Services\FriendshipService.cs" />
     <Compile Include="Services\MailService.cs" />
@@ -216,6 +224,9 @@
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
     <Compile Include="ViewModel\CardView.cs" />
+    <Compile Include="ViewModel\FamArtiView.cs" />
+    <Compile Include="ViewModel\FamListView.cs" />
+    <Compile Include="ViewModel\FamMsgView.cs" />
     <Compile Include="ViewModel\FriendshipView.cs" />
     <Compile Include="ViewModel\MemberChangePasswordView.cs" />
     <Compile Include="ViewModel\MemberLoginView.cs" />
@@ -313,9 +324,12 @@
     <Content Include="Views\NewsMessage\Index.cshtml" />
     <Content Include="Views\NewsMessage\DataList.cshtml" />
     <Content Include="Views\NewsMessage\Create.cshtml" />
+    <Content Include="Views\FamList\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\FamArti\" />
+    <Folder Include="Views\FamMsg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
