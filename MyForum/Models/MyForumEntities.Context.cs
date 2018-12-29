@@ -32,5 +32,9 @@ namespace MyForum.Models
         public virtual DbSet<Friendship> Friendship { get; set; }
         public virtual DbSet<NewsArticle> NewsArticle { get; set; }
         public virtual DbSet<NewsMessage> NewsMessage { get; set; }
+        public virtual DbSet<FamArti> FamArti { get; set; }
+        public virtual DbSet<FamList> FamList { get; set; }
+        public virtual DbSet<FamMemb> FamMemb { get; set; }
+        public virtual DbSet<FamMsg> FamMsg { get; set; }
     }
 }

@@ -6,8 +6,16 @@
 <h2>歡迎使用TurTalk</h2>
 <hr />
 
-請先登入或註冊
-<br /><br />
+
+@*判斷是否有登入，登入後才可使用新增文章*@
+@if (!User.Identity.IsAuthenticated)
+{
+    <text>請先</text>
+    @Html.ActionLink("登入", "Login", "Member")
+    <text>或</text>
+    @Html.ActionLink("註冊", "Register", "Member")
+    <br /><br />
+}
 
 
 @*<h4>資料庫狀態</h4>*@

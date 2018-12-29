@@ -157,6 +157,18 @@
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BoardMetadata.cs" />
+    <Compile Include="Models\FamArti.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamList.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamMemb.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamMsg.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Friendship.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>

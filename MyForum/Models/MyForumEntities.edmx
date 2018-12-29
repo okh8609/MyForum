@@ -25,6 +25,43 @@
           <Property Name="B_name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="FamArti">
+          <Key>
+            <PropertyRef Name="FA_ID" />
+          </Key>
+          <Property Name="FA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Watch" Type="int" Nullable="false" />
+          <Property Name="FB_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamList">
+          <Key>
+            <PropertyRef Name="FB_ID" />
+          </Key>
+          <Property Name="FB_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FB_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamMemb">
+          <Key>
+            <PropertyRef Name="FM_ID" />
+          </Key>
+          <Property Name="FM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FB_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamMsg">
+          <Key>
+            <PropertyRef Name="FM_Id" />
+          </Key>
+          <Property Name="FM_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FA_ID" Type="int" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Friendship">
           <Key>
             <PropertyRef Name="id" />
@@ -106,6 +143,90 @@
               <PropertyRef Name="Account" />
             </Principal>
             <Dependent Role="Board">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamArti_FamList">
+          <End Role="FamList" Type="Self.FamList" Multiplicity="1" />
+          <End Role="FamArti" Type="Self.FamArti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamList">
+              <PropertyRef Name="FB_ID" />
+            </Principal>
+            <Dependent Role="FamArti">
+              <PropertyRef Name="FB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamArti_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="FamArti" Type="Self.FamArti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamArti">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamList_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="FamList" Type="Self.FamList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamList">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMemb_FamList">
+          <End Role="FamList" Type="Self.FamList" Multiplicity="1" />
+          <End Role="FamMemb" Type="Self.FamMemb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamList">
+              <PropertyRef Name="FB_ID" />
+            </Principal>
+            <Dependent Role="FamMemb">
+              <PropertyRef Name="FB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMemb_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="FamMemb" Type="Self.FamMemb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamMemb">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMsg_FamArti">
+          <End Role="FamArti" Type="Self.FamArti" Multiplicity="1" />
+          <End Role="FamMsg" Type="Self.FamMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamArti">
+              <PropertyRef Name="FA_ID" />
+            </Principal>
+            <Dependent Role="FamMsg">
+              <PropertyRef Name="FA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMsg_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="FamMsg" Type="Self.FamMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamMsg">
               <PropertyRef Name="Account" />
             </Dependent>
           </ReferentialConstraint>
@@ -197,6 +318,10 @@
         <EntityContainer Name="MyForumDBModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamArti" EntityType="Self.FamArti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamList" EntityType="Self.FamList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamMemb" EntityType="Self.FamMemb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamMsg" EntityType="Self.FamMsg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Friendship" EntityType="Self.Friendship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
@@ -213,6 +338,34 @@
           <AssociationSet Name="FK_Board_Member" Association="Self.FK_Board_Member">
             <End Role="Member" EntitySet="Member" />
             <End Role="Board" EntitySet="Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamArti_FamList" Association="Self.FK_FamArti_FamList">
+            <End Role="FamList" EntitySet="FamList" />
+            <End Role="FamArti" EntitySet="FamArti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamArti_Member" Association="Self.FK_FamArti_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamArti" EntitySet="FamArti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamList_Member" Association="Self.FK_FamList_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamList" EntitySet="FamList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMemb_FamList" Association="Self.FK_FamMemb_FamList">
+            <End Role="FamList" EntitySet="FamList" />
+            <End Role="FamMemb" EntitySet="FamMemb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMemb_Member" Association="Self.FK_FamMemb_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamMemb" EntitySet="FamMemb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMsg_FamArti" Association="Self.FK_FamMsg_FamArti">
+            <End Role="FamArti" EntitySet="FamArti" />
+            <End Role="FamMsg" EntitySet="FamMsg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMsg_Member" Association="Self.FK_FamMsg_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamMsg" EntitySet="FamMsg" />
           </AssociationSet>
           <AssociationSet Name="FK_Friendship_Member" Association="Self.FK_Friendship_Member">
             <End Role="Member" EntitySet="Member" />
@@ -295,6 +448,38 @@
             <End Role="NewsArticle" EntitySet="NewsArticle" />
             <End Role="NewsMessage" EntitySet="NewsMessage" />
           </AssociationSet>
+          <EntitySet Name="FamArti" EntityType="MyForumDBModel.FamArti" />
+          <EntitySet Name="FamList" EntityType="MyForumDBModel.FamList" />
+          <EntitySet Name="FamMemb" EntityType="MyForumDBModel.FamMemb" />
+          <EntitySet Name="FamMsg" EntityType="MyForumDBModel.FamMsg" />
+          <AssociationSet Name="FK_FamArti_FamList" Association="MyForumDBModel.FK_FamArti_FamList">
+            <End Role="FamList" EntitySet="FamList" />
+            <End Role="FamArti" EntitySet="FamArti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamArti_Member" Association="MyForumDBModel.FK_FamArti_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamArti" EntitySet="FamArti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMsg_FamArti" Association="MyForumDBModel.FK_FamMsg_FamArti">
+            <End Role="FamArti" EntitySet="FamArti" />
+            <End Role="FamMsg" EntitySet="FamMsg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamList_Member" Association="MyForumDBModel.FK_FamList_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamList" EntitySet="FamList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMemb_FamList" Association="MyForumDBModel.FK_FamMemb_FamList">
+            <End Role="FamList" EntitySet="FamList" />
+            <End Role="FamMemb" EntitySet="FamMemb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMemb_Member" Association="MyForumDBModel.FK_FamMemb_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamMemb" EntitySet="FamMemb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamMsg_Member" Association="MyForumDBModel.FK_FamMsg_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FamMsg" EntitySet="FamMsg" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Article">
           <Key>
@@ -338,6 +523,10 @@
           <NavigationProperty Name="Friendship1" Relationship="MyForumDBModel.FK_Friendship_Member1" FromRole="Member" ToRole="Friendship" />
           <NavigationProperty Name="NewsArticle" Relationship="MyForumDBModel.FK_NewsArticle_Member" FromRole="Member" ToRole="NewsArticle" />
           <NavigationProperty Name="NewsMessage" Relationship="MyForumDBModel.FK_NewsMessage_Member" FromRole="Member" ToRole="NewsMessage" />
+          <NavigationProperty Name="FamArti" Relationship="MyForumDBModel.FK_FamArti_Member" FromRole="Member" ToRole="FamArti" />
+          <NavigationProperty Name="FamList" Relationship="MyForumDBModel.FK_FamList_Member" FromRole="Member" ToRole="FamList" />
+          <NavigationProperty Name="FamMemb" Relationship="MyForumDBModel.FK_FamMemb_Member" FromRole="Member" ToRole="FamMemb" />
+          <NavigationProperty Name="FamMsg" Relationship="MyForumDBModel.FK_FamMsg_Member" FromRole="Member" ToRole="FamMsg" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -505,6 +694,137 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FamArti">
+          <Key>
+            <PropertyRef Name="FA_ID" />
+          </Key>
+          <Property Name="FA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Watch" Type="Int32" Nullable="false" />
+          <Property Name="FB_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FamList" Relationship="MyForumDBModel.FK_FamArti_FamList" FromRole="FamArti" ToRole="FamList" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_FamArti_Member" FromRole="FamArti" ToRole="Member" />
+          <NavigationProperty Name="FamMsg" Relationship="MyForumDBModel.FK_FamMsg_FamArti" FromRole="FamArti" ToRole="FamMsg" />
+        </EntityType>
+        <EntityType Name="FamList">
+          <Key>
+            <PropertyRef Name="FB_ID" />
+          </Key>
+          <Property Name="FB_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FB_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FamArti" Relationship="MyForumDBModel.FK_FamArti_FamList" FromRole="FamList" ToRole="FamArti" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_FamList_Member" FromRole="FamList" ToRole="Member" />
+          <NavigationProperty Name="FamMemb" Relationship="MyForumDBModel.FK_FamMemb_FamList" FromRole="FamList" ToRole="FamMemb" />
+        </EntityType>
+        <EntityType Name="FamMemb">
+          <Key>
+            <PropertyRef Name="FM_ID" />
+          </Key>
+          <Property Name="FM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FB_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FamList" Relationship="MyForumDBModel.FK_FamMemb_FamList" FromRole="FamMemb" ToRole="FamList" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_FamMemb_Member" FromRole="FamMemb" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="FamMsg">
+          <Key>
+            <PropertyRef Name="FM_Id" />
+          </Key>
+          <Property Name="FM_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FA_ID" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FamArti" Relationship="MyForumDBModel.FK_FamMsg_FamArti" FromRole="FamMsg" ToRole="FamArti" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_FamMsg_Member" FromRole="FamMsg" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_FamArti_FamList">
+          <End Type="MyForumDBModel.FamList" Role="FamList" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamArti" Role="FamArti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamList">
+              <PropertyRef Name="FB_ID" />
+            </Principal>
+            <Dependent Role="FamArti">
+              <PropertyRef Name="FB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamArti_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamArti" Role="FamArti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamArti">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMsg_FamArti">
+          <End Type="MyForumDBModel.FamArti" Role="FamArti" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamMsg" Role="FamMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamArti">
+              <PropertyRef Name="FA_ID" />
+            </Principal>
+            <Dependent Role="FamMsg">
+              <PropertyRef Name="FA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamList_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamList" Role="FamList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamList">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMemb_FamList">
+          <End Type="MyForumDBModel.FamList" Role="FamList" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamMemb" Role="FamMemb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamList">
+              <PropertyRef Name="FB_ID" />
+            </Principal>
+            <Dependent Role="FamMemb">
+              <PropertyRef Name="FB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMemb_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamMemb" Role="FamMemb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamMemb">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamMsg_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.FamMsg" Role="FamMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="FamMsg">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -584,6 +904,47 @@
                 <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="NA_ID" ColumnName="NA_ID" />
                 <ScalarProperty Name="NM_Id" ColumnName="NM_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamArti">
+            <EntityTypeMapping TypeName="MyForumDBModel.FamArti">
+              <MappingFragment StoreEntitySet="FamArti">
+                <ScalarProperty Name="FB_ID" ColumnName="FB_ID" />
+                <ScalarProperty Name="Watch" ColumnName="Watch" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="FA_ID" ColumnName="FA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamList">
+            <EntityTypeMapping TypeName="MyForumDBModel.FamList">
+              <MappingFragment StoreEntitySet="FamList">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="FB_name" ColumnName="FB_name" />
+                <ScalarProperty Name="FB_ID" ColumnName="FB_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamMemb">
+            <EntityTypeMapping TypeName="MyForumDBModel.FamMemb">
+              <MappingFragment StoreEntitySet="FamMemb">
+                <ScalarProperty Name="FB_ID" ColumnName="FB_ID" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="FM_ID" ColumnName="FM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamMsg">
+            <EntityTypeMapping TypeName="MyForumDBModel.FamMsg">
+              <MappingFragment StoreEntitySet="FamMsg">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="FA_ID" ColumnName="FA_ID" />
+                <ScalarProperty Name="FM_Id" ColumnName="FM_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

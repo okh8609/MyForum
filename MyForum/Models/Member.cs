@@ -24,6 +24,10 @@ namespace MyForum.Models
             this.Friendship1 = new HashSet<Friendship>();
             this.NewsArticle = new HashSet<NewsArticle>();
             this.NewsMessage = new HashSet<NewsMessage>();
+            this.FamArti = new HashSet<FamArti>();
+            this.FamList = new HashSet<FamList>();
+            this.FamMemb = new HashSet<FamMemb>();
+            this.FamMsg = new HashSet<FamMsg>();
         }
     
         public string Account { get; set; }
@@ -47,5 +51,13 @@ namespace MyForum.Models
         public virtual ICollection<NewsArticle> NewsArticle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NewsMessage> NewsMessage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FamArti> FamArti { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FamList> FamList { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FamMemb> FamMemb { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FamMsg> FamMsg { get; set; }
     }
 }
