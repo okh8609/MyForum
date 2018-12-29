@@ -329,10 +329,12 @@
     <Content Include="Views\FamList\Index.cshtml" />
     <Content Include="Views\FamList\List.cshtml" />
     <Content Include="Views\FamList\Create.cshtml" />
+    <Content Include="Views\FamArti\List.cshtml" />
+    <Content Include="Views\FamArti\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\FamArti\" />
+    <Folder Include="jQuery\FamArti\" />
     <Folder Include="Views\FamMsg\" />
   </ItemGroup>
   <ItemGroup>

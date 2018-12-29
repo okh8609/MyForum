@@ -70,7 +70,7 @@ namespace MyForum.Services
             return Data;
         }
         #endregion
-        #region 查詢留言陣列資料
+        #region 根據看板ID找尋文章列表
         //根據分頁以及搜尋來取得資料陣列的方法
         public List<Article> GetDataList(ForPaging Paging, int B_Id)
         {

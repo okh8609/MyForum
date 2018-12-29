@@ -19,6 +19,7 @@ namespace MyForum.Models
 
             [DisplayName("文章內容")]
             [Required(ErrorMessage = "請輸入文章內容")]
+            [DataType(DataType.MultilineText)]
             public string Content { get; set; }
 
             [DisplayName("發表者")]

@@ -12,7 +12,6 @@ namespace MyForum.Services
         //宣告資料庫實體模型物件
         MyForumDBEntities db = new MyForumDBEntities();
 
-        #region 查詢相關
         #region 查詢一筆文章
         //藉由標號取的單筆資料的方法
         public FamArti GetDataById(int Id)
@@ -22,24 +21,21 @@ namespace MyForum.Services
         }
         #endregion
 
-        #region 查詢文章陣列資料
+        #region 根據看板ID找尋文章列表
         //根據分頁以及搜尋來取得資料陣列的方法
-        public List<FamArti> GetDataList(ForPaging Paging)
+        public List<FamArti> GetDataList(ForPaging Paging, int FB_ID)
         {
             //設定要接受全部搜尋資料的物件
-            IQueryable<FamArti> SearchData;
-            SearchData = GetAllDataList(Paging);
-
+            IQueryable<FamArti> SearchData = GetAllDataList(Paging, FB_ID);
             //先排序再根據分頁來回傳所需的部分資料陣列
-            return SearchData.OrderByDescending(p => p.FA_ID)
-                .Skip((Paging.NowPage - 1) * Paging.ItemNum)
-                .Take(Paging.ItemNum).ToList();
+            return SearchData.OrderByDescending(p => p.CreateTime)
+            .Skip((Paging.NowPage - 1) * Paging.ItemNum).Take(Paging.ItemNum).ToList();
         }
-        //無搜尋值的搜尋資料方法
-        public IQueryable<FamArti> GetAllDataList(ForPaging Paging)
+        //搜尋全部資料方法
+        public IQueryable<FamArti> GetAllDataList(ForPaging Paging, int FB_ID)
         {
             //宣告要回傳的搜尋資料為資料庫中的Guestbooks資料表
-            IQueryable<FamArti> Data = db.FamArti;
+            IQueryable<FamArti> Data = db.FamArti.Where(model => model.FB_ID == FB_ID);
             //計算所需的總頁面
             Paging.MaxPage = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Data.Count()) / Paging.ItemNum));
             //重新設定正確的頁數，避免有不正確值傳入
@@ -47,8 +43,6 @@ namespace MyForum.Services
             //回傳搜尋資料
             return Data;
         }
-        #endregion
-
         #endregion
 
         #region 存檔

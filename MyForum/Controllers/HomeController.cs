@@ -13,12 +13,12 @@ namespace MyForum.Controllers
     {
         ArticleService articleService = new ArticleService();
 
-        #region 開始頁面
-        public ActionResult Index()
-        {
-            return View();
-        }
-        #endregion
+        //#region 開始頁面
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+        //#endregion
 
         //#region 文章列表
         ////將Page(頁數)預設為1

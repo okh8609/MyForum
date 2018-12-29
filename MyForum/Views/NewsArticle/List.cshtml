@@ -17,6 +17,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DataList[0].Account)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
                 </tr>
             </thead>
             foreach (var item in Model.DataList)
@@ -31,6 +34,9 @@
                 </td>
                 <td>
                     @item.Member.Name
+                </td>
+                <td>
+                    @item.Watch
                 </td>
             </tr>
             }

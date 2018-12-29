@@ -18,6 +18,6 @@ namespace MyForum.ViewModel
         public ForPaging Paging { get; set; }
 
         //看板編號
-        public int B_Id { get; set; }
+        public int FB_ID { get; set; }
     }
 }
