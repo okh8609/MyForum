@@ -16,6 +16,6 @@ namespace MyForum.ViewModel
         public ForPaging Paging { get; set; }
 
         //文章編號
-        public int A_Id { get; set; }
+        public int FA_ID { get; set; }
     }
 }
