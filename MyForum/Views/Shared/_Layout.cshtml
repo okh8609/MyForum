@@ -18,12 +18,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("TurTalk", "Index", "Board", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
-                </ul>
+                @*<ul class="nav navbar-nav">
+                    
+                </ul>*@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

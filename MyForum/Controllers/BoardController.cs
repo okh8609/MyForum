@@ -13,7 +13,19 @@ namespace MyForum.Controllers
     {
         BoardService boardService = new BoardService();
 
+        #region 歡迎畫面
+        public ActionResult Welcome()
+        {
+            if (boardService.TryConnectServerByPort("122.116.151.243",61433) == true)
+                ViewData["DBstatus"] = "資料庫目前連線正常!!";
+            else
+                ViewData["DBstatus"] = "資料庫目前無法連線!!";
+            return View();
+        }
+        #endregion
+
         #region 開始頁面
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -22,6 +34,7 @@ namespace MyForum.Controllers
 
         #region 看板列表
         //將Page(頁數)預設為1
+        [Authorize]
         public ActionResult List(string Search, int Page = 1)
         {
             //宣告一個新頁面模型

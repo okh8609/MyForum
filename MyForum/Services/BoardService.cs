@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using MyForum.Models;
 using MyForum.Services;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using System.Net;
+using System.Net.Sockets;
 
 
 namespace MyForum.Services
@@ -12,6 +17,41 @@ namespace MyForum.Services
     {
         //宣告資料庫實體模型物件
         MyForumDBEntities db = new MyForumDBEntities();
+
+        #region 查詢資料庫是否存在
+        //public bool DBexist()
+        //{
+        //    //var s = ConfigurationManager.ConnectionStrings["MyForumDBEntities"].ConnectionString;
+        //    using (SqlConnection con = new SqlConnection())
+        //    {
+        //        try
+        //        {
+        //            con.Open();
+        //            return true;
+        //        }
+        //        catch
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //}
+        public bool TryConnectServerByPort(string hostIP, int port)
+        {
+            try
+            {
+                IPHostEntry host = Dns.GetHostEntry(hostIP);
+                IPAddress ip = host.AddressList[0];
+                TcpClient tcp = new TcpClient();
+                tcp.Connect(ip, port);
+                tcp.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
 
         #region 查詢一個文章
         //藉由標號取的單筆資料的方法

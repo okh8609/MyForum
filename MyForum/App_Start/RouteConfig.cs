@@ -16,7 +16,7 @@ namespace MyForum
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Board", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Board", action = "Welcome", id = UrlParameter.Optional }
             );
         }
     }

@@ -4,8 +4,9 @@
 @if (Request.IsAuthenticated)
 {
 <ul class="nav navbar-nav">
+    <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
     <li>@Html.ActionLink("好友功能", "Index", "Friendship")</li>
-    <li>@Html.ActionLink("抽卡功能", "Card", "Member")</li>   
+    <li>@Html.ActionLink("抽卡功能", "Card", "Member")</li>
 </ul>
     <ul class="nav navbar-nav pull-right">
         <li><a>您好，@(User.Identity.Name)!</a></li>

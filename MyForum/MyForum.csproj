@@ -288,6 +288,7 @@
     <Content Include="Views\Friendship\Index.cshtml" />
     <Content Include="Views\Friendship\FriendList.cshtml" />
     <Content Include="Views\Member\Card.cshtml" />
+    <Content Include="Views\Board\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
