@@ -247,6 +247,7 @@
     <Content Include="Content\css\register.css" />
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\particles.min.js" />
+    <Content Include="Content\js\test.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

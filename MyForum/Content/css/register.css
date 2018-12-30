@@ -1,15 +1,67 @@
-﻿/*body {
+﻿* {
+    margin: 0;
+    padding: 0;
 }
 
-div .sign-up-page {
-    border: none;
-    border-radius: 30px;
+[class="col-lg-12"] {
+    padding: 0;
+    background-color: white;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: 640px;
+    width: 100%;
+}
+
+[class="col-lg-4"] {
+    background-color: #2B2F3E;
+    height: 640px;
+}
+
+[class="col-lg-8"] {
     background-color: #fff;
-    margin-top: 200px;
-    margin-bottom: 200px;
+    height: 640px;
 }
 
 h1 {
-    margin-bottom: 200px;
-    margin-top: 200px;
-}*/
+    margin-left:30px;
+    margin-top: 30px;
+    text-align:center;
+}
+
+[class="sign-up"] {
+    color: #1B1E28;
+}
+
+[class="form"] {
+    text-align: left;
+}
+
+[class="form-horizontal"] {
+    color: #A8A8A8;
+}
+
+[class="btn btn-primary"] {
+    color: #fff;
+    background: #7792BE;
+    border: none;
+    padding: 14px 70px;
+    border-radius: 30px;
+    font-size: 20px;
+}
+
+.login1 {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 20px;
+    color: #A8A8A8;
+}
+
+.login2 {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #61DDBC;
+}
