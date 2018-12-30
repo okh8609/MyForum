@@ -140,6 +140,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\FamArtiController.cs" />
     <Compile Include="Controllers\FamListController.cs" />
@@ -153,6 +154,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Advertisement.cs">
+      <DependentUpon>MyForumEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdvertisementMetadata.cs" />
     <Compile Include="Models\Article.cs">
       <DependentUpon>MyForumEntities.tt</DependentUpon>
     </Compile>
@@ -210,6 +215,7 @@
     </Compile>
     <Compile Include="Controllers\NewsMessageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdvertisementService.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\BoardService.cs" />
     <Compile Include="Services\FamArtiService.cs" />
@@ -223,6 +229,7 @@
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\NewsArticleService.cs" />
     <Compile Include="Services\NewsMessageService.cs" />
+    <Compile Include="ViewModel\AdvertisementView.cs" />
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
     <Compile Include="ViewModel\CardView.cs" />
@@ -345,6 +352,8 @@
     <Content Include="Views\FamMsg\Create.cshtml" />
     <Content Include="Views\FamMemb\Index.cshtml" />
     <Content Include="Views\Member\ProfilePage.cshtml" />
+    <Content Include="Views\Advertisement\Index.cshtml" />
+    <Content Include="Views\Advertisement\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

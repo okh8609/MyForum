@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MyForumDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PictPath" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="EXP" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="A_Id" />
@@ -112,6 +123,18 @@
           <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Advertisement_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Article_Board">
           <End Role="Board" Type="Self.Board" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
@@ -317,6 +340,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MyForumDBModelStoreContainer">
+          <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FamArti" EntityType="Self.FamArti" Schema="dbo" store:Type="Tables" />
@@ -328,6 +352,10 @@
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsArticle" EntityType="Self.NewsArticle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsMessage" EntityType="Self.NewsMessage" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Advertisement_Member" Association="Self.FK_Advertisement_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
           <AssociationSet Name="FK_Article_Board" Association="Self.FK_Article_Board">
             <End Role="Board" EntitySet="Board" />
             <End Role="Article" EntitySet="Article" />
@@ -481,6 +509,11 @@
             <End Role="Member" EntitySet="Member" />
             <End Role="FamMsg" EntitySet="FamMsg" />
           </AssociationSet>
+          <EntitySet Name="Advertisement" EntityType="MyForumDBModel.Advertisement" />
+          <AssociationSet Name="FK_Advertisement_Member" Association="MyForumDBModel.FK_Advertisement_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Article">
           <Key>
@@ -529,6 +562,7 @@
           <NavigationProperty Name="FamMemb" Relationship="MyForumDBModel.FK_FamMemb_Member" FromRole="Member" ToRole="FamMemb" />
           <NavigationProperty Name="FamMsg" Relationship="MyForumDBModel.FK_FamMsg_Member" FromRole="Member" ToRole="FamMsg" />
           <Property Name="Coins" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Advertisement" Relationship="MyForumDBModel.FK_Advertisement_Member" FromRole="Member" ToRole="Advertisement" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -827,6 +861,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PictPath" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="EXP" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Member" Relationship="MyForumDBModel.FK_Advertisement_Member" FromRole="Advertisement" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Advertisement_Member">
+          <End Type="MyForumDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MyForumDBModel.Advertisement" Role="Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -948,6 +1006,18 @@
                 <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="FA_ID" ColumnName="FA_ID" />
                 <ScalarProperty Name="FM_Id" ColumnName="FM_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Advertisement">
+            <EntityTypeMapping TypeName="MyForumDBModel.Advertisement">
+              <MappingFragment StoreEntitySet="Advertisement">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="EXP" ColumnName="EXP" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="PictPath" ColumnName="PictPath" />
+                <ScalarProperty Name="AD_ID" ColumnName="AD_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

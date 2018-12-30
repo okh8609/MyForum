@@ -16,14 +16,23 @@ namespace MyForum.Services
 
         #region 註冊
         //註冊新會員方法
-        public void Register(Member newMember)
+        public bool Register(Member newMember)
         {
-            //將密碼Hash過
-            newMember.Password = HashPassword(newMember.Password);
-            //將資料加入資料庫實體
-            db.Member.Add(newMember);
-            //儲存資料庫變更
-            db.SaveChanges();
+
+            try
+            {
+                //將密碼Hash過
+                newMember.Password = HashPassword(newMember.Password);
+                //將資料加入資料庫實體
+                db.Member.Add(newMember);
+                //儲存資料庫變更
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 

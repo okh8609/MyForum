@@ -28,6 +28,7 @@ namespace MyForum.Models
             this.FamList = new HashSet<FamList>();
             this.FamMemb = new HashSet<FamMemb>();
             this.FamMsg = new HashSet<FamMsg>();
+            this.Advertisement = new HashSet<Advertisement>();
         }
     
         public string Account { get; set; }
@@ -60,5 +61,7 @@ namespace MyForum.Models
         public virtual ICollection<FamMemb> FamMemb { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FamMsg> FamMsg { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Advertisement> Advertisement { get; set; }
     }
 }

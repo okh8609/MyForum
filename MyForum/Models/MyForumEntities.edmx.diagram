@@ -5,27 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3b4a3d5886964663ac76c45c8f6f8e1d" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="MyForumDBModel.Article" Width="1.5" PointX="5.25" PointY="13.25" />
-        <EntityTypeShape EntityType="MyForumDBModel.Board" Width="1.5" PointX="3" PointY="19" />
-        <EntityTypeShape EntityType="MyForumDBModel.Member" Width="1.5" PointX="0.75" PointY="8.625" />
-        <EntityTypeShape EntityType="MyForumDBModel.Message" Width="1.5" PointX="7.5" PointY="11.25" />
+        <EntityTypeShape EntityType="MyForumDBModel.Article" Width="1.5" PointX="5.25" PointY="15.875" />
+        <EntityTypeShape EntityType="MyForumDBModel.Board" Width="1.5" PointX="3" PointY="22.375" />
+        <EntityTypeShape EntityType="MyForumDBModel.Member" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="MyForumDBModel.Message" Width="1.5" PointX="7.5" PointY="13.375" />
         <AssociationConnector Association="MyForumDBModel.FK_Article_Board" />
         <AssociationConnector Association="MyForumDBModel.FK_Article_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_Message_Article" />
         <AssociationConnector Association="MyForumDBModel.FK_Board_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_Message_Member" />
-        <EntityTypeShape EntityType="MyForumDBModel.Friendship" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="MyForumDBModel.Friendship" Width="1.5" PointX="3" PointY="8.875" />
         <AssociationConnector Association="MyForumDBModel.FK_Friendship_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_Friendship_Member1" />
-        <EntityTypeShape EntityType="MyForumDBModel.NewsArticle" Width="1.5" PointX="3" PointY="5.5" />
-        <EntityTypeShape EntityType="MyForumDBModel.NewsMessage" Width="1.5" PointX="5.25" PointY="8.25" />
+        <EntityTypeShape EntityType="MyForumDBModel.NewsArticle" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="MyForumDBModel.NewsMessage" Width="1.5" PointX="5.25" PointY="9.25" />
         <AssociationConnector Association="MyForumDBModel.FK_NewsArticle_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_NewsMessage_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_NewsMessage_NewsArticle" />
-        <EntityTypeShape EntityType="MyForumDBModel.FamArti" Width="1.5" PointX="5.25" PointY="17.875" />
-        <EntityTypeShape EntityType="MyForumDBModel.FamList" Width="1.5" PointX="3" PointY="21.75" />
-        <EntityTypeShape EntityType="MyForumDBModel.FamMemb" Width="1.5" PointX="8.25" PointY="15.375" />
-        <EntityTypeShape EntityType="MyForumDBModel.FamMsg" Width="1.5" PointX="10.5" PointY="13.5" />
+        <EntityTypeShape EntityType="MyForumDBModel.FamArti" Width="1.5" PointX="5.25" PointY="20.5" />
+        <EntityTypeShape EntityType="MyForumDBModel.FamList" Width="1.5" PointX="3" PointY="25.125" />
+        <EntityTypeShape EntityType="MyForumDBModel.FamMemb" Width="1.5" PointX="8.25" PointY="17.875" />
+        <EntityTypeShape EntityType="MyForumDBModel.FamMsg" Width="1.5" PointX="10.5" PointY="15.625" />
         <AssociationConnector Association="MyForumDBModel.FK_FamArti_FamList" />
         <AssociationConnector Association="MyForumDBModel.FK_FamArti_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_FamMsg_FamArti" />
@@ -33,6 +33,8 @@
         <AssociationConnector Association="MyForumDBModel.FK_FamMemb_FamList" />
         <AssociationConnector Association="MyForumDBModel.FK_FamMemb_Member" />
         <AssociationConnector Association="MyForumDBModel.FK_FamMsg_Member" />
+        <EntityTypeShape EntityType="MyForumDBModel.Advertisement" Width="1.5" PointX="3" PointY="11.625" />
+        <AssociationConnector Association="MyForumDBModel.FK_Advertisement_Member" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

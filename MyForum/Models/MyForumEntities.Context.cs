@@ -36,5 +36,6 @@ namespace MyForum.Models
         public virtual DbSet<FamList> FamList { get; set; }
         public virtual DbSet<FamMemb> FamMemb { get; set; }
         public virtual DbSet<FamMsg> FamMsg { get; set; }
+        public virtual DbSet<Advertisement> Advertisement { get; set; }
     }
 }

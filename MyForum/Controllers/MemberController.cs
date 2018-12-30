@@ -90,7 +90,15 @@ namespace MyForum.Controllers
                 //將信箱驗證碼填入
                 RegisterMember.newMember.AuthCode = AuthCode;
                 //呼叫Serrvice註冊新會員
-                memberService.Register(RegisterMember.newMember);
+                if (memberService.Register(RegisterMember.newMember) == false)
+                {
+                    //未驗證成功 清空密碼相關欄位
+                    RegisterMember.newMember.Account = "cannot not be use.";
+                    RegisterMember.Password = null;
+                    RegisterMember.PasswordCheck = null;
+                    //將資料回填至View中
+                    return View(RegisterMember);
+                }
                 //取得寫好的驗證信範本內容
                 string TempMail = System.IO.File.ReadAllText(
                     Server.MapPath("~/Views/Shared/RegisterEmailTemplate.html"));
