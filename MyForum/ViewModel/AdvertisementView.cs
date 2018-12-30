@@ -20,6 +20,7 @@ namespace MyForum.ViewModel
         public HttpPostedFileBase Upload { get; set; }
 
         [DisplayName("廣告金額")]
-        public int Prize { get; set; }
+        [Range(1, 1000, ErrorMessage = "出價金額必須介於1~1000之間")]
+        public int Price { get; set; }
     }
 }

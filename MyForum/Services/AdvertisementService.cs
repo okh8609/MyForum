@@ -19,14 +19,14 @@ namespace MyForum.Services
             Random random = new Random(DateTime.Now.Millisecond);
 
             var Data = db.Advertisement.Where(p => p.Price == Price).ToList();
-            
+
             return Data.ElementAt(random.Next(0, Data.Count()));
         }
         #endregion
 
         #region 上傳檔案
         //加入廣告內容
-        public void UploadFile(string PictPath, string URL, int Price ,string Account)
+        public void UploadFile(string PictPath, string URL, int Price, string Account)
         {
             //宣告新FileContent資料表資料
             Advertisement newFile = new Advertisement();
@@ -42,5 +42,18 @@ namespace MyForum.Services
             db.SaveChanges();
         }
         #endregion
+
+        #region 購買廣告
+        public bool BuyAd(string Account, int Price)
+        {
+            if (db.Member.Find(Account).Coins < Price)
+                return false;
+
+            db.Member.Find(Account).Coins -= Price;
+            db.SaveChanges();
+            return true;
+        }
+        #endregion
+
     }
 }

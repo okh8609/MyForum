@@ -26,6 +26,7 @@ namespace MyForum.Models
             public System.DateTime EXP { get; set; }
 
             [DisplayName("花費")]
+            [Range(1, 1000, ErrorMessage = "出價金額必須介於1~1000之間")]
             public int Price { get; set; }
 
             [DisplayName("上傳者")]
