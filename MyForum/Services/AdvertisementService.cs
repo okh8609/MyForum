@@ -28,7 +28,6 @@ namespace MyForum.Services
         //加入廣告內容
         public void UploadFile(string PictPath, string URL, int Price, string Account)
         {
-            //宣告新FileContent資料表資料
             Advertisement newFile = new Advertisement();
             //設定內容
             newFile.PictPath = PictPath;
@@ -36,9 +35,9 @@ namespace MyForum.Services
             newFile.EXP = DateTime.Now.AddDays(7); //將廣告的期限設為一周後
             newFile.Price = Price;
             newFile.Account = Account;
+
             //新增至資料庫中
             db.Advertisement.Add(newFile);
-            //儲存資料庫變更
             db.SaveChanges();
         }
         #endregion

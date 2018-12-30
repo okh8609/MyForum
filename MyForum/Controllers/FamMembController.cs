@@ -15,8 +15,6 @@ namespace MyForum.Controllers
     {
         FamMembService fmService = new FamMembService();
 
-        // GET: FamMemb
-
         public ActionResult Index()
         {
             FamMembView Data = new FamMembView();
@@ -25,13 +23,11 @@ namespace MyForum.Controllers
         }
 
         //新增好友傳入資料時的Action
-        [Authorize] //設定此Action須登入
-        [HttpGet] //設定此Action只接受頁面POST資料傳入
+        [Authorize] 
+        [HttpGet] 
         public ActionResult Add(int FB_ID)
         {
-            //使用Service來新增一筆資料
             fmService.Add(User.Identity.Name, FB_ID);
-            //重新導向頁面至開始頁面
             return RedirectToAction("Index", "FamList");
         }
 

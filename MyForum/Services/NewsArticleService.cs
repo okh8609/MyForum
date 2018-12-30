@@ -9,30 +9,25 @@ namespace MyForum.Services
 {
     public class NewsArticleService
     {
-        //宣告資料庫實體模型物件
         MyForumDBEntities db = new MyForumDBEntities();
 
         #region 查詢相關
         #region 查詢一筆文章
-        //藉由標號取的單筆資料的方法
         public NewsArticle GetDataById(int NA_ID)
         {
-            //回傳根據標號所取得的資料
             return db.NewsArticle.Find(NA_ID);
         }
         #endregion
 
         #region 查詢文章陣列資料
-        //根據分頁以及搜尋來取得資料陣列的方法
         public List<NewsArticle> GetDataList(string Account)
         {
             IEnumerable<NewsArticle> SearchData;
             SearchData = GetAllDataList(Account).AsEnumerable();
             //return RandomShuffle(SearchData).ToList();
-            return SearchData.OrderByDescending(p => p.CreateTime).ToList();//依照時間排序
+            return SearchData.OrderByDescending(p => p.CreateTime).ToList(); //依照時間排序
 
         }
-        //包含搜尋值的搜尋資料方法
         private IQueryable<NewsArticle> GetAllDataList(string Account)
         {
             //先找到自己的好友有誰
@@ -70,34 +65,30 @@ namespace MyForum.Services
         #endregion
 
         #region 新增動態
-        //新增文章方法
         public void Insert(NewsArticle newData)
         {
-            //設定新增時間為現在
             newData.CreateTime = DateTime.Now;
-            //將資料加入資料庫實體
+
             db.NewsArticle.Add(newData);
-            db.SaveChanges();//儲存資料庫變更
+            db.SaveChanges();
         }
         #endregion
 
         #region 刪除資料
-        //刪除文章方法
         public void Delete(int Id)
         {
-            //根據Id取得要刪除的資料
             NewsArticle DeleteData = db.NewsArticle.Find(Id);
             List<NewsMessage> DeleteMessageList = DeleteData.NewsMessage.ToList();
+
             //刪除文章裡的留言
             foreach (NewsMessage Delete in DeleteMessageList)
             {
                 db.NewsMessage.Remove(Delete);
             }
-            //先儲存變更，以便能刪除文章
+
             db.SaveChanges();
-            //從資料庫實體中刪除資料
             db.NewsArticle.Remove(DeleteData);
-            db.SaveChanges();//儲存資料庫變更
+            db.SaveChanges();
         }
         #endregion
 

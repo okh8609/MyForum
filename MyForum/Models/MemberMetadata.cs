@@ -9,7 +9,8 @@ using System.Web.Mvc;
 
 namespace MyForum.Models
 {
-    //定義Member資料表的驗證
+    //資料表的驗證
+
     [MetadataType(typeof(MemberMetadata))]
     public partial class Member
     {

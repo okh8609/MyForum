@@ -9,18 +9,15 @@ namespace MyForum.Services
 {
     public class FriendshipService
     {
-        //宣告資料庫實體模型物件
         MyForumDBEntities db = new MyForumDBEntities();
 
         #region 查詢Account的好友陣列
-        //根據分頁以及搜尋來取得資料陣列的方法
         public List<Member> GetMyFriendList(string Account)
         {
             IQueryable<Member> SearchData;
             SearchData = GetMyFriend(Account);
             return SearchData.OrderByDescending(p => p.Account).ToList();
         }
-        //包含搜尋值的搜尋資料方法
         private IQueryable<Member> GetMyFriend(string Search)
         {
             //先找到自己的好友有誰
@@ -65,9 +62,8 @@ namespace MyForum.Services
                 Friendship friendship = new Friendship();
                 friendship.Account_a = p1;
                 friendship.Account_b = p2;
-                //將資料加入資料庫實體
+
                 db.Friendship.Add(friendship);
-                //儲存資料庫變更
                 db.SaveChanges();
             }
         }

@@ -23,7 +23,6 @@ namespace MyForum.Services
         #endregion
 
         #region 查詢訂閱的家族的文章
-        //根據分頁以及搜尋來取得資料陣列的方法
         public List<FamArti> GetDataList(string Account)
         {
             IEnumerable<FamArti> SearchData;
@@ -32,7 +31,6 @@ namespace MyForum.Services
             return SearchData.OrderByDescending(p => p.CreateTime).ToList();//依照時間排序
 
         }
-        //包含搜尋值的搜尋資料方法
         private IQueryable<FamArti> GetAllDataList(string Account)
         {
             //查到你有訂閱那些家族

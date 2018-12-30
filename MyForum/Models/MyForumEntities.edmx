@@ -10,8 +10,8 @@
             <PropertyRef Name="AD_ID" />
           </Key>
           <Property Name="AD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PictPath" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="URL" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PictPath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="EXP" Type="datetime" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="Account" Type="varchar" MaxLength="30" Nullable="false" />
@@ -91,7 +91,7 @@
           <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Coins" Type="int" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
-          <Property Name="AuthCode" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="AuthCode" Type="nchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -548,7 +548,7 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="AuthCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AuthCode" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Article" Relationship="MyForumDBModel.FK_Article_Member" FromRole="Member" ToRole="Article" />
           <NavigationProperty Name="Board" Relationship="MyForumDBModel.FK_Board_Member" FromRole="Member" ToRole="Board" />
@@ -866,8 +866,8 @@
             <PropertyRef Name="AD_ID" />
           </Key>
           <Property Name="AD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PictPath" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="URL" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PictPath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="EXP" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Account" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />

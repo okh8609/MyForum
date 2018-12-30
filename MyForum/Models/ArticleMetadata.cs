@@ -7,14 +7,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyForum.Models
 {
-    //定義Member資料表的驗證
+    //資料表的驗證
     [MetadataType(typeof(ArticleMetadata))]
     public partial class Article
     {
         private class ArticleMetadata
         {
 
-            [DisplayName("觀看人數")]
+            [DisplayName("點擊數")]
             public int Watch { get; set; }
 
             [DisplayName("文章編號")]

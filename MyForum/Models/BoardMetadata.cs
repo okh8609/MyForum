@@ -7,7 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyForum.Models
 {
-    //定義Member資料表的驗證
+    //資料表的驗證
+
     [MetadataType(typeof(BoardMetadata))]
     public partial class Board
     {

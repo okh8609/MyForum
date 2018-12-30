@@ -13,29 +13,27 @@ namespace MyForum.Controllers
 {
     public class MemberController : Controller
     {
-        //宣告Members資料表的Service物件
         private MemberService memberService = new MemberService();
-        //宣告寄信用的Service物件
-        private MailService mailService = new MailService();
+        
+        private MailService mailService = new MailService();//寄信用
 
         #region 登入
-        //登入一開始載入畫面
         public ActionResult Login()
         {
             //判斷使用者是否已經過登入驗證
             if (User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Board"); //已登入則重新導向
+                return RedirectToAction("Index", "Board"); 
 
-            return View();//否則進入登入畫面
+            return View();
         }
         //傳入登入資料的Action
-        [HttpPost] //設定此Action只接受頁面POST資料傳入
+        [HttpPost] 
         public ActionResult Login(MemberLoginView LoginMember)
         {
-            //使用Service裡的方法來驗證登入的帳號密碼
+            //使驗證登入的帳號密碼
             string ValidateStr = memberService.LoginCheck(LoginMember.UserName, LoginMember.Password);
-            //判斷驗證後結果是否有錯誤訊息
-            if (String.IsNullOrEmpty(ValidateStr))
+            
+            if (String.IsNullOrEmpty(ValidateStr))//判斷是否有錯誤訊息
             {
                 //無錯誤訊息，則登入，先藉由Service取得登入者角色資料
                 string RoleData = memberService.GetRole(LoginMember.UserName);
@@ -53,31 +51,30 @@ namespace MyForum.Controllers
                 string enTicket = FormsAuthentication.Encrypt(ticket);
                 //將資料存入Cookies中
                 Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, enTicket));
-                //重新導向頁面
+
                 return RedirectToAction("Index", "Board");
             }
             else
             {
                 //有驗證錯誤訊息，加入頁面模型中
                 ModelState.AddModelError("", ValidateStr);
-                //將資料回填至View中
                 return View(LoginMember);
             }
         }
         #endregion
 
         #region 註冊
-        //註冊一開始顯示頁面
         public ActionResult Register()
         {
             //判斷使用者是否已經過登入驗證
             if (User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Board"); //已登入則重新導向 
-            return View();//否則進入註冊畫面
+                return RedirectToAction("Index", "Board"); 
+
+            return View();
         }
 
         //傳入註冊資料的Action
-        [HttpPost] //設定此Action只接受頁面POST資料傳入
+        [HttpPost] 
         public ActionResult Register(MemberRegisterView RegisterMember)
         {
             //判斷頁面資料是否都經過驗證
@@ -185,7 +182,6 @@ namespace MyForum.Controllers
         {
             //使用者登出
             FormsAuthentication.SignOut();
-            //重新導向至登入Action
             return RedirectToAction("Login");
         }
         #endregion

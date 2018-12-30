@@ -8,6 +8,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyForum.Models
 {
+    //資料表的驗證
+
     [MetadataType(typeof(FriendshipMetadata))]
     public partial class Friendship
     {

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace MyForum.Models
 {
-    //定義Album資料表的驗證
+    //資料表的驗證
     [MetadataType(typeof(AdvertisementMetadata))]
     public partial class Advertisement
     {

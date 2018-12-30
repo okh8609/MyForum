@@ -7,7 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyForum.Models
 {
-    //定義Member資料表的驗證
+    //資料表的驗證
+
     [MetadataType(typeof(FamArtiMetadata))]
     public partial class FamArti
     {
@@ -28,7 +29,7 @@ namespace MyForum.Models
             [DisplayName("新增時間")]
             public System.DateTime CreateTime { get; set; }
 
-            [DisplayName("觀看人數")]
+            [DisplayName("點擊數")]
             public int Watch { get; set; }
 
             [DisplayName("所屬看板編號")]
