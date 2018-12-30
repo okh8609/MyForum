@@ -29,21 +29,22 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        @*廣告*@
+        <div>
+            @Html.Action("Show", "Advertisement")
+        </div>
         <footer>
             <p style="text-align:center; color:#F0F0F0; margin-bottom:30px">&copy; @DateTime.Now.Year - National Taiwan University of Science and Technology</p>
+            @*廣告*@
+            <div>
+                @Html.Action("Show", "Advertisement")
+            </div>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-
-    @*廣告*@
-    <div>
-        @Html.Action("Show", "Advertisement")
-    </div>
-
 </body>
 
 </html>
