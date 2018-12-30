@@ -340,6 +340,7 @@
     <Content Include="Views\FamMsg\DataList.cshtml" />
     <Content Include="Views\FamMsg\Create.cshtml" />
     <Content Include="Views\FamMemb\Index.cshtml" />
+    <Content Include="Views\Member\ProfilePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

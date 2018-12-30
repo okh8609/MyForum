@@ -21,6 +21,7 @@ namespace MyForum.Models
             [Remote("AccountCheck", "Member", ErrorMessage = "此帳號已被註冊過")]
             public string Account { get; set; }
 
+            [DisplayName("密碼(Hash-ed)")]
             public string Password { get; set; }
 
             [DisplayName("姓名")]
@@ -34,9 +35,14 @@ namespace MyForum.Models
             [EmailAddress(ErrorMessage = "這不是Email格式")]
             public string Email { get; set; }
 
+            [DisplayName("認證碼")]
             public string AuthCode { get; set; }
 
+            [DisplayName("權限")]
             public bool IsAdmin { get; set; }
+
+            [DisplayName("台科幣")]
+            public int Coins { get; set; }
         }
     }
 }

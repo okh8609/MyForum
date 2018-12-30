@@ -78,8 +78,9 @@
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="AuthCode" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Coins" Type="int" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="AuthCode" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -527,6 +528,7 @@
           <NavigationProperty Name="FamList" Relationship="MyForumDBModel.FK_FamList_Member" FromRole="Member" ToRole="FamList" />
           <NavigationProperty Name="FamMemb" Relationship="MyForumDBModel.FK_FamMemb_Member" FromRole="Member" ToRole="FamMemb" />
           <NavigationProperty Name="FamMsg" Relationship="MyForumDBModel.FK_FamMsg_Member" FromRole="Member" ToRole="FamMsg" />
+          <Property Name="Coins" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -856,6 +858,7 @@
           <EntitySetMapping Name="Member">
             <EntityTypeMapping TypeName="MyForumDBModel.Member">
               <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Coins" ColumnName="Coins" />
                 <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
                 <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

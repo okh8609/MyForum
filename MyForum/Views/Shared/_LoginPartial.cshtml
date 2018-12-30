@@ -11,7 +11,7 @@
     <li>@Html.ActionLink("抽卡功能", "Card", "Member")</li>
 </ul>
     <ul class="nav navbar-nav pull-right">
-        <li><a>您好，@(User.Identity.Name)!</a></li>
+        <li><a href="/Member/ProfilePage">您好，@(User.Identity.Name)!</a></li>
         <li>@Html.ActionLink("變更密碼", "ChangePassword", "Member")</li>
         <li>@Html.ActionLink("登出", "Logout", "Member")</li>
     </ul>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using MyForum.Models;
 
 
 namespace MyForum.Controllers
@@ -180,16 +181,22 @@ namespace MyForum.Controllers
             return RedirectToAction("Login");
         }
         #endregion
-        
+
         #region 抽卡
         [Authorize]
         public ActionResult Card()
         {
-            //宣告一個新頁面模型
             CardView Data = new CardView();
-            //取得頁面所需的人氣資料陣列
             Data.Person = memberService.GetRandomPerson();
-            //將資料傳入View中
+            return View(Data);
+        }
+        #endregion
+
+        #region 抽卡
+        [Authorize]
+        public ActionResult ProfilePage()
+        {
+            Member Data = memberService.GetProfileData(User.Identity.Name);
             return View(Data);
         }
         #endregion
