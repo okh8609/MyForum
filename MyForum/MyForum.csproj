@@ -246,6 +246,11 @@
     <Compile Include="ViewModel\NewsMessageView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ad-Uploads\20181230195627_573.png" />
+    <Content Include="Ad-Uploads\20181230195714_965.jpg" />
+    <Content Include="Ad-Uploads\20181230195828_236.png" />
+    <Content Include="Ad-Uploads\20181230195857_618.png" />
+    <Content Include="Ad-Uploads\20181230195922_30.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
