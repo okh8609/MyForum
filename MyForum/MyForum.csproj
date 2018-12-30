@@ -360,6 +360,7 @@
     <Content Include="Views\Member\ProfilePage.cshtml" />
     <Content Include="Views\Advertisement\Index.cshtml" />
     <Content Include="Views\Advertisement\Result.cshtml" />
+    <Content Include="Views\Advertisement\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

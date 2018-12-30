@@ -74,16 +74,16 @@ namespace MyForum.Controllers
             return RedirectToAction("Result");
         }
 
-        //顯示在網頁底端的廣告頁面
-        public ActionResult Show()
-        {
-            return View();
-        }
-
         [Authorize]
         public ActionResult Result()
         {
             return View();
+        }
+
+        //顯示在網頁底端的廣告頁面
+        public ActionResult Show()
+        {
+            return PartialView();
         }
     }
 }
