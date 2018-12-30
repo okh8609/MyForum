@@ -10,10 +10,8 @@ namespace MyForum.ViewModel
 {
     public class NewsArticleView
     {
-        //顯示資料陣列
         public List<NewsArticle> DataList { get; set; }
 
-        //分頁內容
         public ForPaging Paging { get; set; }
     }
 }

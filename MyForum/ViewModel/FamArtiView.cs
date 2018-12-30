@@ -11,13 +11,10 @@ namespace MyForum.ViewModel
     public class FamArtiView
     {
 
-        //顯示資料陣列
         public List<FamArti> DataList { get; set; }
 
-        //分頁內容
         public ForPaging Paging { get; set; }
 
-        //看板編號
         public int FB_ID { get; set; }
     }
 }

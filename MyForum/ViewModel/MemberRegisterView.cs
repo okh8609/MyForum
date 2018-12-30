@@ -18,7 +18,7 @@ namespace MyForum.ViewModel
 
         [DisplayName("確認密碼")]
         [Required(ErrorMessage = "請輸入確認密碼")]
-        [Compare("Password", ErrorMessage = "兩次密碼輸入不一致")]
+        [Compare("Password", ErrorMessage = "兩次密碼不一致，請確認")]
         public string PasswordCheck { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace MyForum.ViewModel
 {
     public class CardView
     {
-        //顯示資料陣列
         public Member Person { get; set; }
     }
 }

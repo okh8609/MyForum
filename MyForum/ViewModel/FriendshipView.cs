@@ -10,11 +10,9 @@ namespace MyForum.ViewModel
 {
     public class FriendshipView
     {
-        //搜尋欄位
         [DisplayName("搜尋：")]
         public string Search { get; set; }
 
-        //顯示資料陣列
         public List<Member> DataList { get; set; }
 
     }

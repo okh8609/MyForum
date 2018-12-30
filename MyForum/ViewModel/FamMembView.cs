@@ -10,7 +10,6 @@ namespace MyForum.ViewModel
 {
     public class FamMembView
     {
-        //顯示資料陣列
         public List<FamArti> DataList { get; set; }
 
     }
