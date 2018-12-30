@@ -104,11 +104,17 @@ namespace MyForum.Services
         #region 加觀看人數
         public void Watch(int Id)
         {
-            //根據Id取得要刪除的資料
             NewsArticle LikeData = db.NewsArticle.Find(Id);
-            //資料庫內觀看人數加1
             LikeData.Watch += 1;
-            //儲存資料庫變更
+            db.SaveChanges();
+        }
+        #endregion
+
+        #region 加台科幣
+        public void Coin(int AID)
+        {
+            NewsArticle LikeData = db.NewsArticle.Find(AID);
+            LikeData.Member.Coins += 1;
             db.SaveChanges();
         }
         #endregion

@@ -99,11 +99,17 @@ namespace MyForum.Services
         #region 加觀看人數
         public void Watch(int Id)
         {
-            //根據Id取得要刪除的資料
             FamArti LikeData = db.FamArti.Find(Id);
-            //資料庫內觀看人數加1
             LikeData.Watch += 1;
-            //儲存資料庫變更
+            Save();
+        }
+        #endregion
+
+        #region 加台科幣
+        public void Coin(int AID)
+        {
+            FamArti LikeData = db.FamArti.Find(AID);
+            LikeData.Member.Coins += 1;
             Save();
         }
         #endregion

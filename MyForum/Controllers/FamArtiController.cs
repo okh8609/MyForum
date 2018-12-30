@@ -61,6 +61,7 @@ namespace MyForum.Controllers
             //取得頁面所需資料，藉由Service取得
             FamArti Data = articleService.GetDataById(FA_ID);
             articleService.Watch(FA_ID); //將資料庫內資料加一觀看人數
+            articleService.Coin(FA_ID); //將資料庫內資料加一觀看人數
             return View(Data); //將資料傳入View中
         }
         #endregion
