@@ -168,5 +168,14 @@ namespace MyForum.Services
         }
         #endregion
         #endregion
+
+        #region 加台科幣
+        public void Coin(int AID)
+        {
+            Article LikeData = db.Article.Find(AID);
+            LikeData.Member.Coins += 1;
+            db.SaveChanges();
+        }
+        #endregion
     }
 }
