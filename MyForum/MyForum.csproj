@@ -229,6 +229,7 @@
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\NewsArticleService.cs" />
     <Compile Include="Services\NewsMessageService.cs" />
+    <Compile Include="ViewModel\AdvertisementShowView.cs" />
     <Compile Include="ViewModel\AdvertisementView.cs" />
     <Compile Include="ViewModel\ArticleView.cs" />
     <Compile Include="ViewModel\BoardView.cs" />
