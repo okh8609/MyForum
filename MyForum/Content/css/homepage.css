@@ -7,7 +7,7 @@ html, body {
     height: 100%;
 }
 
-body {
+body .page{
     width: 100%;
 }
 
@@ -20,11 +20,7 @@ article h1 {
     font-size: 80px;
     color: #fff;
 }
-/*
-article p {
-    color: rgba(255, 255, 255);
-}
-*/
+
 article .btn.btn-default {
     color: #000;
     background: #fff;
@@ -36,7 +32,8 @@ article .btn.btn-default {
 }
 
 div .db{
+    text-align:center;
     font-size:20px;
     margin-top: 420px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
