@@ -36,6 +36,7 @@ namespace MyForum.Models
         public string Email { get; set; }
         public string AuthCode { get; set; }
         public bool IsAdmin { get; set; }
+        public int Coins { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Article { get; set; }

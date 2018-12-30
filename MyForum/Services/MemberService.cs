@@ -196,5 +196,12 @@ namespace MyForum.Services
             return Person;
         }
         #endregion
+
+        #region 隨機取得一個使用者資料(抽卡用)
+        public Member GetProfileData(string Account)
+        {
+            return db.Member.Where(p => p.Account == Account).ToArray().ElementAt(0);
+        }
+        #endregion
     }
 }
