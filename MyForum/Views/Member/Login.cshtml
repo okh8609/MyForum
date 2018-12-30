@@ -1,6 +1,6 @@
 ﻿@model MyForum.ViewModel.MemberLoginView
 @{
-    ViewBag.Title = "登入";
+    ViewBag.Title = "Login";
 }
 @*匯入JavaScript*@
 @section scripts {
@@ -8,37 +8,43 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 @*標題*@
-<div class="page-header">
-    <h1>登入</h1>
-</div>
-<div class="form-horizontal">
-    @*建立登入所須的表單*@
-    @using (Html.BeginForm())
-    {
-        @*顯示彙總的表單驗證的錯誤訊息*@
-        <div class="alert alert-warning">
-            @Html.ValidationSummary()
+<link href="@Url.Content("~/Content/css/login.css")" rel="stylesheet" type="text/css" />
+<body style="background-color:#1B1E28;">
+    <div class="form">
+        <div>
+            <h1>LOG IN</h1>
         </div>
-        @*產生登入帳號密碼表單內容*@
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, new { @class = "col-xs-4 col-md-1 form-label" })
-            <div class="col-xs-8 col-md-11">
-                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "label label-danger" })
-            </div>
+        <div class="form-horizontal">
+
+            @*建立登入所須的表單*@
+            @using (Html.BeginForm())
+            {
+                @*顯示彙總的表單驗證的錯誤訊息*@
+                <div class="alert alert-warning">
+                    @Html.ValidationSummary()
+                </div>
+                @*產生登入帳號密碼表單內容*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
+                    <div class="col-xs-8 col-md-7">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
+                    <div class="col-xs-8 col-md-7">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="登入" />
+                    </div>
+                </div>
+            }
+            <hr />
+            <a href="/Member/Register" class="btn btn-default">Create Account</a>
+            <div class="space"></div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "col-xs-4 col-md-1 form-label" })
-            <div class="col-xs-8 col-md-11">
-                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "label label-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-10">
-                <input class="btn btn-primary" type="submit" value="登入" />
-                @Html.ActionLink("註冊", "Register")
-            </div>
-        </div>
-    }
-</div>
+    </div>
+</body>

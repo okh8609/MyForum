@@ -1,0 +1,118 @@
+﻿@media (max-width: 3000px) {
+    body {
+    }
+
+    [class="form"] {
+        background-color: #2B2F3E;
+        margin-top: 100px;
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    h1 {
+        width: 60%;
+        text-align: center;
+        color: white;
+        margin-top: 10px;
+    }
+
+    [class="form-horizontal"] {
+        color: white;
+    }
+
+    [class="alert alert-warning"] {
+        background-color: #2B2F3E;
+        border: none;
+    }
+
+    [class="form-group"] {
+        line-height: 55px;
+    }
+
+    [class="btn btn-primary"] {
+        text-align: center;
+        color: #fff;
+        background: #7792BE;
+        border: none;
+        padding: 14px 90px;
+        border-radius: 30px;
+        font-size: 20px;
+        margin-left: 87px;
+        margin-bottom: 20px;
+    }
+
+    [class="btn btn-default"] {
+        margin-top: 20px;
+        text-align: center;
+        color: #fff;
+        background: #61DDBC;
+        border: none;
+        padding: 14px 42px;
+        border-radius: 30px;
+        font-size: 20px;
+        margin-left: 70px;
+    }
+
+    [class="space"] {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+    }
+
+    [class="form"] {
+        background-color: #2B2F3E;
+        margin-top: 60px;
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    h1 {
+        color: white;
+        text-align: center;
+        margin-top: 130px;
+    }
+
+    [class="form-horizontal"] {
+        color: white;
+    }
+
+    [class="alert alert-warning"] {
+        background-color: #2B2F3E;
+        border: none;
+    }
+
+    [class="form-group"] {
+        line-height: 55px;
+    }
+
+    [class="btn btn-primary"] {
+        text-align: center;
+        color: #fff;
+        background: #7792BE;
+        border: none;
+        padding: 14px 90px;
+        border-radius: 30px;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    [class="btn btn-default"] {
+        margin-top: 20px;
+        text-align: center;
+        color: #fff;
+        background: #61DDBC;
+        border: none;
+        padding: 14px 42px;
+        border-radius: 30px;
+        font-size: 20px;
+    }
+
+    [class="space"] {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}
