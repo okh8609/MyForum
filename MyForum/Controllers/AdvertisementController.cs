@@ -83,7 +83,9 @@ namespace MyForum.Controllers
         //顯示在網頁底端的廣告頁面
         public ActionResult Show()
         {
-            return PartialView();
+            AdvertisementShowView data = new AdvertisementShowView();
+            data.URLs = AdService.GetAd();
+            return PartialView(data);
         }
     }
 }
