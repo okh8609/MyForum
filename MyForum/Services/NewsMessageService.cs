@@ -14,7 +14,7 @@ namespace MyForum.Services
         public List<NewsMessage> GetDataList(int NA_Id)
         {
             IQueryable<NewsMessage> SearchData = db.NewsMessage.Where(model => model.NA_ID == NA_Id);
-            return SearchData.OrderByDescending(p => p.NA_ID).ToList();
+            return SearchData.OrderBy(p => p.NA_ID).ToList();
         }
         #endregion
 
