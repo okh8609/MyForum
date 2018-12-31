@@ -62,11 +62,13 @@ namespace MyForum.Services
             List<Advertisement> result = new List<Advertisement>();
 
             var data1 = db.Advertisement.Where(p => p.Price == 50).ToList(); //50元的廣告
-            result.Add(data1.ElementAt(random.Next(0, data1.Count())));
+            if (data1.Count != 0)
+                result.Add(data1.ElementAt(random.Next(0, data1.Count())));
 
             var data2 = db.Advertisement.Where(p => p.Price == 25).ToList(); //25元的廣告
-            result.Add(data2.ElementAt(random.Next(0, data2.Count())));
-            
+            if (data2.Count != 0)
+                result.Add(data2.ElementAt(random.Next(0, data2.Count())));
+
             return result;
         }
         #endregion
