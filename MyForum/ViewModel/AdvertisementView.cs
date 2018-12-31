@@ -15,7 +15,7 @@ namespace MyForum.ViewModel
         [Url(ErrorMessage = "這不是網址標準格式")]
         public string URL { get; set; }
 
-        [DisplayName("廣告圖片")]
+        [DisplayName("\n廣告圖片")]
         [FileExtensions(ErrorMessage = "所上傳檔案不是圖片")]
         public HttpPostedFileBase Upload { get; set; }
 
