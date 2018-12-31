@@ -15,7 +15,7 @@ namespace MyForum.Services
         {
             IQueryable<Message> SearchData = GetAllDataList(Paging, A_Id);
 
-            return SearchData.OrderByDescending(p => p.M_Id)
+            return SearchData.OrderBy(p => p.M_Id)
             .Skip((Paging.NowPage - 1) * Paging.ItemNum).Take(Paging.ItemNum).ToList();
         }
         public IQueryable<Message> GetAllDataList(ForPaging Paging, int A_Id)
