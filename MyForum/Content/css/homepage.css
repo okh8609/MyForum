@@ -17,13 +17,13 @@ article {
 }
 
 article h1 {
-    font-size: 80px;
+    font-size: 180px;
     color: #00ff21;
 }
 
-article .btn.btn-default {
-    color: #000;
-    background: #fff;
+article .btn-default {
+    color: #00ff21;
+    background: #ff6a00;
     border: none;
     padding: 14px 20px;
     border-radius: 30px;
