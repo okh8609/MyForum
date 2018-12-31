@@ -59,6 +59,11 @@ namespace MyForum
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // 自訂義的 CSS 與 JS
+            bundles.Add(new StyleBundle("~/Content/homepage").Include(
+                      "~/Content/styles/homepage.css"));
+
         }
     }
 }

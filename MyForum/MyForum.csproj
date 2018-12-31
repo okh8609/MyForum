@@ -251,9 +251,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\homepage.css" />
-    <Content Include="Content\css\login.css" />
-    <Content Include="Content\css\register.css" />
+    <Content Include="Content\styles\homepage.css" />
+    <Content Include="Content\styles\login.css" />
+    <Content Include="Content\styles\register.css" />
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\particles.min.js" />
     <Content Include="Content\js\test.js" />
