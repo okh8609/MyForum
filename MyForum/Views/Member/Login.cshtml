@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 @*標題*@
-<link href="@Url.Content("~/Content/css/login.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/styles/login.css")" rel="stylesheet" type="text/css" />
 <body style="background-color:#1B1E28;">
     <div class="form">
         <div>
@@ -43,7 +43,10 @@
                 </div>
             }
             <hr />
-            <a href="/Member/Register" class="btn btn-default">建立會員</a>
+            <div>
+                <h3>沒有帳號?</h3>
+            </div>
+            <a href="/Member/Register" class="btn btn-default">建立帳戶</a>
             <div class="space"></div>
         </div>
     </div>
