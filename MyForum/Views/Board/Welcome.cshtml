@@ -22,14 +22,15 @@
 
         <div class="db">
             @*<h4>資料庫狀態</h4>*@
-            @if (ViewData["DBstatus"].ToString() == "1")
+            @*@if (ViewData["DBstatus"].ToString() == "1")
             {
                 <font color="#61DDBC">Database connect successfully</font>
             }
             else
             {
                 <font color="#F76C82">Database connect failed</font>
-            }
+            }*@
+            <font color="#61DDBC">Your ip address : @ViewData["UserIP"]</font>
         </div>
     </div>
 </body>
