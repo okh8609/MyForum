@@ -3,17 +3,19 @@
 @{
     ViewBag.Title = "Card";
 }
+<link href="@Url.Content("~/Content/styles/card.css")" rel="stylesheet" type="text/css" />
+<body style="background-color:#1B1E28;">
+    <h2>抽卡頁面</h2>
 
-<h2>抽卡頁面</h2>
+    <div>
+        <hr />
+        <h4>恭喜你獲得以下卡片</h4>
+        <h4>傳封Mail給他，開啟你們的奇幻旅程</h4>
+        <br />
+        @*請給它適當的CSS謝謝*@
+        <p>@Html.DisplayNameFor(model => model.Person.Account) : @Model.Person.Account</p>
+        <p>@Html.DisplayNameFor(model => model.Person.Name) : @Model.Person.Name</p>
+        <p>@Html.DisplayNameFor(model => model.Person.Email) : @Model.Person.Email</p>
 
-<div>
-    <hr />
-    <h4>恭喜你獲得以下卡片</h4>
-    <h4>傳封Mail給他，開啟你們的奇幻旅程</h4>
-    <br />
-    @*請給它適當的CSS謝謝*@
-    <p>@Html.DisplayNameFor(model => model.Person.Account) : @Model.Person.Account</p>
-    <p>@Html.DisplayNameFor(model => model.Person.Name) : @Model.Person.Name</p>
-    <p>@Html.DisplayNameFor(model => model.Person.Email) : @Model.Person.Email</p>
-
-</div>
+    </div>
+</body>

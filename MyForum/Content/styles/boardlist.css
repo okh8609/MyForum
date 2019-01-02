@@ -1,0 +1,17 @@
+﻿@media (max-width: 3000px) {
+    body {
+    }
+    h1{
+        color:white;
+    }
+    [id="ArticleListBlock"]{
+        color:white;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+    }
+
+    
+}
