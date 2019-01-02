@@ -23,17 +23,17 @@ article h1 {
 
 article .btn.btn-default {
     color: #fff;
-    background: #61DDBC;
+    background: #7792BE;
     border: none;
-    padding: 14px 20px;
+    padding: 16px 22px;
     border-radius: 30px;
-    font-size: 20px;
+    font-size: 24px;
     margin-top: 24px;
 }
 
 div .db{
     text-align:center;
     font-size:20px;
-    margin-top: 420px;
+    margin-top: 350px;
     margin-bottom: 30px;
 }

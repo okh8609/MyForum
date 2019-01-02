@@ -1,68 +1,84 @@
-﻿* {
-    margin: 0;
-    padding: 0;
+﻿@media (max-width: 3000px) {
+    body {
+    }
+
+    .page-form {
+        padding: 20px;
+        background-color: #2B2F3E;
+        border-radius: 30px;
+        width: 550px;
+        margin: 80px auto 30px;
+    }
+
+    h1 {
+        width: 100%;
+        text-align: center;
+        color: white;
+    }
+
+    [class="form-horizontal"] {
+        color: white;
+        width: 500px;
+        margin: auto;
+    }
+
+    [class="alert alert-warning"] {
+        background-color: #2B2F3E;
+        border: none;
+        margin: 0px;
+        height: 80px;
+    }
+
+    .form-group #top {
+        line-height: 50px;
+        width: 500px;
+        margin: 30px auto 10px;
+    }
+
+    .submit {
+        width: 220px;
+        margin: 30px auto;
+    }
+
+    [class="btn btn-primary"] {
+        text-align: end;
+        color: #fff;
+        background: #7792BE;
+        border: none;
+        padding: 14px 90px;
+        border-radius: 30px;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .box1 {
+        width: 200px;
+        right: 0px;
+        float: right;
+    }
+
+    .box2 {
+        width: 200px;
+        right: 0px;
+        
+        text-align:right;
+    }
+
+    .login1 {
+        color: white;
+    }
+
+    .login2 {
+        margin-left: auto;
+        right: 0;
+        color :#61DDBC;
+    }
+
+    .login2:hover{
+        color: #61DDBC;
+    }
+
+    .login2:visited{
+        color: #24a885;
+    }
 }
-
-[class="page-form"] {
-    padding: 0;
-    background-color: white;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    height: 640px;
-    width: 100%;
-    border-radius: 30px;
-}
-
-
-[class="col-lg-8"] {
-    background-color: #2B2F3E;
-    margin: auto;
-    max-width: 600px;
-    height: 580px;
-}
-
-h1 {
-    margin-top: 40px;
-    margin-bottom:40px;
-    text-align: center;
-    color: white;
-}
-
-[class="form-group"] {
-    line-height: 55px;
-}
-
-
-
-[class="form-horizontal"] {
-    height: 640px;
-    color: #A8A8A8;
-}
-
-[class="btn btn-primary"] {
-    text-align: center;
-    color: #fff;
-    background: #7792BE;
-    border: none;
-    padding: 14px 85px;
-    border-radius: 30px;
-    font-size: 20px;
-}
-
-.login1 {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    font-size: 20px;
-    color: #A8A8A8;
-}
-
-.login2 {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #61DDBC;
-}
-
