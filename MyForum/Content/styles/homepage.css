@@ -31,6 +31,10 @@ article .btn.btn-default {
     margin-top: 24px;
 }
 
+.btn.btn-default:hover {
+    background: #425e8a;
+}
+
 div .db{
     text-align:center;
     font-size:20px;

@@ -70,6 +70,13 @@
         margin: auto;
         width: 220px;
     }
+    .btn.btn-primary:hover {
+        background: #425e8a;
+    }
+    .btn.btn-default:hover {
+        background: #24a885;
+        color: white;
+    }
 
     [class="space"] {
         margin-top: 20px;

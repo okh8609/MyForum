@@ -68,6 +68,14 @@
         color: white;
     }
 
+    .login2:hover {
+        color: #425e8a;
+    }
+
+    .login2:visited {
+        color: #425e8a;
+    }
+
     .login2 {
         margin-left: auto;
         right: 0;
