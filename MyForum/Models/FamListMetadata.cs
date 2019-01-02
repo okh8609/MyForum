@@ -18,7 +18,7 @@ namespace MyForum.Models
             public int FB_ID { get; set; }
 
             [DisplayName("家族名稱")]
-            [Required(ErrorMessage = "請輸入看版標題")]
+            [Required(ErrorMessage = "請輸入家族名稱")]
             [StringLength(100, ErrorMessage = "標題長度最多100字元")]
             public string FB_name { get; set; }
 
