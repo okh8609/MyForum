@@ -29,7 +29,6 @@ namespace MyForum.Controllers
         #endregion
 
         #region 開始頁面
-        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -37,7 +36,6 @@ namespace MyForum.Controllers
         #endregion
 
         #region 看板列表
-        [Authorize]
         public ActionResult List(string Search, int Page = 1)
         {
             BoardView Data = new BoardView();
@@ -56,7 +54,7 @@ namespace MyForum.Controllers
             return PartialView();
         }
 
-        [Authorize] 
+         
         [HttpPost] 
         public ActionResult Add([Bind(Include = "B_name")]Board Data)
         {

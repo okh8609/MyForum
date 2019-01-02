@@ -1,27 +1,40 @@
 ﻿@using Microsoft.AspNet.Identity
 
 @*若確認使用者登入，則顯示使用者名稱，並列出兩個連結*@
-@if (Request.IsAuthenticated)
-{
-<ul class="nav navbar-nav">
-    <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
-    <li>@Html.ActionLink("好友", "Index", "Friendship")</li>
-    <li>@Html.ActionLink("動態", "Index", "NewsArticle")</li>
-    <li>@Html.ActionLink("家族", "Menu", "FamList")</li>
-    <li>@Html.ActionLink("抽卡", "Card", "Member")</li>
-    <li>@Html.ActionLink("購買廣告", "Index", "Advertisement")</li>
-</ul>
+
+<body>
+    @if (Request.IsAuthenticated)
+    {
+        <ul style="padding-left:10px;" class="nav navbar-nav">
+            <li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>
+            <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
+            <li>@Html.ActionLink("好友", "Index", "Friendship")</li>
+            <li>@Html.ActionLink("動態", "Index", "NewsArticle")</li>
+            <li>@Html.ActionLink("家族", "Menu", "FamList")</li>
+            <li>@Html.ActionLink("抽卡", "Card", "Member")</li>
+            <li>@Html.ActionLink("購買廣告", "Index", "Advertisement")</li>
+        </ul>
+        <ul style="padding-right:10px;" class="nav navbar-nav pull-right">
+            <li><a href="/Member/ProfilePage">您好，@(User.Identity.Name)!</a></li>
+            <li>@Html.ActionLink("變更密碼", "ChangePassword", "Member")</li>
+            <li>@Html.ActionLink("登出", "Logout", "Member")</li>
+        </ul>
+    }
+    @*若無使用者登入，則列出兩個連結*@
+    else
+    {
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>
+            <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+            <li>@Html.ActionLink("註冊", "Register", "Member")</li>
+            <li>@Html.ActionLink("登入", "Login", "Member")</li>
+        </ul>
+    }
+</body>
+
+@*
+    <ul class="nav navbar-nav">
     <ul class="nav navbar-nav pull-right">
-        <li><a href="/Member/ProfilePage">您好，@(User.Identity.Name)!</a></li>
-        <li>@Html.ActionLink("變更密碼", "ChangePassword", "Member")</li>
-        <li>@Html.ActionLink("登出", "Logout", "Member")</li>
-    </ul>
-}
-@*若無使用者登入，則列出兩個連結*@
-else
-{
-    <ul class="nav navbar-nav pull-right">
-        <li>@Html.ActionLink("註冊", "Register", "Member")</li>
-        <li>@Html.ActionLink("登入", "Login", "Member")</li>
-    </ul>
-}
+*@
