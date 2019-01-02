@@ -5,7 +5,9 @@
 @*宣告變數rank，紀錄排名*@
 @{ int rank = 1; }
 @*標題*@
-<link href="@Url.Content("~/Content/styles/popular.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/popular")
+@*<link href="@Url.Content("~/Content/styles/popular.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <div class="page-header">
         <h1>人氣文章列表</h1>

@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "會員資料";
 }
-<link href="@Url.Content("~/Content/styles/accountinfo.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/accountinfo")
+@*<link href="@Url.Content("~/Content/styles/accountinfo.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <h2>會員資料</h2>
 

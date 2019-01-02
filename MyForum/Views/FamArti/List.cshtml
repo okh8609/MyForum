@@ -12,7 +12,9 @@
     @*匯入本頁面的JavaScript*@
     @Scripts.Render("~/jQuery/FamArti/ArticleList.js")
 }
-<link href="@Url.Content("~/Content/styles/friendlist.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/famartilist")
+@*<link href="@Url.Content("~/Content/styles/famartilist.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <div class="page-header">
         <h1>家族動態列表</h1>

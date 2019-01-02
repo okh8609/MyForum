@@ -8,7 +8,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 @*標題*@
-<link href="@Url.Content("~/Content/styles/login.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/login")
+@*<link href="@Url.Content("~/Content/styles/login.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <div class="page-form">
         <h1>登入</h1>
@@ -24,9 +26,9 @@
                     </div>
                 </div>
                 <div class="form-group" id="top" style="padding-top: 40px;">
-                    @Html.LabelFor(model => model.Password, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label"})
+                    @Html.LabelFor(model => model.Password, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
                     <div class="col-xs-8 col-md-7">
-                        @Html.PasswordFor(model => model.Password, new { @class = "form-control"})
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                     </div>
                 </div>
                 @*顯示彙總的表單驗證的錯誤訊息*@

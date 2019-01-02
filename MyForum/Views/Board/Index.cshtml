@@ -11,7 +11,9 @@
     @*匯入本頁面的JavaScript*@
     @Scripts.Render("~/jQuery/Board/ArticleList.js")
 }
-<link href="@Url.Content("~/Content/styles/boardlist.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/boardlist")
+@**<link href="@Url.Content("~/Content/styles/boardlist.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <div class="page-header">
         <h1>看板列表</h1>
@@ -40,4 +42,4 @@
         <text>要新增看板請先</text>
         @Html.ActionLink("登入", "Login", "Member")
     }
-    </body>
+</body>

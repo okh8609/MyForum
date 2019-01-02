@@ -261,6 +261,7 @@
     <Content Include="Content\styles\famarti.css" />
     <Content Include="Content\styles\famartilist.css" />
     <Content Include="Content\styles\famlist.css" />
+    <Content Include="Content\styles\fammsg.css" />
     <Content Include="Content\styles\firendlist.css" />
     <Content Include="Content\styles\homepage.css" />
     <Content Include="Content\styles\login.css" />

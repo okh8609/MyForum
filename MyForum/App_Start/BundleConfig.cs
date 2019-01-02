@@ -61,8 +61,59 @@ namespace MyForum
                       "~/Content/site.css"));
 
             // 自訂義的 CSS 與 JS
+            bundles.Add(new StyleBundle("~/Content/accountinfo").Include(
+                      "~/Content/styles/accountinfo.css"));
+
+            bundles.Add(new StyleBundle("~/Content/advertise").Include(
+                      "~/Content/styles/advertise.css"));
+
+            bundles.Add(new StyleBundle("~/Content/article").Include(
+                      "~/Content/styles/article.css"));
+
+            bundles.Add(new StyleBundle("~/Content/articlelist").Include(
+                      "~/Content/styles/articlelist.css"));
+
+            bundles.Add(new StyleBundle("~/Content/boardlist").Include(
+                      "~/Content/styles/boardlist.css"));
+
+            bundles.Add(new StyleBundle("~/Content/card").Include(
+                      "~/Content/styles/card.css"));
+
+            bundles.Add(new StyleBundle("~/Content/changePW").Include(
+                      "~/Content/styles/changePW.css"));
+
+            bundles.Add(new StyleBundle("~/Content/famarti").Include(
+                      "~/Content/styles/famarti.css"));
+
+            bundles.Add(new StyleBundle("~/Content/famartilist").Include(
+                      "~/Content/styles/famartilist.css"));
+
+            bundles.Add(new StyleBundle("~/Content/famlist").Include(
+                      "~/Content/styles/famlist.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fammsg").Include(
+                      "~/Content/styles/fammsg.css"));
+
+            bundles.Add(new StyleBundle("~/Content/firendlist").Include(
+                      "~/Content/styles/firendlist.css"));
+
             bundles.Add(new StyleBundle("~/Content/homepage").Include(
-                      "~/Content/styles/homepage.css"));
+                 "~/Content/styles/homepage.css"));
+
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                      "~/Content/styles/login.css"));
+
+            bundles.Add(new StyleBundle("~/Content/newsarticle").Include(
+                      "~/Content/styles/newsarticle.css"));
+
+            bundles.Add(new StyleBundle("~/Content/newslist").Include(
+                      "~/Content/styles/newslist.css"));
+
+            bundles.Add(new StyleBundle("~/Content/popular").Include(
+                 "~/Content/styles/popular.css"));
+
+            bundles.Add(new StyleBundle("~/Content/register").Include(
+                      "~/Content/styles/register.css"));
         }
     }
 }

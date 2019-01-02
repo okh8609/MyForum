@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Card";
 }
-<link href="@Url.Content("~/Content/styles/card.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/card")
+@*<link href="@Url.Content("~/Content/styles/card.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <h1>抽卡</h1>
 

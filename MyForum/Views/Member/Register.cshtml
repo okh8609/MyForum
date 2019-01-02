@@ -8,7 +8,8 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<link href="@Url.Content("~/Content/styles/register.css")" rel="stylesheet" type="text/css" />
+@Styles.Render("~/Content/register")
+@*<link href="@Url.Content("~/Content/styles/register.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <div class="page-form">
         <h1>註冊會員</h1>
@@ -92,11 +93,11 @@
                 </div>
 
                 @*<div class="alert alert-warning"  border: 10px;">
-                    @Html.ValidationSummary()
-                </div>*@
+                        @Html.ValidationSummary()
+                    </div>*@
                 <div class="box1">
                     <a href="/Member/Login" class="login2">按此登入</a>
-                    
+
                 </div>
 
                 <div class="box2">

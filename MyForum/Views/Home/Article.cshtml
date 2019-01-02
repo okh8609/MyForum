@@ -11,7 +11,9 @@
     @*匯入本頁面的JavaScript*@
     @Scripts.Render("~/jQuery/Home/Article.js")
 }
-<link href="@Url.Content("~/Content/styles/article.css")" rel="stylesheet" type="text/css" />
+
+@Styles.Render("~/Content/article")
+@*<link href="@Url.Content("~/Content/styles/article.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     @*顯示文章詳細內容表格*@
     <div class="page-header">
