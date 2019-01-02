@@ -1,29 +1,30 @@
 ﻿@model MyForum.ViewModel.FamMsgView
+<body style="background-color:#1B1E28;">
+    <div class="page-header">
+        <h4>留言內容</h4>
+    </div>
 
-<div class="page-header">
-    <h4>留言內容</h4>
-</div>
-
-<dl class="dl-horizontal">
-    @*若資料庫中有文章留言，將會列出文章留言*@
-    @if (!Model.DataList.Count.Equals(0))
-    {
-        foreach (var item in Model.DataList)
+    <dl class="dl-horizontal">
+        @*若資料庫中有文章留言，將會列出文章留言*@
+        @if (!Model.DataList.Count.Equals(0))
         {
-            <dt>
-                @item.Member.Name 說：
-            </dt>
+            foreach (var item in Model.DataList)
+            {
+                <dt>
+                    @item.Member.Name 說：
+                </dt>
+                <dd>
+                    @item.Content
+                </dd>
+            }
+        }
+        @*若無留言，則印出"尚未有留言"*@
+        else
+        {
+            <dt></dt>
             <dd>
-                @item.Content
+                尚未有留言
             </dd>
         }
-    }
-    @*若無留言，則印出"尚未有留言"*@
-    else
-    {
-        <dt></dt>
-        <dd>
-            尚未有留言
-        </dd>
-    }
-</dl>
+    </dl>
+</body>

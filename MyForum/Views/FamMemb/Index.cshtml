@@ -3,59 +3,61 @@
 @{
     ViewBag.Title = "家族動態";
 }
+<link href="@Url.Content("~/Content/styles/famarti.css")" rel="stylesheet" type="text/css" />
+<body style="background-color:#1B1E28;">
+    <div class="page-header">
+        <h1>家族動態</h1>
+    </div>
 
-<div class="page-header">
-    <h1>家族動態</h1>
-</div>
-
-@*文章列表表格*@
-<div class="table-responsive">
-    <table class="table table-hover">
-        @*若資料庫中有文章，將會列出文章*@
-        @if (!Model.DataList.Count.Equals(0))
-        {
-            <thead>
-                <tr>
-                    <th>
-                        @*  *@
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataList[0].Member.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataList[0].Content)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
-                    </th>
-                </tr>
-            </thead>
-            foreach (var item in Model.DataList)
+    @*文章列表表格*@
+    <div class="table-responsive">
+        <table class="table table-hover">
+            @*若資料庫中有文章，將會列出文章*@
+            @if (!Model.DataList.Count.Equals(0))
+            {
+                <thead>
+                    <tr>
+                        <th>
+                            @*  *@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataList[0].Member.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataList[0].Content)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                        </th>
+                    </tr>
+                </thead>
+                foreach (var item in Model.DataList)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink("查看留言", "Article", "FamArti", new { FA_ID = item.FA_ID }, null)
+                        </td>
+                        <td>
+                            @item.Member.Name
+                        </td>
+                        <td>
+                            @item.Content
+                        </td>
+                        <td>
+                            @item.Watch
+                        </td>
+                    </tr>
+                }
+            }
+            @*若無文章，則印出"尚未有文章"*@
+            else
             {
                 <tr>
-                    <td>
-                        @Html.ActionLink("查看留言", "Article", "FamArti", new { FA_ID = item.FA_ID }, null)
-                    </td>
-                    <td>
-                        @item.Member.Name
-                    </td>
-                    <td>
-                        @item.Content
-                    </td>
-                    <td>
-                        @item.Watch
+                    <td colspan="4">
+                        尚未有文章
                     </td>
                 </tr>
             }
-        }
-        @*若無文章，則印出"尚未有文章"*@
-        else
-        {
-            <tr>
-                <td colspan="4">
-                    尚未有文章
-                </td>
-            </tr>
-        }
-    </table>
-</div>
+        </table>
+    </div>
+</body>

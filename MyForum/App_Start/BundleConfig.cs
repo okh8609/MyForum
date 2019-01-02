@@ -63,7 +63,6 @@ namespace MyForum
             // 自訂義的 CSS 與 JS
             bundles.Add(new StyleBundle("~/Content/homepage").Include(
                       "~/Content/styles/homepage.css"));
-
         }
     }
 }

@@ -11,30 +11,32 @@
     @*匯入本頁面的JavaScript*@
     @Scripts.Render("~/jQuery/Home/ArticleList.js")
 }
-
-<div class="page-header">
-    <h1>文章列表</h1>
-</div>
-
-@*載入文章列表內容*@
-<div id="ArticleListBlock">
-    @*@Html.Action("List", "Home")*@
-</div>
-
-@*判斷是否有登入，登入後才可使用新增文章*@
-@if (User.Identity.IsAuthenticated)
-{
-    @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
-    @Ajax.ActionLink("新增文章", "Create", "Home", null,
-        new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
-        new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
-    @*新增文章預留表單跳窗*@
-    <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
-
+<link href="@Url.Content("~/Content/styles/articlelist.css")" rel="stylesheet" type="text/css" />
+<body style="background-color:#000000;">
+    <div class="page-header">
+        <h1>文章列表</h1>
     </div>
-}
-else
-{
-    <text>要新增文章請先</text>
-    @Html.ActionLink("登入", "Login", "Member")
-}
+
+    @*載入文章列表內容*@
+    <div id="ArticleListBlock">
+        @*@Html.Action("List", "Home")*@
+    </div>
+
+    @*判斷是否有登入，登入後才可使用新增文章*@
+    @if (User.Identity.IsAuthenticated)
+    {
+        @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+        @Ajax.ActionLink("新增文章", "Create", "Home", null,
+            new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+            new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
+        @*新增文章預留表單跳窗*@
+        <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+        </div>
+    }
+    else
+    {
+        <text>要新增文章請先</text>
+        @Html.ActionLink("登入", "Login", "Member")
+    }
+</body>

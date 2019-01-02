@@ -1,10 +1,11 @@
-﻿
-<div id="DataList">
-    @*呼叫另一Action顯示文章留言陣列*@
-    @Html.Action("DataList", new { NA_ID = ViewData["NA_ID"] })
-</div>
+﻿<body style="background-color:#1B1E28;">
+    <div id="DataList">
+        @*呼叫另一Action顯示文章留言陣列*@
+        @Html.Action("DataList", new { NA_ID = ViewData["NA_ID"] })
+    </div>
 
 
-<div id="MessageCreate">
-    @Html.Action("Create", new { NA_ID = ViewData["NA_ID"] })
-</div>
+    <div id="MessageCreate">
+        @Html.Action("Create", new { NA_ID = ViewData["NA_ID"] })
+    </div>
+</body>

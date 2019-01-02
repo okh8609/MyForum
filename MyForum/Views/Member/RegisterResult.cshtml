@@ -2,13 +2,14 @@
 @{
     ViewBag.Title = "驗證e-mail";
 }
+<body style="background-color:#1B1E28;">
 
-@*標題*@
-<div class="page-header">
-    <h1>已送出驗證信</h1>
-</div>
-@*顯示註冊結果訊息*@
-<div class="alert alert-success">
-    @TempData["RegisterState"]
-</div>
-
+    @*標題*@
+    <div class="page-header">
+        <h1>已送出驗證信</h1>
+    </div>
+    @*顯示註冊結果訊息*@
+    <div class="alert alert-success">
+        @TempData["RegisterState"]
+    </div>
+</body>

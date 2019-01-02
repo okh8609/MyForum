@@ -1,0 +1,17 @@
+﻿@media (max-width: 3000px) {
+    body {
+    }
+
+    [class="page-header"] {
+        color: white;
+    }
+
+    [class="panel panel-default"]{
+
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+    }
+}

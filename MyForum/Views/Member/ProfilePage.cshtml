@@ -3,51 +3,53 @@
 @{
     ViewBag.Title = "會員資料";
 }
+<link href="@Url.Content("~/Content/styles/accountinfo.css")" rel="stylesheet" type="text/css" />
+<body style="background-color:#1B1E28;">
+    <h2>會員資料</h2>
 
-<h2>會員資料</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Account)
+            </dt>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Account)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Account)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Account)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Coins)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Coins)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Coins)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Coins)
-        </dd>
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.IsAdmin)
+                </dt>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.IsAdmin)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsAdmin)
+                </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.IsAdmin)
-        </dd>*@
-
-    </dl>
-</div>
+        </dl>
+    </div>
+</body>

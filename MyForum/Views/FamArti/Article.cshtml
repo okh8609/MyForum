@@ -12,28 +12,30 @@
     @*匯入本頁面的JavaScript*@
     @Scripts.Render("~/jQuery/NewsArticle/Article.js")
 }
-
-<div class="page-header">
-    <h1> </h1>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">@Html.DisplayNameFor(model => model.Content)</h3>
+<link href="@Url.Content("~/Content/styles/friendlist.css")" rel="stylesheet" type="text/css" />
+<body style="background-color:#1B1E28;">
+    <div class="page-header">
+        <h1> </h1>
     </div>
-    <div class="panel-body">
-        @Html.Raw(Model.Content.Replace("\r\n", "<br />"))
-        <br /><br /><br /><br /><br />
-        <p class="text-right">@Html.DisplayNameFor(model => model.Member.Name)：@Html.DisplayFor(model => model.Member.Name)</p>
-        <p class="text-right">@Html.DisplayNameFor(model => model.Account)：@Html.DisplayFor(model => model.Account)</p>
-        <p class="text-right">@Html.DisplayFor(model => model.CreateTime)</p>
-    </div>
-    <div class="panel-footer text-right">
-        觀看人數：@Model.Watch
-    </div>
-</div>
 
-@*呼叫另一Action顯示文章留言列表*@
-<div id="MessageList">
-    @Html.Action("Index", "FamMsg", new { NA_ID = Model.FA_ID })
-</div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">@Html.DisplayNameFor(model => model.Content)</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Raw(Model.Content.Replace("\r\n", "<br />"))
+            <br /><br /><br /><br /><br />
+            <p class="text-right">@Html.DisplayNameFor(model => model.Member.Name)：@Html.DisplayFor(model => model.Member.Name)</p>
+            <p class="text-right">@Html.DisplayNameFor(model => model.Account)：@Html.DisplayFor(model => model.Account)</p>
+            <p class="text-right">@Html.DisplayFor(model => model.CreateTime)</p>
+        </div>
+        <div class="panel-footer text-right">
+            觀看人數：@Model.Watch
+        </div>
+    </div>
+
+    @*呼叫另一Action顯示文章留言列表*@
+    <div id="MessageList">
+        @Html.Action("Index", "FamMsg", new { NA_ID = Model.FA_ID })
+    </div>
+</body>
