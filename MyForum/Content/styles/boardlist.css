@@ -23,28 +23,18 @@
         text-align: center;
     }
 
-    #tb {
-        width: 400px;
-    }
-
-    #ta {
-        width: 740px;
-    }
-
     .content {
         font-size: 15pt;
         padding-left: 18pt;
         text-align: center;
     }
 
-    #board {
+    #name {
         color: #61DDBC;
     }
 
-    #block {
-        margin-top: 40px;
-        background-color: #2B2F3E;
-        border-radius: 30px;
+    #else-name {
+        color: #7792BE
     }
 
     .btn.btn-default {
@@ -53,7 +43,7 @@
         border: none;
         border-radius: 10px;
         padding: 10px 22px;
-        font-size: 24px;
+        font-size: 16px;
         margin-top: 30px;
     }
 
@@ -63,28 +53,82 @@
         border: none;
         border-radius: 10px;
         padding: 10px 22px;
-        font-size: 24px;
+        font-size: 16px;
         margin-top: 30px;
     }
 
-    #create {
+    .bottom {
+        display: inline;
+        margin-right: 50px;
+    }
+
+    .red {
+        cursor: pointer;
         color: #fff;
-        background: #7792BE;
+        background: #E3515D;
         border: none;
         border-radius: 10px;
         padding: 10px 22px;
-        font-size: 24px;
+        font-size: 16px;
         margin-top: 30px;
+        text-decoration: none;
     }
 
-    .first {
-        color: #fff;
+    .red:hover{
+        color:#fff;
+        background-color:#E04452; 
+    }
+
+    .red:visited{
+        color:#fff;
+    }
+
+    .red:active {
+        color:#fff;
+        background-color:#E04452; 
+    }
+
+    .space {
+        margin-top: 40px;
+    }
+
+    /*Pop*/
+    #pop-top {
+        width: 228px;
+    }
+
+    #pop-num-top {
+        width: 120px;
+    }
+
+    #pop-title-top {
+        width: 394px;
+    }
+
+    #pop-watch-top {
+        width: 170px;
+    }
+
+    /*Board*/
+    #board-top {
+        width: 570px;
+    }
+
+    /*Article-top*/
+    #article-top {
+        width: 285px;
+    }
+
+    #article-watch-top {
+        width: 170px;
+    }
+
+    #article-title-top {
+        width: 400px;
     }
 }
 
 @media (max-width: 480px) {
     body {
     }
-
-    
 }

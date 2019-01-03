@@ -14,7 +14,7 @@ namespace MyForum.Models
         private class ArticleMetadata
         {
 
-            [DisplayName("點閱數")]
+            [DisplayName("觀看人數")]
             public int Watch { get; set; }
 
             [DisplayName("編號")]

@@ -73,9 +73,19 @@
     .btn.btn-primary:hover {
         background: #425e8a;
     }
+
     .btn.btn-default:hover {
-        background: #24a885;
+        background-color: #24a885;
         color: white;
+    }
+
+    .btn.btn-default:visited {
+        color: #fff;
+    }
+
+    .btn.btn-default:active {
+        color: #fff;
+        background-color: #24a885;
     }
 
     [class="space"] {
