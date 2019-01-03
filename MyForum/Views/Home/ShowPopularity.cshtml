@@ -1,82 +1,79 @@
 ﻿@model MyForum.ViewModel.ArticleView
 @{
-    ViewBag.Title = "人氣文章列表";
+    ViewBag.Title = "Popularity";
 }
 @*宣告變數rank，紀錄排名*@
 @{ int rank = 1; }
 @*標題*@
 
 @Styles.Render("~/Content/boardlist")
-@*<link href="@Url.Content("~/Content/styles/popular.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header" style="margin-top:50px;">
-        <h1>人氣文章</h1>
-    </div>
+<div class="page-header" style="margin-top:50px;">
+    <h1>人氣文章</h1>
+</div>
 
-    @*文章列表*@
-    <div class="space">
-        <div class="bottom">
-            <a onclick="history.back()" class="red">返回列表</a>
-        </div>
+@*文章列表*@
+<div class="space">
+    <div class="bottom">
+        <a onclick="history.back()" class="red">返回列表</a>
     </div>
+</div>
 
-    <div class="table-responsive">
-        <table class="table table-hover" id="block">
-            @*判斷資料庫中是否有資料存在*@
-            @if (!Model.DataList.Count.Equals(0))
-            {
-                @*設定表格的表頭標題*@
-                <thead>
-                    <tr>
-                        <th class="top" id="pop-num-top">
-                            排名
-                        </th>
-                        <th class="top" id="pop-title-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Title)
-                        </th>
-                        <th class="top" id="pop-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Account)
-                        </th>
-                        <th class="top" id="pop-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
-                        </th>
-                        <th class="top" id="pop-watch-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
-                        </th>
-                    </tr>
-                </thead>
-                @*將人氣文章顯示於表格中*@
-                foreach (var item in Model.DataList)
-                {
-                    <tr>
-                        <td class="content" id="else-name">
-                            @rank
-                            @{ rank++; }
-                        </td>
-                        <td class="content">
-                            @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id }, new { @style = "color: #fff" })
-                        </td>
-                        <td class="content" id="name">
-                            @item.Member.Name
-                        </td>
-                        <td class="content" id="else-name">
-                            @item.CreateTime
-                        </td>
-                        <td class="content" id="else-name">
-                            @item.Watch
-                        </td>
-                    </tr>
-                }
-            }
-            @*資料庫中無任何一筆文章，將顯示尚未有文章的資訊*@
-            else
+<div class="table-responsive">
+    <table class="table table-hover" id="block">
+        @*判斷資料庫中是否有資料存在*@
+        @if (!Model.DataList.Count.Equals(0))
+        {
+            @*設定表格的表頭標題*@
+            <thead>
+                <tr>
+                    <th class="top" id="pop-num-top">
+                        排名
+                    </th>
+                    <th class="top" id="pop-title-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Title)
+                    </th>
+                    <th class="top" id="pop-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                    <th class="top" id="pop-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
+                    </th>
+                    <th class="top" id="pop-watch-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
+                </tr>
+            </thead>
+            @*將人氣文章顯示於表格中*@
+            foreach (var item in Model.DataList)
             {
                 <tr>
-                    <td colspan="4">
-                        尚未有文章
+                    <td class="content" id="else-name">
+                        @rank
+                        @{ rank++; }
+                    </td>
+                    <td class="content">
+                        @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id }, new { @style = "color: #fff" })
+                    </td>
+                    <td class="content" id="name">
+                        @item.Member.Name
+                    </td>
+                    <td class="content" id="else-name">
+                        @item.CreateTime
+                    </td>
+                    <td class="content" id="else-name">
+                        @item.Watch
                     </td>
                 </tr>
             }
-        </table>
-    </div>
-</body>
+        }
+        @*資料庫中無任何一筆文章，將顯示尚未有文章的資訊*@
+        else
+        {
+            <tr>
+                <td colspan="4">
+                    尚未有文章
+                </td>
+            </tr>
+        }
+    </table>
+</div>
