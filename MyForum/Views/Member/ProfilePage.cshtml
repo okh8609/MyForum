@@ -5,46 +5,44 @@
 }
 
 @Styles.Render("~/Content/accountinfo")
-@*<link href="@Url.Content("~/Content/styles/accountinfo.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h2>會員資料</h2>
-    </div>
-    <div class="card">
-        <img src="https://cdn4.iconfinder.com/data/icons/apple-touch-id/512/Touch_ID-512.png"
-             alt="Avater" style="width:40%">
-        <dl id="container">
-            <dt class="alert-info">
-                @Html.DisplayNameFor(model => model.Account)
-            </dt>
 
-            <dd class="alert">
-                @Html.DisplayFor(model => model.Account)
-            </dd>
+<div class="page-header">
+    <h2>會員資料</h2>
+</div>
+<div class="card">
+    <img src="https://cdn4.iconfinder.com/data/icons/apple-touch-id/512/Touch_ID-512.png"
+         alt="Avater" style="width:40%">
+    <dl id="container">
+        <dt class="alert-info">
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
 
-            <dt class="alert-info">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
+        <dd class="alert">
+            @Html.DisplayFor(model => model.Account)
+        </dd>
 
-            <dd class="alert">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
+        <dt class="alert-info">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
 
-            <dt class="alert-info">
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
+        <dd class="alert">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
 
-            <dd class="alert">
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+        <dt class="alert-info">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
 
-            <dt class="alert-info">
-                @Html.DisplayNameFor(model => model.Coins)
-            </dt>
+        <dd class="alert">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
 
-            <dd class="alert">
-                @Html.DisplayFor(model => model.Coins)
-            </dd>
-        </dl>
-    </div>
-</body>
+        <dt class="alert-info">
+            @Html.DisplayNameFor(model => model.Coins)
+        </dt>
+
+        <dd class="alert">
+            @Html.DisplayFor(model => model.Coins)
+        </dd>
+    </dl>
+</div>
