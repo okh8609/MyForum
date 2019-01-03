@@ -6,6 +6,20 @@
         margin-top: 50px;
         color: white;
     }
+
+    [id="warning"] {
+        color: #ff0000;
+        font-size: 0.5cm;
+        font-weight: bolder;
+    }
+
+    [class="form-group"] {
+        color:white;
+    }
+
+    [class="col-md-10"] {
+        color:black;
+    }
 }
 
 @media (max-width: 480px) {

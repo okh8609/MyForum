@@ -13,49 +13,38 @@
     <div class="card">
         <img src="https://cdn4.iconfinder.com/data/icons/apple-touch-id/512/Touch_ID-512.png"
              alt="Avater" style="width:40%">
-        <div>
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Account)
-                </dt>
+        <dl id="container">
+            <dt class="alert-info">
+                @Html.DisplayNameFor(model => model.Account)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Account)
-                </dd>
+            <dd class="alert">
+                @Html.DisplayFor(model => model.Account)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
+            <dt class="alert-info">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
+            <dd class="alert">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
+            <dt class="alert-info">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
+            <dd class="alert">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Coins)
-                </dt>
+            <dt class="alert-info">
+                @Html.DisplayNameFor(model => model.Coins)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Coins)
-                </dd>
-
-                @*<dt>
-                    @Html.DisplayNameFor(model => model.IsAdmin)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IsAdmin)
-                </dd>*@
-
-            </dl>
-        </div>
+            <dd class="alert">
+                @Html.DisplayFor(model => model.Coins)
+            </dd>
+        </dl>
     </div>
 </body>

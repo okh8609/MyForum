@@ -7,8 +7,42 @@
         color: white;
     }
 
-    [class="dl-horizontal"]{
-        color:white;
+    .card {
+
+        position: relative;
+        background-color: #207996;
+        margin: 80px auto 65px;
+        box-shadow: 0 20px 30px 30px rgba(0,0,0,0.2);
+        width: 600px;
+        height: 300px;
+        border-radius: 15px;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    img {
+        float: left;
+        margin: 30px 15px;
+    }
+
+    [id="container"] {
+        border-radius: 0 15px 15px 0;
+        background-color: white;
+        position: absolute;
+        right: 0px;
+        width: 330px;
+        height: 300px;
+    }
+
+    [class="alert-info"] {
+        font-size: 0.5cm;
+        font-weight: bolder;
+    }
+
+    [class="alert"]{
+        margin-bottom:-5px;
     }
 }
 
