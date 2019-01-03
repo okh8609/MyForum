@@ -39,6 +39,7 @@ namespace MyForum.Controllers
             Data.B_Id = B_Id; //將傳入值文章編號入頁面模型中
             ViewData["B_Id"] = B_Id;
             Data.DataList = articleService.GetDataList(Data.Paging, Data.B_Id);
+            Data.Title = articleService.GetBoardTitle(B_Id);
             return View(Data); 
         }
         #endregion

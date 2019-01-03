@@ -15,5 +15,6 @@ namespace MyForum.ViewModel
         public List<Article> DataList { get; set; }
         public ForPaging Paging { get; set; }
         public int B_Id { get; set; }
+        public string Title { get; set; }
     }
 }
