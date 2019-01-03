@@ -21,7 +21,7 @@ namespace MyForum.Controllers
             Data.FB_ID = FB_ID; //將傳入值文章編號入頁面模型中
             ViewData["FB_ID"] = FB_ID;
             Data.DataList = articleService.GetDataList(Data.Paging, Data.FB_ID);
-
+            Data.Title = articleService.GetBoardTitle(Data.FB_ID);
             return View(Data); 
         }
         #endregion

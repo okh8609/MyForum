@@ -36,6 +36,17 @@ namespace MyForum.Services
         }
         #endregion
 
+        #region 根據看板ID找尋文章列表
+        public string GetBoardTitle(int B_Id)
+        {
+            var a = db.FamList.Find(B_Id);
+            if (a == null)
+                return "";
+            else
+                return a.FB_name;
+        }
+        #endregion
+
         #region 存檔
         public void Save()
         {

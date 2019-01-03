@@ -16,5 +16,7 @@ namespace MyForum.ViewModel
         public ForPaging Paging { get; set; }
 
         public int FB_ID { get; set; }
+
+        public string Title { get; set; }
     }
 }
