@@ -6,6 +6,10 @@
         margin-top: 50px;
         color: white;
     }
+
+    [class="dl-horizontal"]{
+        color:white;
+    }
 }
 
 @media (max-width: 480px) {

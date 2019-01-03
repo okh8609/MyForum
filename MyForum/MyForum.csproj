@@ -272,7 +272,7 @@
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\particles.min.js" />
     <Content Include="Content\js\test.js" />
-    <Content Include="favicon.ico" />
+    <Content Include="87.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -320,6 +320,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="favicon.ico" />
     <Content Include="Views\Shared\RegisterEmailTemplate.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
