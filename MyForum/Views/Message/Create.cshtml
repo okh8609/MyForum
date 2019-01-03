@@ -7,9 +7,6 @@
     <table>
         <tr>
             <td>
-                @User.Identity.Name
-            </td>
-            <td>
                 @Html.TextBoxFor(model => model.Content)
                 @Html.ValidationMessageFor(model => model.Content)
             </td>

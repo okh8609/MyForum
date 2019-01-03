@@ -1,5 +1,5 @@
 ﻿
-
+@Styles.Render("~/Content/boardlist")
 <div id="DataList">
     @*呼叫另一Action顯示文章留言陣列*@
     @Html.Action("DataList", new { NA_ID = ViewData["NA_ID"] })

@@ -12,15 +12,19 @@
     @Scripts.Render("~/jQuery/Home/Article.js")
 }
 
-@Styles.Render("~/Content/article")
+@Styles.Render("~/Content/boardlist")
 @*<link href="@Url.Content("~/Content/styles/article.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     @*顯示文章詳細內容表格*@
     <div class="page-header">
         <h1>@Model.Title</h1>
     </div>
-
-    <div class="panel panel-default">
+    <div class="space">
+        <div class="bottom">
+            <a onclick="history.back()" class="red">返回列表</a>
+        </div>
+    </div>
+    <div class="panel panel-default article">
         <div class="panel-heading">
             <h3 class="panel-title">@Html.DisplayNameFor(model => model.Content)</h3>
         </div>
@@ -46,9 +50,6 @@
 
         </div>
     }
-
-    @*顯示"返回文章列表"連結*@
-    @Html.ActionLink("返回文章列表", "Index")
 
     @*呼叫另一Action顯示文章留言列表*@
     <div id="MessageList">

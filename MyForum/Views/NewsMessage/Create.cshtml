@@ -7,14 +7,11 @@
     <table>
         <tr>
             <td>
-                @User.Identity.Name
-            </td>
-            <td>
                 @Html.TextBoxFor(model => model.Content)
                 @Html.ValidationMessageFor(model => model.Content)
             </td>
             <td>
-                <input type="submit" value="來留言" />
+                <input type="submit" value="留言" />
             </td>
         </tr>
     </table>

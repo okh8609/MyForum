@@ -18,7 +18,7 @@ namespace MyForum.Services
         {
             get
             {
-                return 15;
+                return 10;
             }
         }
 

@@ -43,28 +43,28 @@ namespace MyForum.Controllers
             }
             catch
             {
-                TempData["Msg"] = "網址異常!!";
+                TempData["Msg"] = "網址異常。";
                 return RedirectToAction("Result");
             }
 
             //判斷金額
             if (Obj.Price < 0 || Obj.Price > 1000)
             {
-                TempData["Msg"] = "金額異常!!";
+                TempData["Msg"] = "金額異常。";
                 return RedirectToAction("Result");
             }
 
             //判斷餘額
             if (AdService.BuyAd(User.Identity.Name, Obj.Price) == false)
             {
-                TempData["Msg"] = "台科幣 餘額不足，謝謝!!";
+                TempData["Msg"] = "餘額不足。";
                 return RedirectToAction("Result");
             }
 
             //檢查是否有上傳檔案
             if (Obj.Upload == null)
             {
-                TempData["Msg"] = "檔案不存在，請確認，謝謝!!";
+                TempData["Msg"] = "檔案不存在。";
                 return RedirectToAction("Result");
             }
 
@@ -72,7 +72,7 @@ namespace MyForum.Controllers
             if (Path.GetExtension(Obj.Upload.FileName).ToLower() != ".jpg" &&
                 Path.GetExtension(Obj.Upload.FileName).ToLower() != ".png")
             {
-                TempData["Msg"] = "副檔名必須是 .jpg .png !!";
+                TempData["Msg"] = "副檔名必須是 .jpg .png。";
                 return RedirectToAction("Result");
             }
 
@@ -89,7 +89,7 @@ namespace MyForum.Controllers
                 Bitmap img = new Bitmap(url, true);
                 if (img.Width > 515 || img.Height > 515)
                 {
-                    TempData["Msg"] = "圖片尺寸過大!!";
+                    TempData["Msg"] = "圖片尺寸過大。";
                     return RedirectToAction("Result");
                 }
             }
@@ -97,13 +97,13 @@ namespace MyForum.Controllers
             {
                 //刪除
                 System.IO.File.Delete(url);
-                TempData["Msg"] = "非圖檔 !!";
+                TempData["Msg"] = "非圖檔。";
                 return RedirectToAction("Result");
             }
 
             //藉由Service將檔案資料存入資料庫
             AdService.UploadFile(fileName, Obj.URL, Obj.Price, User.Identity.Name);
-            TempData["Msg"] = "購買成功!!";
+            TempData["Msg"] = "購買成功。";
             //重新導向頁面至開始頁面
             return RedirectToAction("Result");
         }
