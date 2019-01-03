@@ -1,61 +1,58 @@
 ﻿@model MyForum.Models.Member
 
 @{
-    ViewBag.Title = "會員資料";
+    ViewBag.Title = "Profile";
 }
 
 @Styles.Render("~/Content/accountinfo")
-@*<link href="@Url.Content("~/Content/styles/accountinfo.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h2>會員資料</h2>
+<div class="page-header">
+    <h2>會員資料</h2>
+</div>
+<div class="card">
+    <img src="https://cdn4.iconfinder.com/data/icons/apple-touch-id/512/Touch_ID-512.png"
+            alt="Avater" style="width:40%">
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Account)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Account)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Coins)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Coins)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>*@
+
+        </dl>
     </div>
-    <div class="card">
-        <img src="https://cdn4.iconfinder.com/data/icons/apple-touch-id/512/Touch_ID-512.png"
-             alt="Avater" style="width:40%">
-        <div>
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Account)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Account)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Coins)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Coins)
-                </dd>
-
-                @*<dt>
-                    @Html.DisplayNameFor(model => model.IsAdmin)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IsAdmin)
-                </dd>*@
-
-            </dl>
-        </div>
-    </div>
-</body>
+</div>
