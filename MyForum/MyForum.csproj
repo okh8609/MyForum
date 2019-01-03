@@ -301,6 +301,9 @@
     <Content Include="Models\MyForumEntities.edmx.diagram">
       <DependentUpon>MyForumEntities.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\TurTalk - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\TurTalk - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\TurTalk - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\TurTalk080 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TurTalk080 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TurTalk080 - Web Deploy1.pubxml" />
