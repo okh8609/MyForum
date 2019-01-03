@@ -17,13 +17,13 @@ article {
 }
 
 article h1 {
-    font-size: 70px;
+    font-size: 80px;
     color: #fff;
 }
 
 article .btn.btn-default {
     color: #fff;
-    background: #7792BE;
+    background: #D82F4E;
     border: none;
     padding: 16px 22px;
     border-radius: 30px;
@@ -32,7 +32,7 @@ article .btn.btn-default {
 }
 
 .btn.btn-default:hover {
-    background: #425e8a;
+    background: #c12541;
     color: #fff;
 }
 
@@ -41,8 +41,8 @@ article .btn.btn-default {
 }
 
 .btn.btn-default:active {
+    background: #c12541;
     color: #fff;
-    background: #425e8a;
 }
 
 div .db{
