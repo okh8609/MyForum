@@ -13,176 +13,173 @@
 }
 
 @Styles.Render("~/Content/boardlist")
-@*<link href="@Url.Content("~/Content/styles/articlelist.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h1>文章列表</h1>
+<div class="page-header">
+    <h1>文章列表</h1>
+</div>
+
+<div class="space">
+    <div class="bottom">
+        <a href="/Board/Index" class="red">返回列表</a>
     </div>
 
-    <div class="space">
-        <div class="bottom">
-            <a href="/Board/Index" class="red">返回列表</a>
-        </div>
-
-        <div class="bottom" style="color: white">
-            @*顯示"查看人氣文章列表"連結*@
-            @Html.ActionLink("人氣文章", "ShowPopularity", null, new { @class = "red" })
-            @*重整列表影藏連結*@
-            @Ajax.ActionLink("重整", "List", new { },
-                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace },
-                new { @class = "hidden red", id = "refeshListLink" })
-        </div>
-
-        <div class="bottom">
-            @*判斷是否有登入，登入後才可使用新增文章*@
-            @if (User.Identity.IsAuthenticated)
-            {
-                @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
-                @Ajax.ActionLink("新增文章", "Create", "Home", new { id = ViewData["B_Id"] },
-                    new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
-                    new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal"})
-                @*新增文章預留表單跳窗*@
-                <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
-
-                </div>
-
-                @*@Html.Action("Create", new { id = ViewData["B_Id"] })*@
-            }
-            else
-            {
-                <text>要新增文章請先</text>
-                @Html.ActionLink("登入", "Login", "Member")
-            }
-        </div>
+    <div class="bottom" style="color: white">
+        @*顯示"查看人氣文章列表"連結*@
+        @Html.ActionLink("人氣文章", "ShowPopularity", null, new { @class = "red" })
+        @*重整列表影藏連結*@
+        @Ajax.ActionLink("重整", "List", new { },
+            new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace },
+            new { @class = "hidden red", id = "refeshListLink" })
     </div>
-    @*文章列表表格*@
-    <div class="table-responsive">
-        <table class="table table-hover" id="block">
-            @*若資料庫中有文章，將會列出文章*@
-            @if (!Model.DataList.Count.Equals(0))
-            {
-                <thead>
-                    <tr>
-                        <th class="top" id="article-title-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Title)
-                        </th>
-                        <th class="top" id="article-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Account)
-                        </th>
-                        <th class="top" id="article-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
-                        </th>
-                        <th class="top" id="article-watch-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
-                        </th>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <th></th>
-                        }
-                    </tr>
-                </thead>
-                foreach (var item in Model.DataList)
-                {
-                    <tr>
-                        <td class="content">
-                            @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id }, new { @style = "color: #fff" })
-                        </td>
-                        <td class="content" id="name">
-                            @item.Member.Name
-                        </td>
-                        <td class="content" id="else-name">
-                            @item.CreateTime
-                        </td>
-                        <td class="content" id="else-name">
-                            @item.Watch
-                        </td>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <td>
-                                @Html.ActionLink("刪除留言", "Delete", new { Id = item.A_Id })
-                            </td>
-                        }
-                    </tr>
-                }
-            }
-            @*若無文章，則印出"尚無文章"*@
-            else
-            {
-                <thead>
-                    <tr>
-                        <th class="top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Title)
-                        </th>
-                        <th class="top" id="name">
-                            @Html.DisplayNameFor(model => model.DataList[0].Account)
-                        </th>
-                        <th class="top" id="else-name">
-                            @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
-                        </th>
-                        <th class="top" id="else-name">
-                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
-                        </th>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <th></th>
-                        }
-                    </tr>
-                </thead>
+
+    <div class="bottom">
+        @*判斷是否有登入，登入後才可使用新增文章*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+            @Ajax.ActionLink("新增文章", "Create", "Home", new { id = ViewData["B_Id"] },
+                new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+                new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal"})
+            @*新增文章預留表單跳窗*@
+            <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+            </div>
+
+            @*@Html.Action("Create", new { id = ViewData["B_Id"] })*@
+        }
+        else
+        {
+            <text>要新增文章請先</text>
+            @Html.ActionLink("登入", "Login", "Member")
+        }
+    </div>
+</div>
+@*文章列表表格*@
+<div class="table-responsive">
+    <table class="table table-hover" id="block">
+        @*若資料庫中有文章，將會列出文章*@
+        @if (!Model.DataList.Count.Equals(0))
+        {
+            <thead>
                 <tr>
-                    <td class="content" id="name">
-                        尚無文章
+                    <th class="top" id="article-title-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Title)
+                    </th>
+                    <th class="top" id="article-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                    <th class="top" id="article-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
+                    </th>
+                    <th class="top" id="article-watch-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <th></th>
+                    }
+                </tr>
+            </thead>
+            foreach (var item in Model.DataList)
+            {
+                <tr>
+                    <td class="content">
+                        @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id }, new { @style = "color: #fff" })
                     </td>
+                    <td class="content" id="name">
+                        @item.Member.Name
+                    </td>
+                    <td class="content" id="else-name">
+                        @item.CreateTime
+                    </td>
+                    <td class="content" id="else-name">
+                        @item.Watch
+                    </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            @Html.ActionLink("刪除留言", "Delete", new { Id = item.A_Id })
+                        </td>
+                    }
                 </tr>
             }
-        </table>
-    </div>
-    @*產生頁碼按鈕*@
-    <div class="col-xs-12 text-center">
-        <ul class="pagination">
-            @*顯示上一頁與最前頁按鈕*@
-            <li class="first @((Model.Paging.NowPage > 1) ? "" : " disabled")">
-                @Ajax.ActionLink("<<", "List",
-                    new { Page = 1, Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
-            </li>
-            <li class="pervious @((Model.Paging.NowPage > 1) ? "" : " disabled")">
-                @Ajax.ActionLink("<", "List",
-                    new { Page = Model.Paging.NowPage - 1, Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
-            </li>
-            @*顯示各個頁次按鈕*@
-            @for (var page = (Model.Paging.NowPage - 6);
-                    page < (Model.Paging.NowPage + 6); page++)
+        }
+        @*若無文章，則印出"尚無文章"*@
+        else
+        {
+            <thead>
+                <tr>
+                    <th class="top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Title)
+                    </th>
+                    <th class="top" id="name">
+                        @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                    <th class="top" id="else-name">
+                        @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
+                    </th>
+                    <th class="top" id="else-name">
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <th></th>
+                    }
+                </tr>
+            </thead>
+            <tr>
+                <td class="content" id="name">
+                    尚無文章
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@*產生頁碼按鈕*@
+<div class="col-xs-12 text-center">
+    <ul class="pagination">
+        @*顯示上一頁與最前頁按鈕*@
+        <li class="first @((Model.Paging.NowPage > 1) ? "" : " disabled")">
+            @Ajax.ActionLink("<<", "List",
+                new { Page = 1, Search = Model.Search },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+        <li class="pervious @((Model.Paging.NowPage > 1) ? "" : " disabled")">
+            @Ajax.ActionLink("<", "List",
+                new { Page = Model.Paging.NowPage - 1, Search = Model.Search },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+        @*顯示各個頁次按鈕*@
+        @for (var page = (Model.Paging.NowPage - 6);
+                page < (Model.Paging.NowPage + 6); page++)
+        {
+            if ((page > 0) && (page <= Model.Paging.MaxPage))
             {
-                if ((page > 0) && (page <= Model.Paging.MaxPage))
+                if (page == Model.Paging.NowPage)
                 {
-                    if (page == Model.Paging.NowPage)
-                    {
-                        <li class="active">
-                            <a href="#">@page</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li>
-                            @Ajax.ActionLink(page.ToString(), "List",
-                                new { Page = page, Search = Model.Search },
-                                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
-                        </li>
-                    }
+                    <li class="active">
+                        <a href="#">@page</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Ajax.ActionLink(page.ToString(), "List",
+                            new { Page = page, Search = Model.Search },
+                            new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+                    </li>
                 }
             }
-            @*顯示下一頁與最後一頁的按鈕*@
-            <li class="next @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
-                @Ajax.ActionLink(">", "List",
-                    new { Page = Model.Paging.NowPage + 1, Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
-            </li>
-            <li class="last @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
-                @Ajax.ActionLink(">>", "List",
-                    new { Page = Model.Paging.MaxPage, Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
-            </li>
-        </ul>
-    </div>
-</body>
+        }
+        @*顯示下一頁與最後一頁的按鈕*@
+        <li class="next @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
+            @Ajax.ActionLink(">", "List",
+                new { Page = Model.Paging.NowPage + 1, Search = Model.Search },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+        <li class="last @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
+            @Ajax.ActionLink(">>", "List",
+                new { Page = Model.Paging.MaxPage, Search = Model.Search },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+        </li>
+    </ul>
+</div>
