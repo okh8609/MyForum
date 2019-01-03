@@ -18,6 +18,23 @@
     <h1>家族動態列表</h1>
 </div>
 
+<div class="space">
+    <div class="bottom">
+        <a onclick="history.back()" class="red">返回列表</a>
+    </div>
+
+    <div class="bottom">
+        @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+        @Ajax.ActionLink("新增動態", "Create", "FamArti", new { FB_ID = ViewData["FB_ID"] },
+            new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+            new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
+        @*新增文章預留表單跳窗*@
+        <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+        </div>
+    </div>
+</div>
+
 @*文章列表表格*@
 <div class="table-responsive">
     <table class="table table-hover" id="block" style="color:#fff">
@@ -153,11 +170,3 @@
 
 
 
-@*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
-@Ajax.ActionLink("新增動態", "Create", "FamArti", new { FB_ID = ViewData["FB_ID"] },
-    new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
-    new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
-@*新增文章預留表單跳窗*@
-<div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
-
-</div>

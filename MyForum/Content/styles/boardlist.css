@@ -14,6 +14,11 @@
         color:white;
     }
 
+    .create-form {
+        color: #fff;
+        background-color: #3F3F46;
+    }
+
     .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
         background-color: #3F3F46;
     }
