@@ -11,40 +11,38 @@
 
 @Styles.Render("~/Content/login")
 @*<link href="@Url.Content("~/Content/styles/login.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-form">
-        <h1>登入</h1>
-        <div class="form-horizontal">
-            @*建立登入所須的表單*@
-            @using (Html.BeginForm())
-            {
-                @*產生登入帳號密碼表單內容*@
-                <div class="form-group" id="top" style="padding-top: 40px;">
-                    @Html.LabelFor(model => model.UserName, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
-                    <div class="col-xs-8 col-md-7">
-                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-                    </div>
+<div class="page-form">
+    <h1>登入</h1>
+    <div class="form-horizontal">
+        @*建立登入所須的表單*@
+        @using (Html.BeginForm())
+        {
+            @*產生登入帳號密碼表單內容*@
+            <div class="form-group" id="top" style="padding-top: 40px;">
+                @Html.LabelFor(model => model.UserName, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
+                <div class="col-xs-8 col-md-7">
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
                 </div>
-                <div class="form-group" id="top" style="padding-top: 40px;">
-                    @Html.LabelFor(model => model.Password, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
-                    <div class="col-xs-8 col-md-7">
-                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                    </div>
-                </div>
-                @*顯示彙總的表單驗證的錯誤訊息*@
-                <div class="alert alert-warning">
-                    @Html.ValidationSummary()
-                </div>
-                <div class="form-group">
-                    <div class="submit">
-                        <input class="btn btn-primary" type="submit" value="登入" />
-                    </div>
-                </div>
-            }
-            <hr />
-            <div class="create">
-                <a href="/Member/Register" class="btn btn-default">建立帳戶</a>
             </div>
+            <div class="form-group" id="top" style="padding-top: 40px;">
+                @Html.LabelFor(model => model.Password, new { @class = "col-xs-4 col-md-3 col-md-offset-1 form-label" })
+                <div class="col-xs-8 col-md-7">
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            @*顯示彙總的表單驗證的錯誤訊息*@
+            <div class="alert alert-warning">
+                @Html.ValidationSummary()
+            </div>
+            <div class="form-group">
+                <div class="submit">
+                    <input class="btn btn-primary" type="submit" value="登入" />
+                </div>
+            </div>
+        }
+        <hr />
+        <div class="create">
+            <a href="/Member/Register" class="btn btn-default">建立帳戶</a>
         </div>
     </div>
-</body>
+</div>
