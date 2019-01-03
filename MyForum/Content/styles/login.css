@@ -16,6 +16,10 @@
         color: white;
     }
 
+    [class="btn btn-outline-secondary btn-block"] {
+        margin-top:20px;
+        margin-bottom:20px;
+    }
 
     [class="form-horizontal"] {
         color: white;
