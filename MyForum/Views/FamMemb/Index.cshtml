@@ -5,93 +5,90 @@
 }
 
 @Styles.Render("~/Content/boardlist")
-@*<link href="@Url.Content("~/Content/styles/famarti.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h1>家族動態</h1>
-    </div>
+<div class="page-header">
+    <h1>家族動態</h1>
+</div>
 
-    <div class="space">
-        <div class="bottom">
-            <a href="/FamList/Menu" class="red">返回家族</a>
-        </div>
+<div class="space">
+    <div class="bottom">
+        <a href="/FamList/Menu" class="red">返回家族</a>
     </div>
+</div>
 
-    @*文章列表表格*@
-    <div class="table-responsive">
-        <table class="table table-hover" id="block">
-            @*若資料庫中有文章，將會列出文章*@
-            @if (!Model.DataList.Count.Equals(0))
-            {
-                <thead>
-                    <tr>
-                        <th class="top" id="gtrend-watch-top">
-                            @*  *@
-                        </th>
-                        <th class="top" id="gtrend-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Member.Name)
-                        </th>
-                        <th class="top" id="gtrend-trend-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Content)
-                        </th>
-                        <th class="top" id="gtrend-watch-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
-                        </th>
-                    </tr>
-                </thead>
-                foreach (var item in Model.DataList)
-                {
-                    <tr>
-                        <td class="content">
-                            @Html.ActionLink("檢視留言", "Article", "FamArti", new { FA_ID = item.FA_ID }, new { @style = "color: #4ECEC4" })
-                        </td>
-                        <td class="content" id="name">
-                            @item.Member.Name
-                        </td>
-                        <td class="content">
-                            <div class="gtrend-content">
-                                @if (item.Content.Length >= 40)
-                                {
-                                    @item.Content.Substring(0, 40)
-                                    <text> ...</text>
-                                }
-                                else
-                                {
-                                    @item.Content
-                                }
-                            </div>
-                        </td>
-                        <td class="content" id="else-name">
-                            @item.Watch
-                        </td>
-                    </tr>
-                }
-            }
-            @*若無文章，則印出"尚無文章"*@
-            else
-            {
-                <thead>
-                    <tr>
-                        <th class="top" id="gtrend-watch-top">
-                            @*  *@
-                        </th>
-                        <th class="top" id="gtrend-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Member.Name)
-                        </th>
-                        <th class="top" id="gtrend-trend-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Content)
-                        </th>
-                        <th class="top" id="gtrend-watch-top">
-                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
-                        </th>
-                    </tr>
-                </thead>
+@*文章列表表格*@
+<div class="table-responsive">
+    <table class="table table-hover" id="block">
+        @*若資料庫中有文章，將會列出文章*@
+        @if (!Model.DataList.Count.Equals(0))
+        {
+            <thead>
                 <tr>
+                    <th class="top" id="gtrend-watch-top">
+                        @*  *@
+                    </th>
+                    <th class="top" id="gtrend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Member.Name)
+                    </th>
+                    <th class="top" id="gtrend-trend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Content)
+                    </th>
+                    <th class="top" id="gtrend-watch-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
+                </tr>
+            </thead>
+            foreach (var item in Model.DataList)
+            {
+                <tr>
+                    <td class="content">
+                        @Html.ActionLink("檢視留言", "Article", "FamArti", new { FA_ID = item.FA_ID }, new { @style = "color: #4ECEC4" })
+                    </td>
                     <td class="content" id="name">
-                        尚無文章
+                        @item.Member.Name
+                    </td>
+                    <td class="content">
+                        <div class="gtrend-content">
+                            @if (item.Content.Length >= 40)
+                            {
+                                @item.Content.Substring(0, 40)
+                                <text> ...</text>
+                            }
+                            else
+                            {
+                                @item.Content
+                            }
+                        </div>
+                    </td>
+                    <td class="content" id="else-name">
+                        @item.Watch
                     </td>
                 </tr>
             }
-        </table>
-    </div>
-</body>
+        }
+        @*若無文章，則印出"尚無文章"*@
+        else
+        {
+            <thead>
+                <tr>
+                    <th class="top" id="gtrend-watch-top">
+                        @*  *@
+                    </th>
+                    <th class="top" id="gtrend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Member.Name)
+                    </th>
+                    <th class="top" id="gtrend-trend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Content)
+                    </th>
+                    <th class="top" id="gtrend-watch-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="content" id="name">
+                    尚無文章
+                </td>
+            </tr>
+        }
+    </table>
+</div>
