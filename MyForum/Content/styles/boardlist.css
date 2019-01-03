@@ -1,8 +1,11 @@
 ﻿@media (max-width: 3000px) {
     body {
     }
-    h1{
-        color:white;
+    [class="page-header"]{
+        margin-top:50px;
+    }
+    h1 {
+        color: white;
     }
     [id="ArticleListBlock"]{
         color:white;

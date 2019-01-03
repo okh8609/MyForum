@@ -7,10 +7,11 @@
 @Styles.Render("~/Content/card")
 @*<link href="@Url.Content("~/Content/styles/card.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
-    <h1>抽卡</h1>
+    <div class="page-header">
+        <h1>抽卡</h1>
+    </div>
 
     <div>
-        <hr />
         <h4>恭喜你獲得以下卡片</h4>
         <h4>傳封Mail給他，開啟你們的奇幻旅程</h4>
         <br />
@@ -18,6 +19,6 @@
         <p>@Html.DisplayNameFor(model => model.Person.Account) : @Model.Person.Account</p>
         <p>@Html.DisplayNameFor(model => model.Person.Name) : @Model.Person.Name</p>
         <p>@Html.DisplayNameFor(model => model.Person.Email) : @Model.Person.Email</p>
-
+        <hr />
     </div>
 </body>

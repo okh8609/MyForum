@@ -2,8 +2,9 @@
     body {
     }
 
-    h1 {
-        color: white;
+    [class="page-header"] {
+        margin-top: 50px;
+        color:white;
     }
 }
 

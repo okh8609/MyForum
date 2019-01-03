@@ -94,8 +94,8 @@ namespace MyForum
             bundles.Add(new StyleBundle("~/Content/fammsg").Include(
                       "~/Content/styles/fammsg.css"));
 
-            bundles.Add(new StyleBundle("~/Content/firendlist").Include(
-                      "~/Content/styles/firendlist.css"));
+            bundles.Add(new StyleBundle("~/Content/friendlist").Include(
+                      "~/Content/styles/friendlist.css"));
 
             bundles.Add(new StyleBundle("~/Content/homepage").Include(
                  "~/Content/styles/homepage.css"));
