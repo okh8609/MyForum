@@ -33,6 +33,16 @@ article .btn.btn-default {
 
 .btn.btn-default:hover {
     background: #425e8a;
+    color: #fff;
+}
+
+.btn.btn-default:visited {
+    color: #fff;
+}
+
+.btn.btn-default:active {
+    color: #fff;
+    background: #425e8a;
 }
 
 div .db{

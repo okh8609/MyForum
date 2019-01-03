@@ -1,7 +1,7 @@
 ﻿@model MyForum.ViewModel.ArticleView
 
 @{
-    ViewBag.Title = "文章列表";
+    ViewBag.Title = Model.Title;
 }
 
 @section scripts
@@ -12,31 +12,67 @@
     @Scripts.Render("~/jQuery/Home/ArticleList.js")
 }
 
-@Styles.Render("~/Content/articlelist")
+@Styles.Render("~/Content/boardlist")
 @*<link href="@Url.Content("~/Content/styles/articlelist.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
-    <div class="page-header">
+    <div class="page-header" style="margin-top:50px;">
         <h1>文章列表</h1>
     </div>
 
+    <div class="space">
+        <div class="bottom">
+            <a href="/Board/Index" class="red">返回列表</a>
+        </div>
+
+        <div class="bottom" style="color: white">
+            @*顯示"查看人氣文章列表"連結*@
+            @Html.ActionLink("人氣文章", "ShowPopularity", null, new { @class = "red" })
+            @*重整列表影藏連結*@
+            @Ajax.ActionLink("重整", "List", new { },
+                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace },
+                new { @class = "hidden red", id = "refeshListLink" })
+        </div>
+
+        <div class="bottom">
+            @*判斷是否有登入，登入後才可使用新增文章*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+                @Ajax.ActionLink("新增文章", "Create", "Home", new { id = ViewData["B_Id"] },
+                    new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+                    new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal"})
+                @*新增文章預留表單跳窗*@
+                <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+                </div>
+
+                @*@Html.Action("Create", new { id = ViewData["B_Id"] })*@
+            }
+            else
+            {
+                <text>要新增文章請先</text>
+                @Html.ActionLink("登入", "Login", "Member")
+            }
+        </div>
+    </div>
     @*文章列表表格*@
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover" id="block">
             @*若資料庫中有文章，將會列出文章*@
             @if (!Model.DataList.Count.Equals(0))
             {
                 <thead>
                     <tr>
-                        <th>
+                        <th class="top" id="article-title-top">
                             @Html.DisplayNameFor(model => model.DataList[0].Title)
                         </th>
-                        <th>
+                        <th class="top" id="article-top">
                             @Html.DisplayNameFor(model => model.DataList[0].Account)
                         </th>
-                        <th>
+                        <th class="top" id="article-top">
                             @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
                         </th>
-                        <th>
+                        <th class="top" id="article-watch-top">
                             @Html.DisplayNameFor(model => model.DataList[0].Watch)
                         </th>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -48,16 +84,16 @@
                 foreach (var item in Model.DataList)
                 {
                     <tr>
-                        <td>
+                        <td class="content">
                             @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id })
                         </td>
-                        <td>
+                        <td class="content" id="name">
                             @item.Member.Name
                         </td>
-                        <td>
+                        <td class="content" id="else-name">
                             @item.CreateTime
                         </td>
-                        <td>
+                        <td class="content" id="else-name">
                             @item.Watch
                         </td>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -69,12 +105,32 @@
                     </tr>
                 }
             }
-            @*若無文章，則印出"尚未有文章"*@
+            @*若無文章，則印出"尚無文章"*@
             else
             {
+                <thead>
+                    <tr>
+                        <th class="top">
+                            @Html.DisplayNameFor(model => model.DataList[0].Title)
+                        </th>
+                        <th class="top" id="name">
+                            @Html.DisplayNameFor(model => model.DataList[0].Account)
+                        </th>
+                        <th class="top" id="else-name">
+                            @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
+                        </th>
+                        <th class="top" id="else-name">
+                            @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                        </th>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <th></th>
+                        }
+                    </tr>
+                </thead>
                 <tr>
-                    <td colspan="4">
-                        尚未有文章
+                    <td class="content" id="name">
+                        尚無文章
                     </td>
                 </tr>
             }
@@ -129,34 +185,4 @@
             </li>
         </ul>
     </div>
-
-
-
-    @*顯示"查看人氣文章列表"連結*@
-    @Html.ActionLink("查看人氣文章列表", "ShowPopularity")
-    @*重整列表影藏連結*@
-    @Ajax.ActionLink("重整", "List", new { },
-        new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace },
-        new { @class = "hidden", id = "refeshListLink" })
-
-
-    @*判斷是否有登入，登入後才可使用新增文章*@
-    @if (User.Identity.IsAuthenticated)
-    {
-        @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
-        @Ajax.ActionLink("新增文章", "Create", "Home", new { id = ViewData["B_Id"] },
-            new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
-            new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
-        @*新增文章預留表單跳窗*@
-        <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
-
-        </div>
-
-        @*@Html.Action("Create", new { id = ViewData["B_Id"] })*@
-    }
-    else
-    {
-        <text>要新增文章請先</text>
-        @Html.ActionLink("登入", "Login", "Member")
-    }
 </body>

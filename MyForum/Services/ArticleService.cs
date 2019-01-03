@@ -73,12 +73,23 @@ namespace MyForum.Services
         {
             IQueryable<Article> Data = db.Article.Where(model => model.B_Id == B_Id);
 
-            Paging.MaxPage = Convert.ToInt32(Math.Ceiling( Convert.ToDouble(Data.Count()) / Paging.ItemNum));
+            Paging.MaxPage = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Data.Count()) / Paging.ItemNum));
             Paging.SetRightPage();
 
             return Data;
         }
         #endregion
+        #endregion
+
+        #region 根據看板ID找尋文章列表
+        public string GetBoardTitle(int B_Id)
+        {
+            var a = db.Board.Find(B_Id);
+            if (a == null)
+                return "";
+            else
+                return a.B_name;
+        }
         #endregion
 
         #region 儲存資料庫變更

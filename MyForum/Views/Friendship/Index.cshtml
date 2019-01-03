@@ -1,7 +1,7 @@
 ﻿@model MyForum.ViewModel.BoardView
 
 @{
-    ViewBag.Title = "好友列表";
+    ViewBag.Title = "Friend";
 }
 
 @section scripts
@@ -12,7 +12,7 @@
     @Scripts.Render("~/jQuery/Board/ArticleList.js")
 }
 
-@Styles.Render("~/Content/friendlist")
+@Styles.Render("~/Content/boardlist")
 @*<link href="@Url.Content("~/Content/styles/friendlist.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
     <div class="page-header">
@@ -20,7 +20,7 @@
     </div>
 
 
-    <h2>搜尋其他好友</h2>
+    <h2>搜尋好友</h2>
 
     @*判斷是否有登入，登入後才可使用新增文章*@
     @if (User.Identity.IsAuthenticated)
@@ -30,11 +30,10 @@
             new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace }))
         {
             <div class="form-group">
-                @Html.LabelFor(model => model.Search, new { @class = "col-xs-4 col-md-1 form-label" })
                 <div class="col-xs-8 col-md-3 input-group">
                     @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
                     <div class="input-group-btn">
-                        <input class="btn btn-primary" type="submit" value="搜尋" />
+                        <input class="btn btn-primary1" type="submit" value="搜尋" />
                     </div>
                 </div>
             </div>

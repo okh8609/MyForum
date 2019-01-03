@@ -41,7 +41,7 @@ namespace MyForum.Controllers
                 WebRequest request = WebRequest.Create(Obj.URL);
                 request.GetResponse();
             }
-            catch //If exception thrown then couldn't get response from address
+            catch
             {
                 TempData["Msg"] = "網址異常!!";
                 return RedirectToAction("Result");
@@ -87,6 +87,11 @@ namespace MyForum.Controllers
             try
             {
                 Bitmap img = new Bitmap(url, true);
+                if (img.Width > 515 || img.Height > 515)
+                {
+                    TempData["Msg"] = "圖片尺寸過大!!";
+                    return RedirectToAction("Result");
+                }
             }
             catch
             {

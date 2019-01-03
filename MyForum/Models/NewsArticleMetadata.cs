@@ -29,7 +29,7 @@ namespace MyForum.Models
             [DisplayName("發表時間")]
             public System.DateTime CreateTime { get; set; }
 
-            [DisplayName("點閱數")]
+            [DisplayName("觀看人數")]
             public int Watch { get; set; }
         }
     }
