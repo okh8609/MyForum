@@ -22,7 +22,7 @@
         margin-top: 40px;
         background-color: #2B2F3E;
         border-radius: 30px;
-        color: #fff
+        color: #fff;
     }
 
     .top {
@@ -42,12 +42,12 @@
     }
 
     #else-name {
-        color: #7792BE
+        color: #fff;
     }
 
     .btn.btn-default {
         color: #fff;
-        background: #E3515D;
+        background: #D82F4E;
         border: none;
         border-radius: 10px;
         padding: 10px 22px;
@@ -57,12 +57,40 @@
 
     .btn.btn-primary {
         color: #fff;
-        background: #61DDBC;
+        background: #4ECEC4;
         border: none;
         border-radius: 10px;
         padding: 10px 22px;
         font-size: 16px;
         margin-top: 30px;
+    }
+
+    .btn.btn-default:hover {
+        color: #fff;
+        background-color: #c12541;
+    }
+
+    .btn.btn-default:visited {
+        color: #fff;
+    }
+
+    .btn.btn-default:active {
+        color: #fff;
+        background-color: #c12541;
+    }
+
+    .btn.btn-primary:hover {
+        color: #fff;
+        background-color: #37c8bc;
+    }
+
+    .btn.btn-primary:visited {
+        color: #fff;
+    }
+
+    .btn.btn-primary:active {
+        color: #fff;
+        background-color: #37c8bc;
     }
 
     .bottom {
@@ -73,7 +101,7 @@
     .red {
         cursor: pointer;
         color: #fff;
-        background: #E3515D;
+        background: #D82F4E;
         border: none;
         border-radius: 10px;
         padding: 10px 22px;
@@ -84,7 +112,7 @@
 
     .red:hover{
         color:#fff;
-        background-color:#E04452; 
+        background-color:#c12541; 
     }
 
     .red:visited{
@@ -93,7 +121,7 @@
 
     .red:active {
         color:#fff;
-        background-color:#E04452; 
+        background-color:#c12541; 
     }
 
     .space {

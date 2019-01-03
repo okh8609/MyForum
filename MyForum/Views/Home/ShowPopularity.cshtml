@@ -54,7 +54,7 @@
                             @{ rank++; }
                         </td>
                         <td class="content">
-                            @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id })
+                            @Html.ActionLink(item.Title, "Article", new { Id = item.A_Id }, new { @style = "color: #fff" })
                         </td>
                         <td class="content" id="name">
                             @item.Member.Name

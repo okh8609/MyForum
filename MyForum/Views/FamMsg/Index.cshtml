@@ -1,11 +1,14 @@
-﻿<body style="background-color:#1B1E28;">
-    <div id="DataList">
-        @*呼叫另一Action顯示文章留言陣列*@
-        @Html.Action("DataList", new { NA_ID = ViewData["NA_ID"] })
+﻿@Styles.Render("~/Content/boardlist")
+<div class="space">
+    <div class="bottom">
+        <a onclick="history.back()" class="red">返回列表</a>
     </div>
+</div>
+<div id="DataList">
+    @*呼叫另一Action顯示文章留言陣列*@
+    @Html.Action("DataList", new { NA_ID = ViewData["NA_ID"] })
+</div>
 
-
-    <div id="MessageCreate">
-        @Html.Action("Create", new { NA_ID = ViewData["NA_ID"] })
-    </div>
-</body>
+<div id="MessageCreate">
+    @Html.Action("Create", new { NA_ID = ViewData["NA_ID"] })
+</div>

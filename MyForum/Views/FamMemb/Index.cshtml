@@ -43,7 +43,7 @@
                 {
                     <tr>
                         <td class="content">
-                            @Html.ActionLink("檢視留言", "Article", "FamArti", new { FA_ID = item.FA_ID }, null)
+                            @Html.ActionLink("檢視留言", "Article", "FamArti", new { FA_ID = item.FA_ID }, new { @style = "color: #4ECEC4" })
                         </td>
                         <td class="content" id="name">
                             @item.Member.Name
@@ -67,7 +67,7 @@
                     </tr>
                 }
             }
-            @*若無文章，則印出"尚未有文章"*@
+            @*若無文章，則印出"尚無文章"*@
             else
             {
                 <thead>
@@ -88,7 +88,7 @@
                 </thead>
                 <tr>
                     <td class="content" id="name">
-                        尚未有文章
+                        尚無文章
                     </td>
                 </tr>
             }

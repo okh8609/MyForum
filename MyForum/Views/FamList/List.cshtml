@@ -23,10 +23,10 @@
             {
                 <tr>
                     <td class="content" id="name">
-                        @Html.ActionLink("加入", "Add", "FamMemb", new { FB_ID = @item.FB_ID }, null)
+                        @Html.ActionLink("加入", "Add", "FamMemb", new { FB_ID = @item.FB_ID }, new { @style = "color: #4ECEC4" })
                     </td>
                     <td class="content" id="else-name">
-                        @Html.ActionLink(item.FB_name, "List", "FamArti", new { FB_ID = item.FB_ID }, null)
+                        @Html.ActionLink(item.FB_name, "List", "FamArti", new { FB_ID = item.FB_ID }, new { @style = "color: #4ECEC4" })
                     </td>
                     <td class="content" id="name">
                         @item.Member.Name
