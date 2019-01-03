@@ -7,10 +7,12 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
+using System.Drawing;
+
 
 namespace MyForum.Controllers
 {
-    [Authorize(Roles = "Adminnnnnnnnnnnnnnnnnnn")] //設定此Action只有Admin角色才可使用
     public class AdvertisementController : Controller
     {
         AdvertisementService AdService = new AdvertisementService();
@@ -32,6 +34,18 @@ namespace MyForum.Controllers
             //    TempData["Msg"] = "驗證不通過，謝謝!!";
             //    return RedirectToAction("Index");
             //}
+
+            //判斷網址是否存在
+            try
+            {
+                WebRequest request = WebRequest.Create(Obj.URL);
+                request.GetResponse();
+            }
+            catch 
+            {
+                TempData["Msg"] = "網址異常!!";
+                return RedirectToAction("Result");
+            }
 
             //判斷金額
             if (Obj.Price < 0 || Obj.Price > 1000)
@@ -68,6 +82,20 @@ namespace MyForum.Controllers
             string url = Path.Combine(Server.MapPath("~/Ad-Uploads/"), fileName);
             //將檔案儲存於伺服器上
             Obj.Upload.SaveAs(url);
+
+            //檢查是否真的是圖片檔，否則刪除
+            try
+            {
+                Bitmap img = new Bitmap(url, true);
+            }
+            catch
+            {
+                //刪除
+                System.IO.File.Delete(url);
+                TempData["Msg"] = "非圖檔 !!";
+                return RedirectToAction("Result");
+            }
+
             //藉由Service將檔案資料存入資料庫
             AdService.UploadFile(fileName, Obj.URL, Obj.Price, User.Identity.Name);
             TempData["Msg"] = "購買成功!!";
