@@ -1,17 +1,22 @@
 ﻿@media (max-width: 3000px) {
-    body {
+    div {
+        font-family: Microsoft JhengHei;
     }
 
     [class="page-header"]{
         margin-top:50px;
     }
 
-    h1, h2 {
+    h1, h2, h4 {
         color: white;
     }
 
     [id="ArticleListBlock"]{
         color:white;
+    }
+
+    .page-header {
+        color: #fff;
     }
 
     .create-form {
