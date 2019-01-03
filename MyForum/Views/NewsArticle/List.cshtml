@@ -2,22 +2,22 @@
 
 @*文章列表表格*@
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" id="block">
         @*若資料庫中有文章，將會列出文章*@
         @if (Model.DataList.Count != 0)
         {
             <thead>
                 <tr>
-                    <th>
+                    <th class="top" id="trend-watch-top">
 
                     </th>
-                    <th>
+                    <th class="top" id="trend-trend-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Content)
                     </th>
-                    <th>
+                    <th class="top" id="trend-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Account)
                     </th>
-                    <th>
+                    <th class="top" id="trend-watch-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Watch)
                     </th>
                 </tr>
@@ -25,17 +25,19 @@
             foreach (var item in Model.DataList)
             {
             <tr>
-                <td>
-                    @Html.ActionLink("查看留言", "Article", "NewsArticle", new { NA_ID = item.NA_ID }, null)
+                <td class="content">
+                    @Html.ActionLink("檢視留言", "Article", "NewsArticle", new { NA_ID = item.NA_ID }, null)
                 </td>
-                <td>
+                <td class="content">
                     @*換行怪怪的*@
-                    @item.Content
+                    <div class=" trend-content">
+                        @item.Content
+                    </div>
                 </td>
-                <td>
+                <td class="content" id="name">
                     @item.Member.Name
                 </td>
-                <td>
+                <td class="content" id="else-name">
                     @item.Watch
                 </td>
             </tr>

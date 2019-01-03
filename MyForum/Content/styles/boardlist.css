@@ -4,7 +4,7 @@
     [class="page-header"]{
         margin-top:50px;
     }
-    h1 {
+    h1, h2 {
         color: white;
     }
     [id="ArticleListBlock"]{
@@ -90,6 +90,34 @@
 
     .space {
         margin-top: 40px;
+    }
+
+    /*Trend*/
+    #trend-top {
+        width: 250px;
+    }
+
+    #trend-trend-top {
+        width: 550px;
+    }
+
+    #trend-watch-top {
+        width: 170px;
+    }
+
+    .trend-content {
+        width: 550px;
+        height: auto;
+        word-break: break-all;
+    }
+
+    /*Friend*/
+    #friend-top {
+        width: 520px;
+    }
+
+    #friend-join-top {
+        width: 100px;
     }
 
     /*Pop*/

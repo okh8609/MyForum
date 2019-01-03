@@ -2,22 +2,19 @@
 
 @*文章列表表格*@
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" id="block">
         @*若資料庫中有文章，將會列出文章*@
         @if (Model.DataList.Count != 0)
         {
             <thead>
                 <tr>
-                    <th>
+                    <th class="top" id="friend-join-top">
                         @*放加入好友了欄位*@
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataList[0].Account)
-                    </th>
-                    <th>
+                    <th class="top" id="friend-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Name)
                     </th>
-                    <th>
+                    <th class="top" id="friend-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Email)
                     </th>
 
@@ -26,16 +23,13 @@
             foreach (var item in Model.DataList)
             {
                 <tr>
-                    <td>
+                    <td class="content">
                         @Html.ActionLink("加入", "Add", new { p2 = @item.Account })
                     </td>
-                    <td>
-                        @item.Account
-                    </td>
-                    <td>
+                    <td class="content" id="name">
                         @item.Name
                     </td>
-                    <td>
+                    <td class="content" id="else-name">
                         @item.Email
                     </td>
                 </tr>
@@ -43,10 +37,10 @@
         }
         else
         {
-            @*若無文章，則印出"尚未有文章"*@
+            @*若無好友，則印出"我邊緣人啦"*@
             <tr>
                 <td colspan="4">
-                    我沒朋友...
+                    我邊緣人啦
                 </td>
             </tr>
         }

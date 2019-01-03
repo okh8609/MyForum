@@ -110,16 +110,16 @@
             {
                 <thead>
                     <tr>
-                        <th class="top" id="title">
+                        <th class="top">
                             @Html.DisplayNameFor(model => model.DataList[0].Title)
                         </th>
-                        <th class="top" id="account">
+                        <th class="top" id="name">
                             @Html.DisplayNameFor(model => model.DataList[0].Account)
                         </th>
-                        <th class="top" id="time">
+                        <th class="top" id="else-name">
                             @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
                         </th>
-                        <th class="top" id="watch">
+                        <th class="top" id="else-name">
                             @Html.DisplayNameFor(model => model.DataList[0].Watch)
                         </th>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -129,7 +129,7 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td class="content" id="cc">
+                    <td class="content" id="name">
                         尚無文章
                     </td>
                 </tr>
@@ -185,7 +185,4 @@
             </li>
         </ul>
     </div>
-
-
-
 </body>
