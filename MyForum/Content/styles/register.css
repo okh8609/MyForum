@@ -43,12 +43,25 @@
     [class="btn btn-primary"] {
         text-align: end;
         color: #fff;
-        background: #7792BE;
+        background: #4ECEC4;
         border: none;
         padding: 14px 90px;
         border-radius: 30px;
         font-size: 20px;
         margin-bottom: 20px;
+    }
+
+    .btn.btn-primary:hover {
+        background: #31b4a9;
+    }
+
+    .btn.btn-primary:visited {
+        color: #fff;
+    }
+
+    .btn.btn-primary:active {
+        color: #fff;
+        background-color: #31b4a9;
     }
 
     .box1 {
@@ -59,8 +72,7 @@
 
     .box2 {
         width: 200px;
-        right: 0px;
-        
+        right: 0px;        
         text-align:right;
     }
 
@@ -68,25 +80,17 @@
         color: white;
     }
 
-    .login2:hover {
-        color: #425e8a;
-    }
-
-    .login2:visited {
-        color: #425e8a;
-    }
-
     .login2 {
         margin-left: auto;
         right: 0;
-        color :#61DDBC;
+        color: #D82F4E;
     }
 
     .login2:hover{
-        color: #61DDBC;
+        color: #c12541;
     }
 
-    .login2:visited{
-        color: #24a885;
+    .login2:active{
+        color: #c12541;
     }
 }

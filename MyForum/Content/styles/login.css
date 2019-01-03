@@ -53,7 +53,7 @@
     [class="btn btn-primary"] {
         text-align: end;
         color: #fff;
-        background: #7792BE;
+        background: #4ECEC4;
         border: none;
         padding: 14px 90px;
         border-radius: 30px;
@@ -66,7 +66,7 @@
         margin-bottom: 20px;
         text-align: center;
         color: #fff;
-        background: #61DDBC;
+        background: #D82F4E;
         border: none;
         padding: 14px 42px;
         border-radius: 30px;
@@ -74,12 +74,22 @@
         margin: auto;
         width: 220px;
     }
+
     .btn.btn-primary:hover {
-        background: #425e8a;
+        background: #31b4a9;
+    }
+
+    .btn.btn-primary:visited {
+        color: #fff;
+    }
+
+    .btn.btn-primary:active {
+        color: #fff;
+        background-color: #31b4a9;
     }
 
     .btn.btn-default:hover {
-        background-color: #24a885;
+        background-color: #c12541;
         color: white;
     }
 
@@ -89,7 +99,7 @@
 
     .btn.btn-default:active {
         color: #fff;
-        background-color: #24a885;
+        background-color: #c12541;
     }
 
     [class="space"] {
