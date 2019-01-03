@@ -18,18 +18,18 @@ namespace MyForum.Models
             [DisplayName("文章編號")]
             public int FA_ID { get; set; }
 
-            [DisplayName("文章內容")]
-            [Required(ErrorMessage = "請輸入文章內容")]
+            [DisplayName("內文")]
+            [Required(ErrorMessage = "請輸入內文")]
             [DataType(DataType.MultilineText)]
             public string Content { get; set; }
 
-            [DisplayName("發表者")]
+            [DisplayName("作者")]
             public string Account { get; set; }
 
-            [DisplayName("新增時間")]
+            [DisplayName("發表時間")]
             public System.DateTime CreateTime { get; set; }
 
-            [DisplayName("點擊數")]
+            [DisplayName("點閱數")]
             public int Watch { get; set; }
 
             [DisplayName("所屬看板編號")]

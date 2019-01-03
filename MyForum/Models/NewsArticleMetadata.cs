@@ -18,18 +18,18 @@ namespace MyForum.Models
             [DisplayName("動態編號")]
             public int NA_ID { get; set; }
 
-            [DisplayName("動態內容")]
+            [DisplayName("動態")]
             [DataType(DataType.MultilineText)]
             [Required]
             public string Content { get; set; }
 
-            [DisplayName("發表者")]
+            [DisplayName("作者")]
             public string Account { get; set; }
 
-            [DisplayName("新增時間")]
+            [DisplayName("發表時間")]
             public System.DateTime CreateTime { get; set; }
 
-            [DisplayName("點擊數")]
+            [DisplayName("點閱數")]
             public int Watch { get; set; }
         }
     }

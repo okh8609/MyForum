@@ -14,15 +14,15 @@ namespace MyForum.Models
     {
         public class BoardMetadata
         {
-            [DisplayName("看板編號")]
+            [DisplayName("編號")]
             public int B_Id { get; set; }
 
-            [DisplayName("看版標題")]
-            [Required(ErrorMessage = "請輸入看版標題")]
-            [StringLength(100, ErrorMessage = "標題長度最多100字元")]
+            [DisplayName("看版")]
+            [Required(ErrorMessage = "請輸入看版名稱")]
+            [StringLength(100, ErrorMessage = "名稱長度不可超過100字元")]
             public string B_name { get; set; }
 
-            [DisplayName("發表者")]
+            [DisplayName("版主")]
             public string Account { get; set; }
         }
     }

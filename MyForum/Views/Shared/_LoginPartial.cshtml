@@ -7,12 +7,12 @@
     {
         <ul style="padding-left:10px;" class="nav navbar-nav">
             <li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>
-            <li>@Html.ActionLink("看板列表", "Index", "Board")</li>
+            <li>@Html.ActionLink("看板", "Index", "Board")</li>
             <li>@Html.ActionLink("好友", "Index", "Friendship")</li>
             <li>@Html.ActionLink("動態", "Index", "NewsArticle")</li>
             <li>@Html.ActionLink("家族", "Menu", "FamList")</li>
             <li>@Html.ActionLink("抽卡", "Card", "Member")</li>
-            <li>@Html.ActionLink("購買廣告", "Index", "Advertisement")</li>
+            <li>@Html.ActionLink("廣告", "Index", "Advertisement")</li>
         </ul>
         <ul style="padding-right:10px;" class="nav navbar-nav pull-right">
             <li><a href="/Member/ProfilePage">您好，@(User.Identity.Name)!</a></li>
