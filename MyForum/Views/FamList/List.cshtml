@@ -2,19 +2,19 @@
 
 @*文章列表表格*@
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" id="block">
         @*若資料庫中有文章，將會列出文章*@
         @if (!Model.DataList.Count.Equals(0))
         {
             <thead>
                 <tr>
-                    <th>
+                    <th class="top" id="group-join-top">
                         @*放加入家族了欄位*@
                     </th>
-                    <th>
+                    <th class="top" id="group-top">
                         @Html.DisplayNameFor(model => model.DataList[0].FB_name)
                     </th>
-                    <th>
+                    <th class="top" id="group-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Account)
                     </th>
                 </tr>
@@ -22,13 +22,13 @@
             foreach (var item in Model.DataList)
             {
                 <tr>
-                    <td>
-                        @Html.ActionLink("加入這個家族", "Add", "FamMemb", new { FB_ID = @item.FB_ID }, null)
+                    <td class="content" id="name">
+                        @Html.ActionLink("加入", "Add", "FamMemb", new { FB_ID = @item.FB_ID }, null)
                     </td>
-                    <td>
+                    <td class="content" id="else-name">
                         @Html.ActionLink(item.FB_name, "List", "FamArti", new { FB_ID = item.FB_ID }, null)
                     </td>
-                    <td>
+                    <td class="content" id="name">
                         @item.Member.Name
                     </td>
                 </tr>

@@ -11,11 +11,11 @@
                     <th class="top" id="trend-watch-top">
 
                     </th>
-                    <th class="top" id="trend-trend-top">
-                        @Html.DisplayNameFor(model => model.DataList[0].Content)
-                    </th>
                     <th class="top" id="trend-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                    <th class="top" id="trend-trend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Content)
                     </th>
                     <th class="top" id="trend-watch-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Watch)
@@ -24,30 +24,45 @@
             </thead>
             foreach (var item in Model.DataList)
             {
-            <tr>
-                <td class="content">
-                    @Html.ActionLink("檢視留言", "Article", "NewsArticle", new { NA_ID = item.NA_ID }, null)
-                </td>
-                <td class="content">
-                    @*換行怪怪的*@
-                    <div class=" trend-content">
-                        @item.Content
-                    </div>
-                </td>
-                <td class="content" id="name">
-                    @item.Member.Name
-                </td>
-                <td class="content" id="else-name">
-                    @item.Watch
-                </td>
-            </tr>
+                <tr>
+                    <td class="content">
+                        @Html.ActionLink("檢視留言", "Article", "NewsArticle", new { NA_ID = item.NA_ID }, null)
+                    </td>
+                    <td class="content" id="name">
+                        @item.Member.Name
+                    </td>
+                    <td class="content">
+                        <div class=" trend-content">
+                            @item.Content
+                        </div>
+                    </td>
+                    <td class="content" id="else-name">
+                        @item.Watch
+                    </td>
+                </tr>
             }
         }
         @*若無文章，則印出"尚未有文章"*@
         else
         {
+            <thead>
+                <tr>
+                    <th class="top" id="trend-watch-top">
+
+                    </th>
+                    <th class="top" id="trend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Account)
+                    </th>
+                    <th class="top" id="trend-trend-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Content)
+                    </th>
+                    <th class="top" id="trend-watch-top">
+                        @Html.DisplayNameFor(model => model.DataList[0].Watch)
+                    </th>
+                </tr>
+            </thead>
             <tr>
-                <td colspan="4">
+                <td class="content" id="name">
                     尚未有文章
                 </td>
             </tr>

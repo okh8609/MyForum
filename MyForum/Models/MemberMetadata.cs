@@ -25,7 +25,7 @@ namespace MyForum.Models
             [DisplayName("密碼(Hash-ed)")]
             public string Password { get; set; }
 
-            [DisplayName("姓名")]
+            [DisplayName("名稱")]
             [StringLength(20, ErrorMessage = "姓名長度最多20字元")]
             [Required(ErrorMessage = "請輸入姓名")]
             public string Name { get; set; }

@@ -1,14 +1,19 @@
 ﻿
 @{
-    ViewBag.Title = "家族";
+    ViewBag.Title = "Group";
 }
 
-
+@Styles.Render("~/Content/boardlist")
 <body style="background-color:#1B1E28;">
-    <h1 style="margin-top:50px; color: white;">家族</h1>
-
-    <hr />
-    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='/FamList/Index'">家族列表</button>
-
-    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='/FamMemb/Index'">家族動態</button>
+    <div class="page-header">
+        <h1>家族</h1>
+    </div>
+    <div class="space">
+        <div class="bottom">
+            <a class="red" onclick="location.href='/FamList/Index'">家族列表</a>
+        </div>
+        <div class="bottom">
+            <a class="red" onclick="location.href='/FamMemb/Index'">家族動態</a>
+        </div>
+    </div>
 </body>

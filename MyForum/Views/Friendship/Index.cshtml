@@ -20,7 +20,7 @@
     </div>
 
 
-    <h2>搜尋好友</h2>
+    <h2>搜尋</h2>
 
     @*判斷是否有登入，登入後才可使用新增文章*@
     @if (User.Identity.IsAuthenticated)
@@ -40,8 +40,11 @@
         }
 
     }
+    <div class="space">
 
-    <h2>列表</h2>
+    </div>
+
+    <h2>好友</h2>
     <div id="ArticleListBlock">
         @Html.Action("FriendList", "Friendship")
     </div>

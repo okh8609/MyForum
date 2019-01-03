@@ -15,6 +15,7 @@
         margin-top: 40px;
         background-color: #2B2F3E;
         border-radius: 30px;
+        color: #fff
     }
 
     .top {
@@ -91,6 +92,35 @@
     .space {
         margin-top: 40px;
     }
+
+    /*GTrend*/
+    #gtrend-top {
+        width: 250px;
+    }
+
+    #gtrend-trend-top {
+        width: 550px;
+    }
+
+    #gtrend-watch-top {
+        width: 170px;
+    }
+
+    .gtrend-content {
+        width: 550px;
+        height: auto;
+        word-break: break-all;
+    }
+
+    /*Group*/
+    #group-join-top {
+        width: 100px;
+    }
+
+    #group-top {
+        width: 520px;
+    }
+
 
     /*Trend*/
     #trend-top {

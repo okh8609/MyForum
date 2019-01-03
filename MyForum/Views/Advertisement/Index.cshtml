@@ -9,10 +9,12 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-@Styles.Render("~/Content/advertise")
+@Styles.Render("~/Content/boardlist")
 @*<link href="@Url.Content("~/Content/styles/advertise.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
-    <h1>刊登廣告</h1>
+    <div class="page-header">
+        <h1>刊登廣告</h1>
+    </div>
 
     <font color="red">@TempData["Msg"]</font>
 
@@ -21,7 +23,6 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -37,7 +38,7 @@
                     @Html.ValidationMessageFor(model => model.Upload, null, new { @class = "label label-danger" })
                     圖片尺寸請小於 512px × 512px
                 </div>
-                
+
             </div>
 
             <div class="form-group">
