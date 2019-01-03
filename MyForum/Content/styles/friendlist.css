@@ -2,6 +2,11 @@
     body {
     }
 
+    [class="page-header"] {
+        margin-top: 50px;
+        color: white;
+    }
+
     h1 {
         color: white;
     }
