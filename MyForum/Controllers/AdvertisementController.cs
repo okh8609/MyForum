@@ -41,7 +41,7 @@ namespace MyForum.Controllers
                 WebRequest request = WebRequest.Create(Obj.URL);
                 request.GetResponse();
             }
-            catch //If exception thrown then couldn't get response from address
+            catch 
             {
                 TempData["Msg"] = "網址異常!!";
                 return RedirectToAction("Result");
