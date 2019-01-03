@@ -1,7 +1,7 @@
 ﻿@model MyForum.ViewModel.AdvertisementView
 
 @{
-    ViewBag.Title = "Ad";
+    ViewBag.Title = "廣告";
 }
 
 
@@ -16,7 +16,7 @@
         <h1>刊登廣告</h1>
     </div>
 
-    <font color="red">@TempData["Msg"]</font>
+    <font color="red">@TempData["Msg"]</font> @*這行衝沙小的?*@
 
     @using (Html.BeginForm("Buy", "Advertisement", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

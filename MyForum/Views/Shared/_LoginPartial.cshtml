@@ -6,7 +6,7 @@
     @if (Request.IsAuthenticated)
     {
         <ul style="padding-left:10px;" class="nav navbar-nav">
-            <li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>
+            @*<li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>*@
             <li>@Html.ActionLink("看板", "Index", "Board")</li>
             <li>@Html.ActionLink("好友", "Index", "Friendship")</li>
             <li>@Html.ActionLink("動態", "Index", "NewsArticle")</li>
@@ -24,7 +24,7 @@
     else
     {
         <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>
+            @*<li>@Html.ActionLink("TurTalk", "Welcome", "Board", new { area = "" }, new { @class = "navbar-brand" })</li>*@
             @*<li>@Html.ActionLink("看板列表", "Index", "Board")</li>*@
         </ul>
         <ul class="nav navbar-nav pull-right">

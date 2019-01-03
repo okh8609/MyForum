@@ -2,12 +2,49 @@
     body {
     }
 
-    [class="page-header"]{
-        margin-top: 50px;
+    [class="page-form"] {
+        padding: 20px;
+        background-color: #2B2F3E;
+        border-radius: 30px;
+        width: 350px;
+        height: 500px;
+        margin: 80px auto 65px;
     }
 
-    h1 {
-        color: white;
+    .card {
+        position: relative;
+        background-color: #cf4949;
+        margin: 80px auto 65px;
+        box-shadow: 0 20px 30px 30px rgba(0,0,0,0.2);
+        width: 600px;
+        height: 300px;
+        border-radius: 87px;
+    }
+
+    .card:hover{
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    img {
+        float:left;
+        margin: 30px 15px;
+    }
+
+    [id="container"] {
+        border-radius:0 87px 87px 0;
+        background-color:white;
+        position: absolute;
+        right:0;
+        width: 330px;
+        height: 300px;
+    }
+
+    [id="board"] {
+        font-weight:bolder;
+        font-size:0.5cm;
+        margin-left:10px;
+        margin-top: 19px;
+        color: #46458b;
     }
 }
 
