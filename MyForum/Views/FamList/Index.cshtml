@@ -13,32 +13,28 @@
 }
 
 @Styles.Render("~/Content/boardlist")
-@*<link href="@Url.Content("~/Content/styles/famlist.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h1>家族列表</h1>
+<div class="page-header">
+    <h1>家族列表</h1>
+</div>
+
+<div class="space">
+    <div class="bottom">
+        <a href="/FamList/Menu" class="red">返回家族</a>
     </div>
 
-    <div class="space">
-        <div class="bottom">
-            <a href="/FamList/Menu" class="red">返回家族</a>
-        </div>
+    <div class="bottom">
+        @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+        @Ajax.ActionLink("新增家族", "Create", "FamList", null,
+            new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+            new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
+        @*新增文章預留表單跳窗*@
+        <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
 
-        <div class="bottom">
-            @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
-            @Ajax.ActionLink("新增家族", "Create", "FamList", null,
-                new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
-                new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
-            @*新增文章預留表單跳窗*@
-            <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
-
-            </div>
         </div>
     </div>
+</div>
 
-    @*載入家族列表內容*@
-    <div id="ArticleListBlock">
-        @Html.Action("List", "FamList")
-    </div>
-
-</body>
+@*載入家族列表內容*@
+<div id="ArticleListBlock">
+    @Html.Action("List", "FamList")
+</div>

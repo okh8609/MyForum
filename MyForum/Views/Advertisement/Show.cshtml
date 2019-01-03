@@ -1,10 +1,10 @@
 ﻿@model MyForum.ViewModel.AdvertisementShowView
 
-<div>
+<div style="color:#3F3F46;">
     <p style="color:#3F3F46;">請關閉AdBlock</p>
     @foreach (var item in Model.URLs)
     {
-        <a href="@item.URL">
+        <a href="@item.URL" style="color:#3F3F46;">
             <img src="@Url.Content("~/Ad-Uploads/" + item.PictPath)" alt="ADID=@item.AD_ID">
         </a>
     }

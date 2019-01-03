@@ -23,7 +23,7 @@
             {
                 <tr>
                     <td class="content">
-                        @Html.ActionLink(item.B_name, "List", "Home", new { B_Id = item.B_Id }, null)
+                        @Html.ActionLink(item.B_name, "List", "Home", new {@class="action-link", B_Id = item.B_Id}, new { @style = "color: #fff" })
                     </td>
                     <td class="content" id="name">
                         @item.Member.Name
@@ -79,7 +79,7 @@
             {
                 if (page == Model.Paging.NowPage)
                 {
-                    <li class="active">
+                    <li class="active" style="color:#fff">
                         <a href="#">@page</a>
                     </li>
                 }

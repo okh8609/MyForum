@@ -13,39 +13,36 @@
 }
 
 @Styles.Render("~/Content/boardlist")
-@*<link href="@Url.Content("~/Content/styles/friendlist.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h1>好友列表</h1>
-    </div>
+<div class="page-header">
+    <h1>好友列表</h1>
+</div>
 
 
-    <h2>搜尋</h2>
+<h2>搜尋</h2>
 
-    @*判斷是否有登入，登入後才可使用新增文章*@
-    @if (User.Identity.IsAuthenticated)
+@*判斷是否有登入，登入後才可使用新增文章*@
+@if (User.Identity.IsAuthenticated)
+{
+    @*建立搜尋文章所須的表單*@
+    using (Ajax.BeginForm("FriendList", "Friendship",
+        new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace }))
     {
-        @*建立搜尋文章所須的表單*@
-        using (Ajax.BeginForm("FriendList", "Friendship",
-            new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace }))
-        {
-            <div class="form-group">
-                <div class="col-xs-8 col-md-3 input-group">
-                    @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
-                    <div class="input-group-btn">
-                        <input class="btn btn-primary1" type="submit" value="搜尋" />
-                    </div>
+        <div class="form-group">
+            <div class="col-xs-8 col-md-3 input-group">
+                @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+                <div class="input-group-btn">
+                    <input class="btn btn-primary1" type="submit" value="搜尋" />
                 </div>
             </div>
-        }
-
+        </div>
     }
-    <div class="space">
 
-    </div>
+}
+<div class="space">
 
-    <h2>好友</h2>
-    <div id="ArticleListBlock">
-        @Html.Action("FriendList", "Friendship")
-    </div>
-</body>
+</div>
+
+<h2>好友</h2>
+<div id="ArticleListBlock">
+    @Html.Action("FriendList", "Friendship")
+</div>

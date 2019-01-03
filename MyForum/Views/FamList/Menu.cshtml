@@ -4,16 +4,14 @@
 }
 
 @Styles.Render("~/Content/boardlist")
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h1>家族</h1>
+<div class="page-header">
+    <h1>家族</h1>
+</div>
+<div class="space">
+    <div class="bottom">
+        <a class="red" onclick="location.href='/FamList/Index'">家族列表</a>
     </div>
-    <div class="space">
-        <div class="bottom">
-            <a class="red" onclick="location.href='/FamList/Index'">家族列表</a>
-        </div>
-        <div class="bottom">
-            <a class="red" onclick="location.href='/FamMemb/Index'">家族動態</a>
-        </div>
+    <div class="bottom">
+        <a class="red" onclick="location.href='/FamMemb/Index'">家族動態</a>
     </div>
-</body>
+</div>

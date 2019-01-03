@@ -10,57 +10,54 @@
 }
 
 @Styles.Render("~/Content/boardlist")
-@*<link href="@Url.Content("~/Content/styles/advertise.css")" rel="stylesheet" type="text/css" />*@
-<body style="background-color:#1B1E28;">
-    <div class="page-header">
-        <h1>刊登廣告</h1>
-    </div>
+<div class="page-header">
+    <h1>刊登廣告</h1>
+</div>
 
-    <font color="red">@TempData["Msg"]</font> @*這行衝沙小的?*@
+<font color="red">@TempData["Msg"]</font> @*這行衝沙小的?*@
 
-    @using (Html.BeginForm("Buy", "Advertisement", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm("Buy", "Advertisement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal" style="color: #fff">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Upload, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Upload, new { @class = "form-control", type = "file" })
-                    @Html.ValidationMessageFor(model => model.Upload, null, new { @class = "label label-danger" })
-                    圖片尺寸請小於 512px × 512px
-                </div>
-            </div>
-
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <label class="control-label col-md-2" for="Price">購買方案</label>
-                <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })*@
-                        @*<label for="Price">購買方案</label>*@
-                    <select class="form-control" id="Price" name="Price">
-                        <option value="25">右下方-小格 - 25台科幣</option>
-                        <option value="50">左下方-大格 - 50台科幣</option>
-                        <option value="50" disabled>全版面-超屌特大號 - 500000台科幣</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="購買廣告" class="btn btn-default" />
-                </div>
+    <div class="form-horizontal" style="color: #fff">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
             </div>
         </div>
-    }
-</body>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Upload, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Upload, new { @class = "form-control", type = "file" })
+                @Html.ValidationMessageFor(model => model.Upload, null, new { @class = "label label-danger" })
+                圖片尺寸請小於 512px × 512px
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2" for="Price">購買方案</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })*@
+                    @*<label for="Price">購買方案</label>*@
+                <select class="form-control" id="Price" name="Price">
+                    <option value="25">右下方-小格 - 25台科幣</option>
+                    <option value="50">左下方-大格 - 50台科幣</option>
+                    <option value="50" disabled>全版面-超屌特大號 - 500000台科幣</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="購買廣告" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
