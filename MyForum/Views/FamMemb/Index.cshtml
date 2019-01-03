@@ -50,7 +50,15 @@
                         </td>
                         <td class="content">
                             <div class="gtrend-content">
-                                @item.Content
+                                @if (item.Content.Length >= 50)
+                                {
+                                    @item.Content.Substring(0, 50)
+                                    <text> ...</text>
+                                }
+                                else
+                                {
+                                    @item.Content
+                                }
                             </div>
                         </td>
                         <td class="content" id="else-name">
