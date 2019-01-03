@@ -11,9 +11,12 @@
         <img src="https://cdn2.iconfinder.com/data/icons/shop-payment-vol-6/128/shop-26-512.png"
              alt="Avater" style="width:40%">
         <div id="container">
-            <p id="board">@Html.DisplayNameFor(model => model.Person.Account) : @Model.Person.Account</p>
-            <p id="board">@Html.DisplayNameFor(model => model.Person.Name) : @Model.Person.Name</p>
-            <p id="board">@Html.DisplayNameFor(model => model.Person.Email) : @Model.Person.Email</p>
+            <p id="board">@Html.DisplayNameFor(model => model.Person.Account) :<br /></p>
+            <p id="board" style="text-indent: 40px;"> @Model.Person.Account</p>
+            <p id="board">@Html.DisplayNameFor(model => model.Person.Name)  :<br /></p>
+            <p id="board" style="text-indent: 40px;">@Model.Person.Name</p>
+            <p id="board">@Html.DisplayNameFor(model => model.Person.Email) :<br /></p>
+            <p id="board" style="text-indent: 40px;">@Model.Person.Email</p>
         </div>
     </div>
 </body>
