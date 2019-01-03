@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MyForum.Controllers
 {
+    [Authorize(Roles = "Adminnnnnnnnnnnnnnnnnnn")] //設定此Action只有Admin角色才可使用
     public class AdvertisementController : Controller
     {
         AdvertisementService AdService = new AdvertisementService();
