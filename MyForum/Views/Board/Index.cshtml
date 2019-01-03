@@ -15,30 +15,33 @@
 @Styles.Render("~/Content/boardlist")
 @**<link href="@Url.Content("~/Content/styles/boardlist.css")" rel="stylesheet" type="text/css" />*@
 <body style="background-color:#1B1E28;">
-    <div style="margin-top:50px;">
+    <div class="page-header" style="margin-top:50px;">
         <h1>看板列表</h1>
     </div>
+    <div class="space">
+        <div class="bottom">
+            @*判斷是否有登入，登入後才可使用新增文章*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                @*新增看版按鈕，並設定使用AJAX取得內容後開啟跳窗*@
+                @Ajax.ActionLink("新增看版", "Create", "Board", null,
+                    new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
+                    new { @class = "red", @data_toggle = "modal", @data_target = "#CreateArticleModal"})
+                    
+                @*新增看版預留表單跳窗*@
+                <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
 
-    @*判斷是否有登入，登入後才可使用新增文章*@
-    @if (User.Identity.IsAuthenticated)
-    {
-        @*新增文章按鈕，並設定使用AJAX取得內容後開啟跳窗*@
-        @Ajax.ActionLink("新增看版", "Create", "Board", null,
-            new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace },
-            new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#CreateArticleModal", @id = "create" })
-        @*新增文章預留表單跳窗*@
-        <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
-
+                </div>
+            }
+            else
+            {
+                <text>要新增看板請先</text>
+                @Html.ActionLink("登入", "Login", "Member")
+            }
         </div>
-    }
-    else
-    {
-        <text>要新增看板請先</text>
-        @Html.ActionLink("登入", "Login", "Member")
-    }
+    </div>
     @*載入文章列表內容*@
     <div id="ArticleListBlock">
         @Html.Action("List", "Board")
     </div>
-
 </body>

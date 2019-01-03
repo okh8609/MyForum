@@ -9,6 +9,62 @@
     h1 {
         color: white;
     }
+
+    #block {
+        margin-top: 40px;
+        background-color: #2B2F3E;
+        border-radius: 30px;
+    }
+
+    .top {
+        color: #fff;
+        font-size: 20pt;
+        text-align: center;
+    }
+
+    #title {
+        width: 285px;
+    }
+
+    #account {
+        width: 285px;
+    }
+
+    #time {
+        width: 285px;
+    }
+
+    #watch {
+        width: 285px;
+    }
+
+    .content {
+        font-size: 15pt;
+        padding-left: 18pt;
+        text-align: center;
+    }
+
+    #ca {
+        color: #61DDBC;
+    }
+
+    #cc {
+        color: #7792BE;
+    }
+
+    .bottom {
+        display: inline;
+    }
+
+    #bottom {
+        color: #fff;
+        background: #E3515D;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 22px;
+        font-size: 24px;
+        margin-top: 30px;
+    }
 }
 
 @media (max-width: 480px) {
