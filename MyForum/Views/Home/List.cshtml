@@ -141,14 +141,15 @@
         <ul class="pagination">
             @*顯示上一頁與最前頁按鈕*@
             <li class="first @((Model.Paging.NowPage > 1) ? "" : " disabled")">
-                @Ajax.ActionLink("<<", "List",
-                    new { Page = 1, B_Id = ViewData["B_Id"], Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+
+                @Html.ActionLink("<<", "List",
+                        new { Page = 1, B_Id = ViewData["B_Id"] })
+
             </li>
             <li class="pervious @((Model.Paging.NowPage > 1) ? "" : " disabled")">
-                @Ajax.ActionLink("<", "List",
-                    new { Page = Model.Paging.NowPage - 1, B_Id = ViewData["B_Id"], Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+
+                @Html.ActionLink("<", "List",
+                        new { Page = Model.Paging.NowPage - 1, B_Id = ViewData["B_Id"] })
             </li>
             @*顯示各個頁次按鈕*@
             @for (var page = (Model.Paging.NowPage - 6);
@@ -165,23 +166,26 @@
                     else
                     {
                         <li>
-                            @Ajax.ActionLink(page.ToString(), "List",
-                                new { Page = page, B_Id = ViewData["B_Id"], Search = Model.Search },
-                                new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+
+                            @Html.ActionLink(page.ToString(), "List",
+                                new { Page = page, B_Id = ViewData["B_Id"] })
+
                         </li>
                     }
                 }
             }
             @*顯示下一頁與最後一頁的按鈕*@
             <li class="next @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
-                @Ajax.ActionLink(">", "List",
-                    new { Page = Model.Paging.NowPage + 1, B_Id = ViewData["B_Id"], Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+
+                @Html.ActionLink(">", "List",
+                    new { Page = Model.Paging.NowPage + 1, B_Id = ViewData["B_Id"] })
+
             </li>
             <li class="last @(((Model.Paging.NowPage < Model.Paging.MaxPage) ? "" : " disabled"))">
-                @Ajax.ActionLink(">>", "List",
-                    new { Page = Model.Paging.MaxPage, B_Id = ViewData["B_Id"], Search = Model.Search },
-                    new AjaxOptions { UpdateTargetId = "ArticleListBlock", InsertionMode = InsertionMode.Replace })
+
+                @Html.ActionLink(">>", "List",
+                    new { Page = Model.Paging.MaxPage, B_Id = ViewData["B_Id"] })
+
             </li>
         </ul>
     </div>
