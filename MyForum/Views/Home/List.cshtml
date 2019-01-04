@@ -108,16 +108,16 @@
         {
             <thead>
                 <tr>
-                    <th class="top">
+                    <th class="top" id="article-title-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Title)
                     </th>
-                    <th class="top" id="name">
+                    <th class="top" id="article-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Account)
                     </th>
-                    <th class="top" id="else-name">
+                    <th class="top" id="article-top">
                         @Html.DisplayNameFor(model => model.DataList[0].CreateTime)
                     </th>
-                    <th class="top" id="else-name">
+                    <th class="top" id="article-watch-top">
                         @Html.DisplayNameFor(model => model.DataList[0].Watch)
                     </th>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))

@@ -138,6 +138,10 @@
         margin-top: 40px;
     }
 
+    .article-content {
+        word-break: break-all;
+    }
+
     .message-block {
         padding: 15px 0px 15px;
         margin-top: 40px 0px 40px;

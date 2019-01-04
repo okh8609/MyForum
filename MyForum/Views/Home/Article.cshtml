@@ -21,12 +21,25 @@
     <div class="bottom">
         <a onclick="history.back()" class="red">返回列表</a>
     </div>
+    <div class="bottom">
+        @*判斷是否登入且為發布者，若為發布者，則顯示"修改留言"連結*@
+        @if (User.Identity.IsAuthenticated && Model.Account == User.Identity.Name
+                && Model.Message.Count == 0)
+        {
+            @Ajax.ActionLink("修改留言", "Edit", "Home", new { Id = Model.A_Id },
+                new AjaxOptions { UpdateTargetId = "EditArticleModal", InsertionMode = InsertionMode.Replace },
+                new { @class = "red", @data_toggle = "modal", @data_target = "#EditArticleModal" })
+            <div class="modal fade" id="EditArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+            </div>
+        }
+    </div>
 </div>
 <div class="panel panel-default article">
     <div class="panel-heading">
         <h3 class="panel-title">@Html.DisplayNameFor(model => model.Content)</h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body article-content">
         @Html.Raw(Model.Content.Replace("\r\n", "<br />"))
         <p class="text-right">
             觀看人數：@Model.Watch
@@ -37,17 +50,7 @@
     </div>
 </div>
 
-@*判斷是否登入且為發布者，若為發布者，則顯示"修改留言"連結*@
-@if (User.Identity.IsAuthenticated && Model.Account == User.Identity.Name
-        && Model.Message.Count == 0)
-{
-    @Ajax.ActionLink("修改留言", "Edit", "Home", new { Id = Model.A_Id },
-        new AjaxOptions { UpdateTargetId = "EditArticleModal", InsertionMode = InsertionMode.Replace },
-        new { @class = "btn btn-default", @data_toggle = "modal", @data_target = "#EditArticleModal" })
-    <div class="modal fade" id="EditArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
 
-    </div>
-}
 
 @*呼叫另一Action顯示文章留言列表*@
 <div id="MessageList">

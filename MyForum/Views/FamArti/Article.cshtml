@@ -21,7 +21,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">@Html.DisplayNameFor(model => model.Content)</h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body article-content">
         @Html.Raw(Model.Content.Replace("\r\n", "<br />"))
         <br /><br /><br /><br /><br />
         <p class="text-right">@Html.DisplayNameFor(model => model.Member.Name)：@Html.DisplayFor(model => model.Member.Name)</p>
