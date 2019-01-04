@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyForum.Models;
 using MyForum.Services;
-using MyForum.ViewModel;
+using MyForum.ViewModel; 
 
 namespace MyForum.Controllers
 {
