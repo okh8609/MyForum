@@ -23,7 +23,7 @@
             {
                 <tr>
                     <td class="content">
-                        @Html.ActionLink(item.B_name, "List", "Home", new {@class="action-link", B_Id = item.B_Id}, new { @style = "color: #fff" })
+                        @Html.ActionLink(item.B_name, "List", "Home", new {B_Id = item.B_Id}, new { @style = "color: #fff" })
                     </td>
                     <td class="content" id="name">
                         @item.Member.Name
