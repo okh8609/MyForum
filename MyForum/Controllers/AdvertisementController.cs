@@ -9,6 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Drawing;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Text;
+using System.Security.Authentication;
 
 
 namespace MyForum.Controllers
@@ -23,6 +28,8 @@ namespace MyForum.Controllers
             return View();
         }
 
+        private bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) { return true; }
+        
         [Authorize]
         [HttpPost]
         //public ActionResult Buy([Bind(Include = "upload")]AdvertisementView File)
@@ -38,12 +45,16 @@ namespace MyForum.Controllers
             //判斷網址是否存在
             try
             {
-                WebRequest request = WebRequest.Create(Obj.URL);
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Obj.URL);
+                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
                 request.GetResponse();
             }
-            catch
+            catch (Exception ex)
             {
-                TempData["Msg"] = "網址異常。";
+                TempData["Msg"] = "網址異常。" + ex.Message;
                 return RedirectToAction("Result");
             }
 
