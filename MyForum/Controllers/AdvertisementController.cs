@@ -32,6 +32,7 @@ namespace MyForum.Controllers
         
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         //public ActionResult Buy([Bind(Include = "upload")]AdvertisementView File)
         public ActionResult Buy(AdvertisementView Obj)
         {
